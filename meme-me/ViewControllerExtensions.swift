@@ -26,6 +26,14 @@ extension ViewController {
         }
     }
     
+    func prepareControls() {
+        
+        imagePickerSuccess = false
+        imagePickerController.delegate = self
+        cameraButton.isEnabled = isCameraAvailable()
+        photoLibButton.isEnabled = isLocalImageStockAvailable()
+    }
+    
     func isCameraAvailable() -> Bool {
         return UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
     }

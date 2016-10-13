@@ -33,7 +33,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             imagePickerSuccess = true
         }
         
-        
         dismiss(animated: true, completion: nil)
     }
     
@@ -90,14 +89,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         imagePickerController.allowsEditing = false
         self.present(imagePickerController, animated: true, completion: nil)
-    }
-    
-    func prepareControls() {
-        
-        imagePickerSuccess = false
-        imagePickerController.delegate = self
-        cameraButton.isEnabled = isCameraAvailable()
-        photoLibButton.isEnabled = isLocalImageStockAvailable()
     }
 }
 
