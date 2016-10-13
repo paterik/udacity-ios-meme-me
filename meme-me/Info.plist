@@ -43,5 +43,9 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>used to access photo library of current user</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>impact.ttf</string>
+	</array>
 </dict>
 </plist>
