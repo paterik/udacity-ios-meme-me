@@ -13,6 +13,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var photoLibButton: UIBarButtonItem!
+    @IBOutlet weak var inputFieldTop: UITextField!
+    @IBOutlet weak var inputFieldBottom: UITextField!
     
     let imagePickerController = UIImagePickerController()
     var imagePickerSuccess: Bool = false
@@ -30,6 +32,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.contentMode = .scaleAspectFill
             imagePickerView.image = pickedImage
+            prepareEditModeControls(activate: true)
             imagePickerSuccess = true
         }
         
@@ -40,6 +43,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         _ picker: UIImagePickerController) {
         
         imagePickerSuccess = false
+        prepareEditModeControls(activate: false)
         dismiss(animated: true, completion: nil)
     }
     
@@ -89,6 +93,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         imagePickerController.allowsEditing = false
         self.present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func prepareEditModeControls(activate: Bool) {
+    
+        inputFieldTop.isHidden = !activate
+        inputFieldBottom.isHidden = !activate
+        
+        inputFieldTop.font = UIFont(name: "Impact", size: 28)
+        inputFieldBottom.font = UIFont(name: "Impact", size: 28)
     }
 }
 

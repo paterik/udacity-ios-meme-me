@@ -32,6 +32,7 @@ extension ViewController {
         imagePickerController.delegate = self
         cameraButton.isEnabled = isCameraAvailable()
         photoLibButton.isEnabled = isLocalImageStockAvailable()
+        prepareEditModeControls(activate: false)
     }
     
     func isCameraAvailable() -> Bool {

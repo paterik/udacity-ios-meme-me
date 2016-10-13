@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,6 +19,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="WelcomePortrait" translatesAutoresizingMaskIntoConstraints="NO" id="gz7-dP-QJ4" userLabel="ImagePickerView">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="lJC-Ug-zXx" userLabel="InputFieldBottom" customClass="UIOutlinedTextField" customModule="meme_me" customModuleProvider="target">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ijh-Oz-cId"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="AjT-mK-wSK">
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="DmF-Ov-FXJ"/>
@@ -37,25 +50,37 @@
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="WelcomePortrait" translatesAutoresizingMaskIntoConstraints="NO" id="gz7-dP-QJ4">
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="NKX-3f-Sxm" userLabel="InputFieldTop" customClass="UIOutlinedTextField" customModule="meme_me" customModuleProvider="target">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="d1r-yd-NIF"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Kpa-Zb-ARC"/>
-                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="bottom" secondItem="AjT-mK-wSK" secondAttribute="top" id="LUq-tJ-FxO"/>
-                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="leading" secondItem="AjT-mK-wSK" secondAttribute="leading" id="bQL-Dh-Vuc"/>
-                            <constraint firstAttribute="trailing" secondItem="AjT-mK-wSK" secondAttribute="trailing" id="fpj-ap-sJX"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AjT-mK-wSK" secondAttribute="bottom" id="gOu-3q-ixb"/>
-                            <constraint firstItem="AjT-mK-wSK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="goF-ve-7yH"/>
-                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="trailing" secondItem="AjT-mK-wSK" secondAttribute="trailing" id="jQb-j3-aFj"/>
+                            <constraint firstItem="AjT-mK-wSK" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="3bV-sa-xdr"/>
+                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="CSP-tZ-p3y"/>
+                            <constraint firstItem="AjT-mK-wSK" firstAttribute="top" secondItem="gz7-dP-QJ4" secondAttribute="bottom" id="DVw-3w-1sS"/>
+                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="leading" secondItem="lJC-Ug-zXx" secondAttribute="leading" id="G80-if-1Pc"/>
+                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="leading" secondItem="AjT-mK-wSK" secondAttribute="leading" id="Nvw-ID-ZCj"/>
+                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="bQn-rZ-Cmb"/>
+                            <constraint firstAttribute="trailing" secondItem="gz7-dP-QJ4" secondAttribute="trailing" id="cpn-py-4Nk"/>
+                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dn9-KY-KyX"/>
+                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="41" id="keC-ue-oEd"/>
+                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="trailing" secondItem="AjT-mK-wSK" secondAttribute="trailing" id="kw4-qV-vDh"/>
+                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="trailing" secondItem="lJC-Ug-zXx" secondAttribute="trailing" id="mTd-wC-xQM"/>
+                            <constraint firstItem="AjT-mK-wSK" firstAttribute="top" secondItem="lJC-Ug-zXx" secondAttribute="bottom" constant="57" id="sBe-IX-Q9g"/>
+                            <constraint firstItem="lJC-Ug-zXx" firstAttribute="centerX" secondItem="AjT-mK-wSK" secondAttribute="centerX" id="uoU-RS-YJ5"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cameraButton" destination="PSh-9K-q30" id="vhE-aU-VSP"/>
                         <outlet property="imagePickerView" destination="gz7-dP-QJ4" id="mZX-Lr-aru"/>
+                        <outlet property="inputFieldBottom" destination="lJC-Ug-zXx" id="atm-je-u9q"/>
+                        <outlet property="inputFieldTop" destination="NKX-3f-Sxm" id="BxV-LW-mDU"/>
                         <outlet property="photoLibButton" destination="Top-lX-MRz" id="hn0-87-mmX"/>
                     </connections>
                 </viewController>
