@@ -8,13 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var photoLibButton: UIBarButtonItem!
-    @IBOutlet weak var inputFieldTop: UITextField!
-    @IBOutlet weak var inputFieldBottom: UITextField!
+    @IBOutlet weak var inputFieldTop: UIOutlinedTextField!
+    @IBOutlet weak var inputFieldBottom: UIOutlinedTextField!
+    
+    let memeFontName = "Impact"
+    let memeFontSize: CGFloat = 28.0
+    let memeTextFieldTopDefault = "TOP"
+    let memeTextFieldBottomDefault = "BOTTOM"
+    let memeTextFieldDelegate = MemeTextFieldDelegate()
     
     let imagePickerController = UIImagePickerController()
     var imagePickerSuccess: Bool = false
@@ -35,12 +41,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         super.viewWillDisappear(animated)
         unSubscribeToKeyboardNotifications()
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        textField.resignFirstResponder()
-        return true
     }
     
     func imagePickerController(
@@ -82,24 +82,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // Create the photo selection related actions
         if isPhotoLibrarayAvailable() {
-            let photoLibAction = UIAlertAction(title: "My Photos", style: UIAlertActionStyle.default) {
+            
+            let photoLibAction = UIAlertAction(title: "from photos", style: UIAlertActionStyle.default) {
                 UIAlertAction in
                 self.imagePickerController.sourceType = .photoLibrary
                 self.loadImagePickerSource()
             }
+            
             alertController.addAction(photoLibAction)
         }
         
         if isSavedPhotosAlbumAvailable() {
-            let photoAlbumAction = UIAlertAction(title: "My Photo-Album", style: UIAlertActionStyle.default) {
+            
+            let photoAlbumAction = UIAlertAction(title: "from album", style: UIAlertActionStyle.default) {
                 UIAlertAction in
                 self.imagePickerController.sourceType = .savedPhotosAlbum
                 self.loadImagePickerSource()
             }
+            
             alertController.addAction(photoAlbumAction)
         }
         
-        // add Cancel action
+        // Add Cancel action
         alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
             UIAlertAction in
             return
