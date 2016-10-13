@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension ViewController {
-
+    
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         
         if (imagePickerSuccess) {
@@ -38,7 +38,7 @@ extension ViewController {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(ViewController.keyboardWillDisappear),
-            name: NSNotification.Name.UIKeyboardDidHide,
+            name: NSNotification.Name.UIKeyboardWillHide,
             object: nil
         )
     }
@@ -50,21 +50,30 @@ extension ViewController {
         )
         
         NotificationCenter.default.removeObserver(
-            self, name: NSNotification.Name.UIKeyboardDidHide, object: nil
+            self, name: NSNotification.Name.UIKeyboardWillHide, object: nil
         )
     }
     
     func keyboardWillDisappear(notification: NSNotification) {
         
-        self.view.frame.origin.y += getKeyboardHeight(notification: notification)
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.height {
+            if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y += keyboardSize
+            }
+        }
     }
     
     func keyboardWillAppear(notification: NSNotification) {
         
-        self.view.frame.origin.y -= getKeyboardHeight(notification: notification)
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.height {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize
+            }
+        }
+        
     }
     
-    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+    func _getKeyboardHeight(notification: NSNotification) -> CGFloat {
         
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
@@ -75,10 +84,19 @@ extension ViewController {
     func prepareControls() {
         
         imagePickerSuccess = false
-        imagePickerController.delegate = self
+        prepareEditModeControls(activate: false)
+        
         cameraButton.isEnabled = isCameraAvailable()
         photoLibButton.isEnabled = isLocalImageStockAvailable()
-        prepareEditModeControls(activate: false)
+        
+        imagePickerController.delegate = self
+        inputFieldTop.delegate = memeTextFieldDelegate
+        inputFieldBottom.delegate = memeTextFieldDelegate
+        
+        inputFieldTop.text = memeTextFieldTopDefault
+        inputFieldTop.contentDefault = memeTextFieldTopDefault
+        inputFieldBottom.text = memeTextFieldBottomDefault
+        inputFieldBottom.contentDefault = memeTextFieldBottomDefault
     }
     
     func prepareEditModeControls(activate: Bool) {
@@ -86,8 +104,8 @@ extension ViewController {
         inputFieldTop.isHidden = !activate
         inputFieldBottom.isHidden = !activate
         
-        inputFieldTop.font = UIFont(name: "Impact", size: 28)
-        inputFieldBottom.font = UIFont(name: "Impact", size: 28)
+        inputFieldTop.font = UIFont(name: memeFontName, size: memeFontSize)
+        inputFieldBottom.font = UIFont(name: memeFontName, size: memeFontSize)
     }
     
     func isCameraAvailable() -> Bool {
