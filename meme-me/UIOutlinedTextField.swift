@@ -13,6 +13,12 @@ class UIOutlinedTextField: UITextField {
     
     var outlineWidth: CGFloat = 3
     var outlineColor: UIColor = UIColor.black
+    var contentDefault: String = ""
+    
+    func isChanged() -> Bool {
+
+        return self.text != contentDefault
+    }
     
     override func drawText(in rect: CGRect) {
         
