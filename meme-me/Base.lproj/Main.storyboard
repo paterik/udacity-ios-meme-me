@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="meme_me" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +17,56 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="AjT-mK-wSK">
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="DmF-Ov-FXJ"/>
+                                    <barButtonItem image="Library" id="Top-lX-MRz" userLabel="Library">
+                                        <connections>
+                                            <action selector="pickLocalStockImage:" destination="BYZ-38-t0r" id="UVd-EV-mdF"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Bnh-3v-yD4"/>
+                                    <barButtonItem image="Camera" id="PSh-9K-q30" userLabel="Camera">
+                                        <connections>
+                                            <action selector="pickCameraImage:" destination="BYZ-38-t0r" id="Y7j-P2-xBf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="1rK-39-d1d"/>
+                                </items>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="WelcomePortrait" translatesAutoresizingMaskIntoConstraints="NO" id="gz7-dP-QJ4">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Kpa-Zb-ARC"/>
+                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="bottom" secondItem="AjT-mK-wSK" secondAttribute="top" id="LUq-tJ-FxO"/>
+                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="leading" secondItem="AjT-mK-wSK" secondAttribute="leading" id="bQL-Dh-Vuc"/>
+                            <constraint firstAttribute="trailing" secondItem="AjT-mK-wSK" secondAttribute="trailing" id="fpj-ap-sJX"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AjT-mK-wSK" secondAttribute="bottom" id="gOu-3q-ixb"/>
+                            <constraint firstItem="AjT-mK-wSK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="goF-ve-7yH"/>
+                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="trailing" secondItem="AjT-mK-wSK" secondAttribute="trailing" id="jQb-j3-aFj"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="PSh-9K-q30" id="vhE-aU-VSP"/>
+                        <outlet property="imagePickerView" destination="gz7-dP-QJ4" id="mZX-Lr-aru"/>
+                        <outlet property="photoLibButton" destination="Top-lX-MRz" id="hn0-87-mmX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="137.18140929535232"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Camera" width="25" height="25"/>
+        <image name="Library" width="25" height="25"/>
+        <image name="WelcomePortrait" width="414" height="736"/>
+    </resources>
 </document>
