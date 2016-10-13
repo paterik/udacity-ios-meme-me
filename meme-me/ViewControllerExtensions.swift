@@ -26,6 +26,52 @@ extension ViewController {
         }
     }
     
+    func subscribeToKeyboardNotifications() {
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(ViewController.keyboardWillAppear),
+            name: NSNotification.Name.UIKeyboardWillShow,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(ViewController.keyboardWillDisappear),
+            name: NSNotification.Name.UIKeyboardDidHide,
+            object: nil
+        )
+    }
+    
+    func unSubscribeToKeyboardNotifications() {
+        
+        NotificationCenter.default.removeObserver(
+            self, name: NSNotification.Name.UIKeyboardWillShow, object: nil
+        )
+        
+        NotificationCenter.default.removeObserver(
+            self, name: NSNotification.Name.UIKeyboardDidHide, object: nil
+        )
+    }
+    
+    func keyboardWillDisappear(notification: NSNotification) {
+        
+        self.view.frame.origin.y += getKeyboardHeight(notification: notification)
+    }
+    
+    func keyboardWillAppear(notification: NSNotification) {
+        
+        self.view.frame.origin.y -= getKeyboardHeight(notification: notification)
+    }
+    
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        
+        return keyboardSize.cgRectValue.height
+    }
+    
     func prepareControls() {
         
         imagePickerSuccess = false
@@ -33,6 +79,15 @@ extension ViewController {
         cameraButton.isEnabled = isCameraAvailable()
         photoLibButton.isEnabled = isLocalImageStockAvailable()
         prepareEditModeControls(activate: false)
+    }
+    
+    func prepareEditModeControls(activate: Bool) {
+        
+        inputFieldTop.isHidden = !activate
+        inputFieldBottom.isHidden = !activate
+        
+        inputFieldTop.font = UIFont(name: "Impact", size: 28)
+        inputFieldBottom.font = UIFont(name: "Impact", size: 28)
     }
     
     func isCameraAvailable() -> Bool {

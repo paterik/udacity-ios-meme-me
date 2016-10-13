@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -23,6 +23,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         super.viewDidLoad()
         prepareControls()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        unSubscribeToKeyboardNotifications()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
     }
     
     func imagePickerController(
@@ -44,6 +62,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         imagePickerSuccess = false
         prepareEditModeControls(activate: false)
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -93,15 +112,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         imagePickerController.allowsEditing = false
         self.present(imagePickerController, animated: true, completion: nil)
-    }
-    
-    func prepareEditModeControls(activate: Bool) {
-    
-        inputFieldTop.isHidden = !activate
-        inputFieldBottom.isHidden = !activate
-        
-        inputFieldTop.font = UIFont(name: "Impact", size: 28)
-        inputFieldBottom.font = UIFont(name: "Impact", size: 28)
     }
 }
 
