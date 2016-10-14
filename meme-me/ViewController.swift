@@ -16,6 +16,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var inputFieldTop: UIOutlinedTextField!
     @IBOutlet weak var inputFieldBottom: UIOutlinedTextField!
     
+    struct Meme {
+    
+        var textTop: String?
+        var textBottom: String?
+        var imageOrigin: UIImage?
+        var image: UIImage?
+    }
+    
     let memeFontName = "Impact"
     let memeFontSize: CGFloat = 28.0
     let memeTextFieldTopDefault = "TOP"
@@ -41,29 +49,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         super.viewWillDisappear(animated)
         unSubscribeToKeyboardNotifications()
-    }
-    
-    func imagePickerController(
-        _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            imagePickerView.contentMode = .scaleAspectFill
-            imagePickerView.image = pickedImage
-            prepareEditModeControls(activate: true)
-            imagePickerSuccess = true
-        }
-        
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(
-        _ picker: UIImagePickerController) {
-        
-        imagePickerSuccess = false
-        prepareEditModeControls(activate: false)
-        
-        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func pickCameraImage(_ sender: AnyObject) {
@@ -106,16 +91,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Add Cancel action
         alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
             UIAlertAction in
+            
             return
         })
         
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func loadImagePickerSource() {
+    func saveImage() {
         
-        imagePickerController.allowsEditing = false
-        self.present(imagePickerController, animated: true, completion: nil)
+        let _ = Meme(
+            textTop: inputFieldTop.text!,
+            textBottom: inputFieldBottom.text!,
+            imageOrigin: imagePickerView.image!,
+            image: imagePickerView.image!
+        )
     }
 }
 

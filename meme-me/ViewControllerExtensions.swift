@@ -17,13 +17,35 @@ extension ViewController {
             return
         }
         
+        imagePickerView.contentMode = .scaleAspectFit
+        imagePickerView.image = UIImage(imageLiteralResourceName: "WelcomePortrait")
+        
         if (toInterfaceOrientation.isLandscape) {
             imagePickerView.image = UIImage(imageLiteralResourceName: "WelcomeLandscape")
-            imagePickerView.contentMode = .scaleAspectFit
-        } else {
-            imagePickerView.image = UIImage(imageLiteralResourceName: "WelcomePortrait")
-            imagePickerView.contentMode = .scaleAspectFit
         }
+    }
+    
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imagePickerView.contentMode = .scaleAspectFill
+            imagePickerView.image = pickedImage
+            prepareEditModeControls(activate: true)
+            imagePickerSuccess = true
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(
+        _ picker: UIImagePickerController) {
+        
+        imagePickerSuccess = false
+        prepareEditModeControls(activate: false)
+        
+        dismiss(animated: true, completion: nil)
     }
     
     func subscribeToKeyboardNotifications() {
@@ -56,29 +78,26 @@ extension ViewController {
     
     func keyboardWillDisappear(notification: NSNotification) {
         
+        preparePhotoControls(activate: false)
+        
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.height {
             if self.view.frame.origin.y != 0 {
                 self.view.frame.origin.y += keyboardSize
             }
         }
+        
+        
     }
     
     func keyboardWillAppear(notification: NSNotification) {
+        
+        preparePhotoControls(activate: true)
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.height {
             if self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= keyboardSize
             }
         }
-        
-    }
-    
-    func _getKeyboardHeight(notification: NSNotification) -> CGFloat {
-        
-        let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
-        
-        return keyboardSize.cgRectValue.height
     }
     
     func prepareControls() {
@@ -106,6 +125,24 @@ extension ViewController {
         
         inputFieldTop.font = UIFont(name: memeFontName, size: memeFontSize)
         inputFieldBottom.font = UIFont(name: memeFontName, size: memeFontSize)
+        
+        inputFieldTop.adjustsFontSizeToFitWidth = true
+        inputFieldBottom.adjustsFontSizeToFitWidth = true
+        
+        inputFieldTop.minimumFontSize = 0.5
+        inputFieldBottom.minimumFontSize = 0.5
+    }
+    
+    func preparePhotoControls(activate: Bool) {
+    
+        cameraButton.isEnabled = !activate
+        photoLibButton.isEnabled = !activate
+    }
+    
+    func loadImagePickerSource() {
+        
+        imagePickerController.allowsEditing = false
+        self.present(imagePickerController, animated: true, completion: nil)
     }
     
     func isCameraAvailable() -> Bool {
