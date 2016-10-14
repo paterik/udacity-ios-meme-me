@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="MainView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -23,15 +23,33 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="lJC-Ug-zXx" userLabel="InputFieldBottom" customClass="UIOutlinedTextField" customModule="meme_me" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="NKX-3f-Sxm" userLabel="InputFieldTop" customClass="UIOutlinedTextField" customModule="meme_me" customModuleProvider="target">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="ijh-Oz-cId"/>
+                                    <constraint firstAttribute="height" constant="30" id="Tqq-dD-3sf"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="AjT-mK-wSK">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="lJC-Ug-zXx" userLabel="InputFieldBottom" customClass="UIOutlinedTextField" customModule="meme_me" customModuleProvider="target">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="B5a-CB-KRz"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfg-L4-8z5" userLabel="ToolbarTop">
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="SsV-Yr-faT"/>
+                                    <barButtonItem image="Export" id="kke-lY-F1N">
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kUr-4O-nTW"/>
+                                </items>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="AjT-mK-wSK" userLabel="ToolbarBottom">
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="DmF-Ov-FXJ"/>
                                     <barButtonItem image="Library" id="Top-lX-MRz" userLabel="Library">
@@ -50,30 +68,25 @@
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="NKX-3f-Sxm" userLabel="InputFieldTop" customClass="UIOutlinedTextField" customModule="meme_me" customModuleProvider="target">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="d1r-yd-NIF"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="AjT-mK-wSK" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="3bV-sa-xdr"/>
-                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="CSP-tZ-p3y"/>
-                            <constraint firstItem="AjT-mK-wSK" firstAttribute="top" secondItem="gz7-dP-QJ4" secondAttribute="bottom" id="DVw-3w-1sS"/>
-                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="leading" secondItem="lJC-Ug-zXx" secondAttribute="leading" id="G80-if-1Pc"/>
-                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="leading" secondItem="AjT-mK-wSK" secondAttribute="leading" id="Nvw-ID-ZCj"/>
-                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="bQn-rZ-Cmb"/>
-                            <constraint firstAttribute="trailing" secondItem="gz7-dP-QJ4" secondAttribute="trailing" id="cpn-py-4Nk"/>
-                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dn9-KY-KyX"/>
-                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="41" id="keC-ue-oEd"/>
-                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="trailing" secondItem="AjT-mK-wSK" secondAttribute="trailing" id="kw4-qV-vDh"/>
-                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="trailing" secondItem="lJC-Ug-zXx" secondAttribute="trailing" id="mTd-wC-xQM"/>
-                            <constraint firstItem="AjT-mK-wSK" firstAttribute="top" secondItem="lJC-Ug-zXx" secondAttribute="bottom" constant="57" id="sBe-IX-Q9g"/>
-                            <constraint firstItem="lJC-Ug-zXx" firstAttribute="centerX" secondItem="AjT-mK-wSK" secondAttribute="centerX" id="uoU-RS-YJ5"/>
+                            <constraint firstItem="wfg-L4-8z5" firstAttribute="trailing" secondItem="gz7-dP-QJ4" secondAttribute="trailing" id="AUZ-b2-KIt"/>
+                            <constraint firstItem="wfg-L4-8z5" firstAttribute="leading" secondItem="gz7-dP-QJ4" secondAttribute="leading" id="Cu9-2b-0WF"/>
+                            <constraint firstItem="wfg-L4-8z5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="DPE-ap-3QE"/>
+                            <constraint firstItem="wfg-L4-8z5" firstAttribute="centerX" secondItem="NKX-3f-Sxm" secondAttribute="centerX" id="HtE-y2-Cdc"/>
+                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="leading" secondItem="lJC-Ug-zXx" secondAttribute="leading" id="QEF-Mk-E89"/>
+                            <constraint firstAttribute="trailing" secondItem="wfg-L4-8z5" secondAttribute="trailing" id="Wbe-qW-iop"/>
+                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="XFJ-7X-HPH"/>
+                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="top" secondItem="wfg-L4-8z5" secondAttribute="bottom" id="YDa-ed-cf9"/>
+                            <constraint firstItem="wfg-L4-8z5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aJ1-mH-Hch"/>
+                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="trailing" secondItem="lJC-Ug-zXx" secondAttribute="trailing" id="gPF-el-8mO"/>
+                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="trailing" secondItem="AjT-mK-wSK" secondAttribute="trailing" id="kNy-j2-lKr"/>
+                            <constraint firstItem="AjT-mK-wSK" firstAttribute="top" secondItem="gz7-dP-QJ4" secondAttribute="bottom" id="mUV-qu-1wG"/>
+                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="leading" secondItem="AjT-mK-wSK" secondAttribute="leading" id="o5S-mB-izW"/>
+                            <constraint firstItem="AjT-mK-wSK" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="q90-ua-WIG"/>
+                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="top" secondItem="wfg-L4-8z5" secondAttribute="bottom" constant="30" id="sO2-Q0-ViL"/>
+                            <constraint firstItem="AjT-mK-wSK" firstAttribute="top" secondItem="lJC-Ug-zXx" secondAttribute="bottom" constant="57" id="skW-pn-QiX"/>
                         </constraints>
                     </view>
                     <connections>
@@ -91,6 +104,7 @@
     </scenes>
     <resources>
         <image name="Camera" width="25" height="25"/>
+        <image name="Export" width="25" height="25"/>
         <image name="Library" width="25" height="25"/>
         <image name="WelcomePortrait" width="414" height="736"/>
     </resources>
