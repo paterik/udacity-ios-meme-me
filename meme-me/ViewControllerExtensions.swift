@@ -33,6 +33,7 @@ extension ViewController {
             imagePickerView.contentMode = .scaleAspectFill
             imagePickerView.image = pickedImage
             prepareEditModeControls(activate: true)
+            exportButton.isEnabled = true
             imagePickerSuccess = true
         }
         
@@ -85,8 +86,6 @@ extension ViewController {
                 self.view.frame.origin.y += keyboardSize
             }
         }
-        
-        
     }
     
     func keyboardWillAppear(notification: NSNotification) {
@@ -100,6 +99,40 @@ extension ViewController {
         }
     }
     
+    func renderMemedImage() -> UIImage {
+        
+        // Hide toolbar and navbar
+        prepareToolBarControls(activate: false)
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        // Show toolbar and navbar
+        prepareToolBarControls(activate: true)
+        
+        return memedImage
+    }
+    
+    func handleImageStorage(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        
+        if let ioError = error {
+            
+            let alertController = UIAlertController(title: "Meme not saved!", message: ioError.localizedDescription, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alertController, animated: true)
+            
+        } else {
+            
+            let alertController = UIAlertController(title: "Meme Saved!", message: "Your memed image has been saved to your local photos", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alertController, animated: true)
+            
+        }
+    }
+    
     func prepareControls() {
         
         imagePickerSuccess = false
@@ -107,10 +140,11 @@ extension ViewController {
         
         cameraButton.isEnabled = isCameraAvailable()
         photoLibButton.isEnabled = isLocalImageStockAvailable()
+        exportButton.isEnabled = false
         
-        imagePickerController.delegate = self
         inputFieldTop.delegate = memeTextFieldDelegate
         inputFieldBottom.delegate = memeTextFieldDelegate
+        imagePickerController.delegate = self
         
         inputFieldTop.text = memeTextFieldTopDefault
         inputFieldTop.contentDefault = memeTextFieldTopDefault
@@ -135,8 +169,15 @@ extension ViewController {
     
     func preparePhotoControls(activate: Bool) {
     
-        cameraButton.isEnabled = !activate
-        photoLibButton.isEnabled = !activate
+        cameraButton.isEnabled = !activate && isCameraAvailable()
+        photoLibButton.isEnabled = !activate && isLocalImageStockAvailable()
+        exportButton.isEnabled = !activate
+    }
+    
+    func prepareToolBarControls(activate: Bool) {
+        
+        toolBarTop.isHidden = !activate
+        toolBarBottom.isHidden = !activate
     }
     
     func loadImagePickerSource() {
