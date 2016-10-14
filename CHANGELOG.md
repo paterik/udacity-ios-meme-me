@@ -2,9 +2,9 @@
 
 All notable changes of MemeMe release series are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-_This MemeMe changelog documentation start with version 1.0.0 (2016-10-12)_
+_This MemeMe changelog documentation start with version 1.0.0 (2016-10-14)_
 
-## [1.0.0], 2016-10-12:
+## [1.0.0], 2016-10-14:
 _current_
 
 ### Added
