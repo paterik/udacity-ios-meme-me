@@ -43,6 +43,8 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>used to access photo library of current user</string>
+	<key>NSCameraUsageDescription</key>
+	<string>used to access camera for your meme</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>impact.ttf</string>
