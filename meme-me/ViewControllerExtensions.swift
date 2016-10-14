@@ -11,19 +11,9 @@ import UIKit
 
 extension ViewController {
     
-    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
-        
-        if (imagePickerSuccess) {
-            return
-        }
-        
-        imagePickerView.contentMode = .scaleAspectFit
-        imagePickerView.image = UIImage(imageLiteralResourceName: "WelcomePortrait")
-        
-        if (toInterfaceOrientation.isLandscape) {
-            imagePickerView.image = UIImage(imageLiteralResourceName: "WelcomeLandscape")
-        }
-    }
+    //
+    // MARK: ImagePicker Delegate Methods
+    //
     
     func imagePickerController(
         _ picker: UIImagePickerController,
@@ -48,6 +38,16 @@ extension ViewController {
         
         dismiss(animated: true, completion: nil)
     }
+    
+    func loadImagePickerSource() {
+        
+        imagePickerController.allowsEditing = false
+        self.present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    //
+    // MARK: Observer Methods
+    //
     
     func subscribeToKeyboardNotifications() {
         
@@ -99,6 +99,38 @@ extension ViewController {
         }
     }
     
+    //
+    // MARK: Image Handler Methods
+    //
+    
+    func saveImageModel(memedImage: UIImage) {
+        
+        // init/define our memed image model struct
+        let _ = Meme(
+            textTop: inputFieldTop.text!,
+            textBottom: inputFieldBottom.text!,
+            imageOrigin: imagePickerView.image!,
+            image: memedImage
+        )
+    }
+    
+    func saveImage(renderedImage: UIImage) {
+        
+        saveImageModel(memedImage: renderedImage)
+        
+        // write incoming image to photo album
+        UIImageWriteToSavedPhotosAlbum(renderedImage, self, #selector(handleImageStorage(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    func shareImage(renderedImage: UIImage) {
+        
+        saveImageModel(memedImage: renderedImage)
+        
+        // open activitiy controller to share the incoming image
+        let activityViewController = UIActivityViewController(activityItems: [renderedImage as UIImage], applicationActivities: nil)
+        present(activityViewController, animated: true, completion: {})
+    }
+    
     func renderMemedImage() -> UIImage {
         
         // Hide toolbar and navbar
@@ -133,9 +165,14 @@ extension ViewController {
         }
     }
     
+    //
+    // MARK: UI/Control Methods
+    //
+    
     func prepareControls() {
         
         imagePickerSuccess = false
+        
         prepareEditModeControls(activate: false)
         
         cameraButton.isEnabled = isCameraAvailable()
@@ -180,11 +217,9 @@ extension ViewController {
         toolBarBottom.isHidden = !activate
     }
     
-    func loadImagePickerSource() {
-        
-        imagePickerController.allowsEditing = false
-        self.present(imagePickerController, animated: true, completion: nil)
-    }
+    //
+    // MARK: Internal Helper Methods
+    //
     
     func isCameraAvailable() -> Bool {
         return UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)

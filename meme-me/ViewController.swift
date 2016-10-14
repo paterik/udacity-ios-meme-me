@@ -10,33 +10,46 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    //
+    // MARK: Outlets
+    //
+    
     @IBOutlet weak var toolBarBottom: UIToolbar!
     @IBOutlet weak var toolBarTop: UIToolbar!
-    
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var photoLibButton: UIBarButtonItem!
     @IBOutlet weak var exportButton: UIBarButtonItem!
-    
     @IBOutlet weak var inputFieldTop: UIOutlinedTextField!
     @IBOutlet weak var inputFieldBottom: UIOutlinedTextField!
     
-    struct Meme {
-    
-        var textTop: String?
-        var textBottom: String?
-        var imageOrigin: UIImage?
-        var image: UIImage?
-    }
+    //
+    // MARK: Internal Variables
+    //
     
     let memeFontName = "Impact"
     let memeFontSize: CGFloat = 28.0
     let memeTextFieldTopDefault = "TOP"
     let memeTextFieldBottomDefault = "BOTTOM"
     let memeTextFieldDelegate = MemeTextFieldDelegate()
-    
     let imagePickerController = UIImagePickerController()
     var imagePickerSuccess: Bool = false
+    
+    //
+    // MARK: Meme Model Definition
+    //
+    
+    struct Meme {
+        
+        var textTop: String?
+        var textBottom: String?
+        var imageOrigin: UIImage?
+        var image: UIImage?
+    }
+    
+    //
+    // MARK: ViewController Overrides, LifeCycle Methods
+    //
 
     override func viewDidLoad() {
         
@@ -55,6 +68,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillDisappear(animated)
         unSubscribeToKeyboardNotifications()
     }
+    
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        
+        if (imagePickerSuccess) {
+            return
+        }
+        
+        imagePickerView.contentMode = .scaleAspectFit
+        imagePickerView.image = UIImage(imageLiteralResourceName: "WelcomePortrait")
+        
+        if (toInterfaceOrientation.isLandscape) {
+            imagePickerView.image = UIImage(imageLiteralResourceName: "WelcomeLandscape")
+        }
+    }
+    
+    //
+    // MARK: Actions
+    //
     
     @IBAction func exportImage(_ sender: AnyObject) {
         
@@ -132,34 +163,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         })
         
         self.present(alertController, animated: true, completion: nil)
-    }
-    
-    func saveImageModel(memedImage: UIImage) {
-    
-        // init/define our memed image model struct
-        let _ = Meme(
-            textTop: inputFieldTop.text!,
-            textBottom: inputFieldBottom.text!,
-            imageOrigin: imagePickerView.image!,
-            image: memedImage
-        )
-    }
-    
-    func saveImage(renderedImage: UIImage) {
-        
-        saveImageModel(memedImage: renderedImage)
-        
-        // write incoming image to photo album
-        UIImageWriteToSavedPhotosAlbum(renderedImage, self, #selector(handleImageStorage(_:didFinishSavingWithError:contextInfo:)), nil)
-    }
-    
-    func shareImage(renderedImage: UIImage) {
-    
-        saveImageModel(memedImage: renderedImage)
-        
-        // open activitiy controller to share the incoming image
-        let activityViewController = UIActivityViewController(activityItems: [renderedImage as UIImage], applicationActivities: nil)
-        present(activityViewController, animated: true, completion: {})
     }
 }
 
