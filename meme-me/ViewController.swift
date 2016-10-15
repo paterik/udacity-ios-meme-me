@@ -20,32 +20,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var photoLibButton: UIBarButtonItem!
     @IBOutlet weak var exportButton: UIBarButtonItem!
-    @IBOutlet weak var inputFieldTop: UIOutlinedTextField!
-    @IBOutlet weak var inputFieldBottom: UIOutlinedTextField!
+    @IBOutlet weak var inputFieldTop: UIMemeTextField!
+    @IBOutlet weak var inputFieldBottom: UIMemeTextField!
     
     //
     // MARK: Internal Variables
     //
     
-    let memeFontName = "Impact"
-    let memeFontSize: CGFloat = 28.0
+    let memeFontNames = ["Impact", "HelveticaNeue-CondensedBlack"]
+    let memeFontNameFailback = "Arial"
+    let memeFontSize: CGFloat = 32.0
+    let memeFontSizeMinimum: CGFloat = 10.0
     let memeTextFieldTopDefault = "TOP"
     let memeTextFieldBottomDefault = "BOTTOM"
     let memeTextFieldDelegate = MemeTextFieldDelegate()
+    let memeImageContentMode: UIViewContentMode = .scaleAspectFit // .scaleAspectFill will looks even better
+    
     let imagePickerController = UIImagePickerController()
+    
     var imagePickerSuccess: Bool = false
-    
-    //
-    // MARK: Meme Model Definition
-    //
-    
-    struct Meme {
-        
-        var textTop: String?
-        var textBottom: String?
-        var imageOrigin: UIImage?
-        var image: UIImage?
-    }
+    var usedMemeFontName: String = ""
     
     //
     // MARK: ViewController Overrides, LifeCycle Methods
@@ -117,13 +111,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             UIAlertAction in return
         })
         
-        self.present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func pickCameraImage(_ sender: AnyObject) {
     
-        self.imagePickerController.sourceType = .camera
-        self.loadImagePickerSource()
+        imagePickerController.sourceType = .camera
+        loadImagePickerSource()
     }
     
     @IBAction func pickLocalStockImage(_ sender: AnyObject) {
@@ -162,7 +156,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             UIAlertAction in return
         })
         
-        self.present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 }
 

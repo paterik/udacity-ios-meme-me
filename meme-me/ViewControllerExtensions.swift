@@ -20,10 +20,10 @@ extension ViewController {
         didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            imagePickerView.contentMode = .scaleAspectFill
+            imagePickerView.contentMode = memeImageContentMode
             imagePickerView.image = pickedImage
-            prepareEditModeControls(activate: true)
-            exportButton.isEnabled = true
+            switchEditModeControls(activate: true)
+
             imagePickerSuccess = true
         }
         
@@ -34,7 +34,7 @@ extension ViewController {
         _ picker: UIImagePickerController) {
         
         imagePickerSuccess = false
-        prepareEditModeControls(activate: false)
+        switchEditModeControls(activate: false)
         
         dismiss(animated: true, completion: nil)
     }
@@ -42,7 +42,7 @@ extension ViewController {
     func loadImagePickerSource() {
         
         imagePickerController.allowsEditing = false
-        self.present(imagePickerController, animated: true, completion: nil)
+        present(imagePickerController, animated: true, completion: nil)
     }
     
     //
@@ -79,22 +79,20 @@ extension ViewController {
     
     func keyboardWillDisappear(notification: NSNotification) {
         
-        preparePhotoControls(activate: false)
+        prepareMemeControls(activate: true)
         
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.height {
-            if self.view.frame.origin.y != 0 {
-                self.view.frame.origin.y += keyboardSize
-            }
+        if view.frame.origin.y != 0 {
+            view.frame.origin.y = 0
         }
     }
     
     func keyboardWillAppear(notification: NSNotification) {
         
-        preparePhotoControls(activate: true)
+        prepareMemeControls(activate: false)
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.height {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize
+            if view.frame.origin.y == 0 && inputFieldBottom.isFirstResponder {
+                self.view.frame.origin.y =  keyboardSize * -1
             }
         }
     }
@@ -124,10 +122,15 @@ extension ViewController {
     
     func shareImage(renderedImage: UIImage) {
         
-        saveImageModel(memedImage: renderedImage)
-        
         // open activitiy controller to share the incoming image
         let activityViewController = UIActivityViewController(activityItems: [renderedImage as UIImage], applicationActivities: nil)
+        // let save the meme as model only if share was completed successfully
+        activityViewController.completionWithItemsHandler = {(activity, completed, items, error) in
+            if (completed) {
+                self.saveImageModel(memedImage: renderedImage)
+            }
+        }
+        
         present(activityViewController, animated: true, completion: {})
     }
     
@@ -151,18 +154,17 @@ extension ViewController {
     func handleImageStorage(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         
         if let ioError = error {
-            
-            let alertController = UIAlertController(title: "Meme not saved!", message: ioError.localizedDescription, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alertController, animated: true)
-            
+            displayAlert(alertTitle: "Meme not saved!", alertMessage: ioError.localizedDescription, alertButtonText: "OK")
         } else {
-            
-            let alertController = UIAlertController(title: "Meme Saved!", message: "Your memed image has been saved to your local photos", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alertController, animated: true)
-            
+            displayAlert(alertTitle: "Meme saved!", alertMessage: "Your memed image has been saved to your local photos", alertButtonText: "OK")
         }
+    }
+    
+    func displayAlert(alertTitle: String, alertMessage: String, alertButtonText: String) {
+    
+        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: alertButtonText, style: .default))
+        present(alertController, animated: true)
     }
     
     //
@@ -172,43 +174,64 @@ extension ViewController {
     func prepareControls() {
         
         imagePickerSuccess = false
-        
-        prepareEditModeControls(activate: false)
-        
-        cameraButton.isEnabled = isCameraAvailable()
-        photoLibButton.isEnabled = isLocalImageStockAvailable()
+        imagePickerController.delegate = self
         exportButton.isEnabled = false
         
-        inputFieldTop.delegate = memeTextFieldDelegate
-        inputFieldBottom.delegate = memeTextFieldDelegate
-        imagePickerController.delegate = self
+        prepareEditModeControls(textFields: [
+            inputFieldTop: memeTextFieldTopDefault,
+            inputFieldBottom: memeTextFieldBottomDefault
+            ], activate: false
+        )
         
-        inputFieldTop.text = memeTextFieldTopDefault
-        inputFieldTop.contentDefault = memeTextFieldTopDefault
-        inputFieldBottom.text = memeTextFieldBottomDefault
-        inputFieldBottom.contentDefault = memeTextFieldBottomDefault
+        prepareMemeControls(activate: true)
     }
     
-    func prepareEditModeControls(activate: Bool) {
+    // check for Impact.ttf availability, switch to alternate one if not exist
+    func getAvailableMemeFontName(fontNamesAvailable: [String]) -> String {
         
-        inputFieldTop.isHidden = !activate
-        inputFieldBottom.isHidden = !activate
+        for fontName in fontNamesAvailable {
+            if isFontNameAvailable(fontName: fontName) {
+                return fontName
+            }
+        }
         
-        inputFieldTop.font = UIFont(name: memeFontName, size: memeFontSize)
-        inputFieldBottom.font = UIFont(name: memeFontName, size: memeFontSize)
-        
-        inputFieldTop.adjustsFontSizeToFitWidth = true
-        inputFieldBottom.adjustsFontSizeToFitWidth = true
-        
-        inputFieldTop.minimumFontSize = 0.5
-        inputFieldBottom.minimumFontSize = 0.5
+        return memeFontNameFailback
     }
     
-    func preparePhotoControls(activate: Bool) {
+    //
+    // prepare our meme input controls using dictionary of inputfields, corresponding default text and activation flag
+    // it seems that setting defaultTextAttributes override all previously setted base attributes
+    //
+    func prepareEditModeControls(textFields: [UIMemeTextField: String], activate: Bool) {
     
-        cameraButton.isEnabled = !activate && isCameraAvailable()
-        photoLibButton.isEnabled = !activate && isLocalImageStockAvailable()
-        exportButton.isEnabled = !activate
+        usedMemeFontName = getAvailableMemeFontName(fontNamesAvailable: memeFontNames)
+        
+        for (textField, defaultText) in textFields {
+            
+            let memeTextAttributes = [
+                NSStrokeColorAttributeName : UIColor.black,
+                NSForegroundColorAttributeName : UIColor.white,
+                NSFontAttributeName : UIFont(name: usedMemeFontName, size: memeFontSize)!,
+                NSStrokeWidthAttributeName : -3
+                ] as [String : Any]
+            
+            textField.defaultTextAttributes = memeTextAttributes
+            textField.adjustsFontSizeToFitWidth = true
+            textField.minimumFontSize = memeFontSizeMinimum
+            textField.delegate = memeTextFieldDelegate
+            textField.textAlignment = .center
+            textField.text = defaultText
+            textField.contentDefault = defaultText
+            
+            textField.isHidden = !activate
+        }
+    }
+
+    func prepareMemeControls(activate: Bool) {
+    
+        cameraButton.isEnabled = activate && isCameraAvailable()
+        photoLibButton.isEnabled = activate && isLocalImageStockAvailable()
+        exportButton.isEnabled = activate && isImageExportable()
     }
     
     func prepareToolBarControls(activate: Bool) {
@@ -217,9 +240,38 @@ extension ViewController {
         toolBarBottom.isHidden = !activate
     }
     
+    func switchEditModeControls(activate: Bool) {
+        
+        prepareEditModeControls(textFields: [
+            inputFieldTop: memeTextFieldTopDefault,
+            inputFieldBottom: memeTextFieldBottomDefault
+            ], activate: activate
+        )
+    }
+    
     //
     // MARK: Internal Helper Methods
     //
+    
+    func isFontNameAvailable(fontName: String) -> Bool {
+    
+        var fontFamilyNames: [String]
+        for name in UIFont.familyNames {
+            fontFamilyNames = UIFont.fontNames(forFamilyName: name)
+            
+            for fontFamilyName in fontFamilyNames {
+                if fontFamilyName == fontName {
+                    return true
+                }
+            }
+        }
+        
+        return false
+    }
+    
+    func isImageExportable() -> Bool {
+        return imagePickerSuccess
+    }
     
     func isCameraAvailable() -> Bool {
         return UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
