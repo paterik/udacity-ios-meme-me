@@ -24,10 +24,6 @@
 	<string>used to access camera for your meme</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>used to access photo library of current user</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>impact.ttf</string>
-	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
