@@ -23,7 +23,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="NKX-3f-Sxm" userLabel="InputFieldTop" customClass="UIOutlinedTextField" customModule="meme_me" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="NKX-3f-Sxm" userLabel="InputFieldTop" customClass="UIMemeTextField" customModule="meme_me" customModuleProvider="target">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Tqq-dD-3sf"/>
                                 </constraints>
@@ -31,7 +31,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="lJC-Ug-zXx" userLabel="InputFieldBottom" customClass="UIOutlinedTextField" customModule="meme_me" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="28" translatesAutoresizingMaskIntoConstraints="NO" id="lJC-Ug-zXx" userLabel="InputFieldBottom" customClass="UIMemeTextField" customModule="meme_me" customModuleProvider="target">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="B5a-CB-KRz"/>
                                 </constraints>
@@ -42,7 +42,7 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfg-L4-8z5" userLabel="ToolbarTop">
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="SsV-Yr-faT"/>
-                                    <barButtonItem image="Export" id="kke-lY-F1N">
+                                    <barButtonItem systemItem="action" id="kke-lY-F1N">
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="exportImage:" destination="BYZ-38-t0r" id="30B-fn-RKb"/>
@@ -110,7 +110,6 @@
     </scenes>
     <resources>
         <image name="Camera" width="25" height="25"/>
-        <image name="Export" width="25" height="25"/>
         <image name="Library" width="25" height="25"/>
         <image name="WelcomePortrait" width="414" height="736"/>
     </resources>

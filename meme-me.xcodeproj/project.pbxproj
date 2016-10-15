@@ -16,8 +16,9 @@
 		B12DCF6B1DAE739D00CD9FA0 /* meme_meUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12DCF6A1DAE739D00CD9FA0 /* meme_meUITests.swift */; };
 		B133ECED1DAFAEDB00FF52F0 /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B133ECEC1DAFAEDB00FF52F0 /* ViewControllerExtensions.swift */; };
 		B133ECF01DAFB83300FF52F0 /* impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B133ECEF1DAFB83300FF52F0 /* impact.ttf */; };
-		B133ECF21DAFB9F800FF52F0 /* UIOutlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B133ECF11DAFB9F800FF52F0 /* UIOutlinedTextField.swift */; };
+		B133ECF21DAFB9F800FF52F0 /* UIMemeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B133ECF11DAFB9F800FF52F0 /* UIMemeTextField.swift */; };
 		B133ECF51DAFE05F00FF52F0 /* MemeTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B133ECF41DAFE05F00FF52F0 /* MemeTextFieldDelegate.swift */; };
+		B1FC39F21DB21A080011A3A0 /* MemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FC39F11DB21A080011A3A0 /* MemeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +54,9 @@
 		B12DCF6C1DAE739D00CD9FA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B133ECEC1DAFAEDB00FF52F0 /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
 		B133ECEF1DAFB83300FF52F0 /* impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = impact.ttf; sourceTree = "<group>"; };
-		B133ECF11DAFB9F800FF52F0 /* UIOutlinedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIOutlinedTextField.swift; sourceTree = "<group>"; };
+		B133ECF11DAFB9F800FF52F0 /* UIMemeTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIMemeTextField.swift; sourceTree = "<group>"; };
 		B133ECF41DAFE05F00FF52F0 /* MemeTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTextFieldDelegate.swift; sourceTree = "<group>"; };
+		B1FC39F11DB21A080011A3A0 /* MemeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,8 @@
 		B12DCF491DAE739D00CD9FA0 /* meme-me */ = {
 			isa = PBXGroup;
 			children = (
+				B1FC39F31DB236B30011A3A0 /* view */,
+				B1FC39F01DB219F60011A3A0 /* model */,
 				B133ECF31DAFDFAE00FF52F0 /* delegates */,
 				B133ECEE1DAFB81B00FF52F0 /* resources */,
 				B12DCF561DAE739D00CD9FA0 /* Info.plist */,
@@ -114,7 +118,6 @@
 				B12DCF4A1DAE739D00CD9FA0 /* AppDelegate.swift */,
 				B12DCF4C1DAE739D00CD9FA0 /* ViewController.swift */,
 				B133ECEC1DAFAEDB00FF52F0 /* ViewControllerExtensions.swift */,
-				B133ECF11DAFB9F800FF52F0 /* UIOutlinedTextField.swift */,
 			);
 			path = "meme-me";
 			sourceTree = "<group>";
@@ -151,6 +154,22 @@
 				B133ECF41DAFE05F00FF52F0 /* MemeTextFieldDelegate.swift */,
 			);
 			name = delegates;
+			sourceTree = "<group>";
+		};
+		B1FC39F01DB219F60011A3A0 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				B1FC39F11DB21A080011A3A0 /* MemeModel.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		B1FC39F31DB236B30011A3A0 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				B133ECF11DAFB9F800FF52F0 /* UIMemeTextField.swift */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,9 +311,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B133ECF51DAFE05F00FF52F0 /* MemeTextFieldDelegate.swift in Sources */,
+				B1FC39F21DB21A080011A3A0 /* MemeModel.swift in Sources */,
 				B12DCF4D1DAE739D00CD9FA0 /* ViewController.swift in Sources */,
 				B133ECED1DAFAEDB00FF52F0 /* ViewControllerExtensions.swift in Sources */,
-				B133ECF21DAFB9F800FF52F0 /* UIOutlinedTextField.swift in Sources */,
+				B133ECF21DAFB9F800FF52F0 /* UIMemeTextField.swift in Sources */,
 				B12DCF4B1DAE739D00CD9FA0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
