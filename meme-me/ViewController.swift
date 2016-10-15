@@ -35,7 +35,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     let memeTextFieldBottomDefault = "BOTTOM"
     let memeTextFieldDelegate = MemeTextFieldDelegate()
     let memeImageContentMode: UIViewContentMode = .scaleAspectFit // .scaleAspectFill will looks even better
-    
     let imagePickerController = UIImagePickerController()
     
     var imagePickerSuccess: Bool = false
