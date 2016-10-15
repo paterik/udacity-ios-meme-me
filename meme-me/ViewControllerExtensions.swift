@@ -186,7 +186,9 @@ extension ViewController {
         prepareMemeControls(activate: true)
     }
     
-    // check for Impact.ttf availability, switch to alternate one if not exist
+    //
+    // check for predefined fontrange availability, switch to alternate one if given one not exist
+    //
     func getAvailableMemeFontName(fontNamesAvailable: [String]) -> String {
         
         for fontName in fontNamesAvailable {
