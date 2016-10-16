@@ -156,7 +156,7 @@ extension ViewController {
         if let ioError = error {
             displayAlert(alertTitle: "Meme not saved!", alertMessage: ioError.localizedDescription, alertButtonText: "OK")
         } else {
-            displayAlert(alertTitle: "Meme saved!", alertMessage: "Your memed image has been saved to your local photos", alertButtonText: "OK")
+            displayAlert(alertTitle: "Meme saved!", alertMessage: "Your memed image has been saved to your photos", alertButtonText: "OK")
         }
     }
     
@@ -201,8 +201,7 @@ extension ViewController {
     }
     
     //
-    // prepare our meme input controls using dictionary of inputfields, corresponding default text and activation flag
-    // it seems that setting defaultTextAttributes override all previously setted base attributes
+    // prepare our meme input controls using dictionary of inputfields
     //
     func prepareEditModeControls(textFields: [UIMemeTextField: String], activate: Bool) {
     
@@ -257,11 +256,9 @@ extension ViewController {
     
     func isFontNameAvailable(fontName: String) -> Bool {
     
-        var fontFamilyNames: [String]
         for name in UIFont.familyNames {
-            fontFamilyNames = UIFont.fontNames(forFamilyName: name)
             
-            for fontFamilyName in fontFamilyNames {
+            for fontFamilyName in UIFont.fontNames(forFamilyName: name) {
                 if fontFamilyName == fontName {
                     return true
                 }
