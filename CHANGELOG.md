@@ -4,8 +4,17 @@ All notable changes of MemeMe release series are documented in this file using t
 
 _This MemeMe changelog documentation start with version 1.0.0 (2016-10-14)_
 
-## [1.0.2], 2016-10-15:
+## [11.0.3], 2016-10-16:
 _current_
+
+### Changes
+
+* improve user dialog typo
+* minor code refactoring
+* update media assets
+
+
+## [1.0.2], 2016-10-15:
 
 ### Fixes
 
