@@ -87,16 +87,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // Create the subMenu controller (using alertViewController)
         let alertController = UIAlertController(
-            title: "Export your image",
+            title: "Export Your Meme",
             message: "Choose your export method",
             preferredStyle: .alert)
         
-        let normalExportAction = UIAlertAction(title: "save image", style: UIAlertActionStyle.default) {
+        let normalExportAction = UIAlertAction(title: "Save Meme", style: UIAlertActionStyle.default) {
             UIAlertAction in
             self.saveImage(renderedImage: sourceImage)
         }
         
-        let sharedExportAction = UIAlertAction(title: "share image", style: UIAlertActionStyle.default) {
+        let sharedExportAction = UIAlertAction(title: "Share Meme", style: UIAlertActionStyle.default) {
             UIAlertAction in
             self.shareImage(renderedImage: sourceImage)
         }
@@ -130,7 +130,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Create the photo selection related actions
         if isPhotoLibrarayAvailable() {
             
-            let photoLibAction = UIAlertAction(title: "from photos", style: UIAlertActionStyle.default) {
+            let photoLibAction = UIAlertAction(title: "From Photos", style: UIAlertActionStyle.default) {
                 UIAlertAction in
                 self.imagePickerController.sourceType = .photoLibrary
                 self.loadImagePickerSource()
@@ -141,7 +141,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         if isSavedPhotosAlbumAvailable() {
             
-            let photoAlbumAction = UIAlertAction(title: "from album", style: UIAlertActionStyle.default) {
+            let photoAlbumAction = UIAlertAction(title: "From Album", style: UIAlertActionStyle.default) {
                 UIAlertAction in
                 self.imagePickerController.sourceType = .savedPhotosAlbum
                 self.loadImagePickerSource()
