@@ -28,7 +28,7 @@
         <!--CollectionViewController-->
         <scene sceneID="Q1j-6O-HIo">
             <objects>
-                <collectionViewController id="sub-Sl-JhB" userLabel="CollectionViewController" sceneMemberID="viewController">
+                <collectionViewController id="sub-Sl-JhB" userLabel="CollectionViewController" customClass="MemeCollectionViewController" customModule="meme_me" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="Sim-TA-TMN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,7 +69,7 @@
         <!--TableViewController-->
         <scene sceneID="MdH-Ts-UMS">
             <objects>
-                <tableViewController id="6oZ-Lj-dp1" userLabel="TableViewController" sceneMemberID="viewController">
+                <tableViewController id="6oZ-Lj-dp1" userLabel="TableViewController" customClass="MemeTableViewController" customModule="meme_me" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="kmv-qc-eVV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
