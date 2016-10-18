@@ -104,20 +104,22 @@ extension ViewController {
     func saveImageModel(memedImage: UIImage) {
         
         // init/define our memed image model struct
-        let _ = Meme(
+        let meme = Meme(
             textTop: inputFieldTop.text!,
             textBottom: inputFieldBottom.text!,
             imageOrigin: imagePickerView.image!,
             image: memedImage
         )
+        
+        (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
     }
     
     func saveImage(renderedImage: UIImage) {
         
-        saveImageModel(memedImage: renderedImage)
-        
         // write incoming image to photo album
         UIImageWriteToSavedPhotosAlbum(renderedImage, self, #selector(handleImageStorage(_:didFinishSavingWithError:contextInfo:)), nil)
+        
+        saveImageModel(memedImage: renderedImage)
     }
     
     func shareImage(renderedImage: UIImage) {
