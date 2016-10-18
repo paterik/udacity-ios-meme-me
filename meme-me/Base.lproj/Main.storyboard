@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--sent memes-->
+        <!--TabViewController-->
         <scene sceneID="uD7-GR-X7Z">
             <objects>
-                <tabBarController title="sent memes" id="wLd-X6-Stc" sceneMemberID="viewController">
+                <tabBarController title="sent memes" id="wLd-X6-Stc" userLabel="TabViewController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="6jG-Vc-Zw9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -25,11 +25,11 @@
             </objects>
             <point key="canvasLocation" x="-1826" y="135"/>
         </scene>
-        <!--Test 2-->
+        <!--CollectionViewController-->
         <scene sceneID="Q1j-6O-HIo">
             <objects>
-                <collectionViewController id="sub-Sl-JhB" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Sim-TA-TMN">
+                <collectionViewController id="sub-Sl-JhB" userLabel="CollectionViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="Sim-TA-TMN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -66,10 +66,10 @@
             </objects>
             <point key="canvasLocation" x="95.200000000000003" y="539.28035982008998"/>
         </scene>
-        <!--Test 1-->
+        <!--TableViewController-->
         <scene sceneID="MdH-Ts-UMS">
             <objects>
-                <tableViewController id="6oZ-Lj-dp1" sceneMemberID="viewController">
+                <tableViewController id="6oZ-Lj-dp1" userLabel="TableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="kmv-qc-eVV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -101,10 +101,10 @@
             </objects>
             <point key="canvasLocation" x="95.200000000000003" y="-271.21439280359823"/>
         </scene>
-        <!--Edit View Controller-->
+        <!--EditViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="EditViewController" id="BYZ-38-t0r" userLabel="Edit View Controller" customClass="ViewController" customModule="meme_me" customModuleProvider="target" colorLabel="IBBuiltInLabel-Green" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditViewController" id="BYZ-38-t0r" userLabel="EditViewController" customClass="MemeEditViewController" customModule="meme_me" customModuleProvider="target" colorLabel="IBBuiltInLabel-Green" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -201,10 +201,10 @@
             </objects>
             <point key="canvasLocation" x="1044" y="134"/>
         </scene>
-        <!--Item-->
+        <!--NavigationViewControllerTable-->
         <scene sceneID="jWx-dq-Sl1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LFd-6h-fIW" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LFd-6h-fIW" userLabel="NavigationViewControllerTable" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="cJp-nN-dZ3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hxK-el-lmb">
@@ -220,10 +220,10 @@
             </objects>
             <point key="canvasLocation" x="-844" y="-271.21439280359823"/>
         </scene>
-        <!--Item-->
+        <!--NavigationControllerCollection-->
         <scene sceneID="mU5-cn-R74">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="N4V-sq-g1i" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="N4V-sq-g1i" userLabel="NavigationControllerCollection" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="qVl-mz-l7X"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yeK-6m-Onk">
