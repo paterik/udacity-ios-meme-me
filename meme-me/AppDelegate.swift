@@ -14,9 +14,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var memes: [Meme] = []
     
+    func loadFixtures() {
+        
+        let memeSampleImgOrigin = UIImage(named: "sample-meme-1")
+        let memeSampleImgRendered = UIImage(named: "sample-meme-1-r")
+        let memeFixtureData = [
+            // 0: textTop, 1: textBottom, 2: imageOrigin, 3: image
+            ("Top 1", "Bottom 1", memeSampleImgOrigin, memeSampleImgRendered),
+            ("Top 2", "Bottom 2", memeSampleImgOrigin, memeSampleImgRendered),
+            ("Top 3", "Bottom 3", memeSampleImgOrigin, memeSampleImgRendered),
+            ("Top 4", "Bottom 4", memeSampleImgOrigin, memeSampleImgRendered),
+            ("Top 5", "Bottom 5", memeSampleImgOrigin, memeSampleImgRendered),
+            ("Top 6", "Bottom 6", memeSampleImgOrigin, memeSampleImgRendered),
+        ]
+        
+        var meme: Meme
+        for (_textTop, _textBottom, _imageOrigin, _image) in memeFixtureData {
+            meme = Meme(
+                textTop: _textTop,
+                textBottom: _textBottom,
+                imageOrigin: _imageOrigin,
+                image: _image
+            )
+            
+            memes.append(meme)
+        }
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        loadFixtures()
+        
         return true
     }
 
