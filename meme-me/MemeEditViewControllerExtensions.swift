@@ -1,15 +1,15 @@
 //
-//  ViewControllerExtensions.swift
+//  MemeEditViewControllerExtensions.swift
 //  meme-me
 //
-//  Created by Patrick Paechnatz on 13.10.16.
+//  Created by Patrick Paechnatz on 18.10.16.
 //  Copyright © 2016 Patrick Paechnatz. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-extension ViewController {
+extension MemeEditViewController {
     
     //
     // MARK: ImagePicker Delegate Methods
@@ -53,14 +53,14 @@ extension ViewController {
         
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(ViewController.keyboardWillAppear),
+            selector: #selector(MemeEditViewController.keyboardWillAppear),
             name: NSNotification.Name.UIKeyboardWillShow,
             object: nil
         )
         
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(ViewController.keyboardWillDisappear),
+            selector: #selector(MemeEditViewController.keyboardWillDisappear),
             name: NSNotification.Name.UIKeyboardWillHide,
             object: nil
         )

@@ -1,14 +1,14 @@
 //
-//  ViewController.swift
+//  MemeEditViewController.swift
 //  meme-me
 //
-//  Created by Patrick Paechnatz on 12.10.16.
+//  Created by Patrick Paechnatz on 18.10.16.
 //  Copyright © 2016 Patrick Paechnatz. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //
     // MARK: Outlets
