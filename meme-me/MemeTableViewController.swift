@@ -11,4 +11,7 @@ import UIKit
 
 class MemeTableViewController: UITableViewController {
 
+    var memes: [Meme] {
+        return (UIApplication.shared.delegate as! AppDelegate).memes
+    }
 }
