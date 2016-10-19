@@ -19,53 +19,29 @@ class MemeTableViewController: UITableViewController {
     // MARK: TableViewController Overrides, LifeCycle Methods
     //
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        tableView.layoutSubviews()
-    }
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.rowHeight = UITableViewAutomaticDimension
-        
-        print ("------------------------------------------")
-        for meme in memes {
-            print("memeTextTop: '\(meme.textTop!)'")
-            print("memeTextBottom: '\(meme.textBottom!)'")
-            print("-- next --")
-        }
-        print ("------------------------------------------")
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print ("bar")
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
         return memes.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        /*
-         
-         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomMemeCell") as! MemeTableViewCell
-         cell.memeImage.image = meme.imageOrigin!
-         cell.memeLabelTop.text = meme.textTop!
-         cell.memeLabelTop.text = meme.textBottom!
-        
-         */
-        
-        print ("foo")
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 72.0;
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let meme = memes[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomMemeCell")! as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomMemeCell") as! MemeTableViewCell
         
-        cell.imageView?.image = meme.imageOrigin!
-        cell.textLabel?.text = meme.textTop!
+        cell.memeImage.image = meme.imageOrigin!
+        cell.memeLabelTop.text = meme.textTop!
+        cell.memeLabelTop.text = meme.textBottom!
         
         return cell
     }
