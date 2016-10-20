@@ -20,7 +20,7 @@ extension MemeTableViewController {
         return noDataImageView
     }
     
-    func initTableView() {
+    func refreshTableView() {
     
         if !isDataAvailable() {
             

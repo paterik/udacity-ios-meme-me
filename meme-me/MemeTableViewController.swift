@@ -16,6 +16,7 @@ class MemeTableViewController: UITableViewController {
     
     var noDataImageView: UIImageView!
     var memes: [Meme] { return (UIApplication.shared.delegate as! AppDelegate).memes }
+    var appDelegate: AppDelegate { return (UIApplication.shared.delegate as! AppDelegate) }
     
     //
     // MARK: TableViewController Overrides, LifeCycle Methods
@@ -24,7 +25,7 @@ class MemeTableViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        initTableView()
+        refreshTableView()
     }
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
@@ -41,14 +42,23 @@ class MemeTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return memes.count
+        refreshTableView()
+        
+        return appDelegate.memes.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return memeCellHeight;
     }
-
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            appDelegate.memes.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
