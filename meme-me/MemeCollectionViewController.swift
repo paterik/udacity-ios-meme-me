@@ -11,8 +11,10 @@ import UIKit
 
 class MemeCollectionViewController: UICollectionViewController {
 
-    let memeCellIdent = "CustomMemeCell"
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
+    let memeCellIdent = "CustomMemeCell"
+
     var noDataImageView: UIImageView!
     var memes: [Meme] { return (UIApplication.shared.delegate as! AppDelegate).memes }
     
@@ -26,24 +28,38 @@ class MemeCollectionViewController: UICollectionViewController {
         initCollectionView()
     }
     
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        
+        collectionView!.collectionViewLayout.invalidateLayout()
+    }
+    
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 
-        let collectionCellPadding : CGFloat = 20.0
-        var numberOfCellInRow : CGFloat = 2.0
+        var collectionCellPadding : CGFloat = 12.0
+        var collectionCellSpacing : CGFloat = 8.0
         var collectionCellWidth : CGFloat = 128.0
+        var collectionCellHeight : CGFloat = 128.0
+        var numberOfCellInRow : CGFloat = 2.0
         
         if UIApplication.shared.statusBarOrientation != UIInterfaceOrientation.portrait {
-            numberOfCellInRow = 3.0
+            numberOfCellInRow = 4.0
+            collectionCellPadding = 8.0
+            collectionCellSpacing = 6.0
         }
         
-        collectionCellWidth = self.view.frame.width / numberOfCellInRow - collectionCellPadding
+        collectionCellWidth = (self.view.frame.width / numberOfCellInRow) - collectionCellPadding
+        collectionCellHeight = collectionCellWidth
+        
+        flowLayout.itemSize = CGSize(width: collectionCellWidth, height: collectionCellHeight)
+        flowLayout.minimumInteritemSpacing = collectionCellSpacing
+        flowLayout.minimumLineSpacing = collectionCellSpacing
 
         return CGSize(
             width: collectionCellWidth,
-            height: collectionCellWidth
+            height: collectionCellHeight
         );
     }
     

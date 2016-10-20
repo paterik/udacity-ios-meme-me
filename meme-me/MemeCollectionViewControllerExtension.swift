@@ -12,7 +12,7 @@ import UIKit
 extension MemeCollectionViewController {
 
     func initCollectionView() {
-    
+        
     }
     
     func layoutCellLabels(labels: [UILabel]) {
