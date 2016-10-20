@@ -7,3 +7,11 @@
 //
 
 import Foundation
+import UIKit
+
+extension MemeCollectionViewController {
+
+    func initCollectionView() {
+    
+    }
+}

@@ -11,15 +11,20 @@ import UIKit
 
 extension MemeTableViewController {
     
+    func getNoDataImageView() -> UIImageView {
+    
+        noDataImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+        noDataImageView.contentMode = .scaleAspectFit
+        noDataImageView.image = UIImage(imageLiteralResourceName: "WelcomeNoDataPortrait")
+        
+        return noDataImageView
+    }
+    
     func initTableView() {
     
         if !isDataAvailable() {
             
-            noDataImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-            noDataImageView.contentMode = .scaleAspectFit
-            noDataImageView.image = UIImage(imageLiteralResourceName: "WelcomeNoDataPortrait")
-            
-            tableView.backgroundView = noDataImageView
+            tableView.backgroundView = getNoDataImageView()
             tableView.separatorStyle = .none
             
         } else {
@@ -30,6 +35,7 @@ extension MemeTableViewController {
     }
     
     func isDataAvailable() -> Bool {
+        
         return memes.count > 0
     }
 }
