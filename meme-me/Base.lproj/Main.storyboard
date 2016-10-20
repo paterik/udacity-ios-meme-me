@@ -50,16 +50,38 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0KY-GQ-8e9"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="textTop" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H1K-Sj-KVw">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="oYk-oM-Ajr"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="textBottom" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Auq-WB-y7D">
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </view>
                                 <constraints>
+                                    <constraint firstItem="Auq-WB-y7D" firstAttribute="bottom" secondItem="ffT-MA-3IC" secondAttribute="bottomMargin" id="1r2-Tj-ylX"/>
+                                    <constraint firstItem="H1K-Sj-KVw" firstAttribute="leading" secondItem="ffT-MA-3IC" secondAttribute="leadingMargin" constant="7" id="4Bl-VZ-Kyt"/>
                                     <constraint firstItem="0KY-GQ-8e9" firstAttribute="top" secondItem="ffT-MA-3IC" secondAttribute="topMargin" constant="-4" id="H9v-Dj-QgN"/>
+                                    <constraint firstItem="H1K-Sj-KVw" firstAttribute="centerX" secondItem="0KY-GQ-8e9" secondAttribute="centerX" id="IiH-NA-2r4"/>
+                                    <constraint firstItem="H1K-Sj-KVw" firstAttribute="leading" secondItem="Auq-WB-y7D" secondAttribute="leading" id="IjP-KD-BV2"/>
                                     <constraint firstItem="0KY-GQ-8e9" firstAttribute="leading" secondItem="ffT-MA-3IC" secondAttribute="leadingMargin" constant="-4" id="QIV-8o-AKH"/>
+                                    <constraint firstItem="H1K-Sj-KVw" firstAttribute="top" secondItem="ffT-MA-3IC" secondAttribute="topMargin" constant="4" id="STr-5V-Amc"/>
+                                    <constraint firstItem="H1K-Sj-KVw" firstAttribute="trailing" secondItem="Auq-WB-y7D" secondAttribute="trailing" id="eVE-EO-p6s"/>
                                     <constraint firstItem="0KY-GQ-8e9" firstAttribute="centerX" secondItem="ffT-MA-3IC" secondAttribute="centerX" id="jfZ-5X-gxx"/>
+                                    <constraint firstItem="Auq-WB-y7D" firstAttribute="top" secondItem="H1K-Sj-KVw" secondAttribute="bottom" constant="66" id="s2c-BH-ucz"/>
                                     <constraint firstItem="0KY-GQ-8e9" firstAttribute="centerY" secondItem="ffT-MA-3IC" secondAttribute="centerY" id="zQD-8h-Hbk"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="memeImage" destination="0KY-GQ-8e9" id="8ZQ-wq-qlc"/>
+                                    <outlet property="memeLabelBottom" destination="Auq-WB-y7D" id="bqC-cr-ogu"/>
+                                    <outlet property="memeLabelTop" destination="H1K-Sj-KVw" id="HwB-Di-JRk"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -95,7 +117,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EuL-VU-5vm" id="tKd-kZ-TNc">
-                                    <frame key="frameInset" width="375" height="79.5"/>
+                                    <frame key="frameInset" width="375" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-meme-1" translatesAutoresizingMaskIntoConstraints="NO" id="SWa-JH-R8X" userLabel="MemeImage">

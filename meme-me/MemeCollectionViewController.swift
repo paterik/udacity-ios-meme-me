@@ -31,11 +31,9 @@ class MemeCollectionViewController: UICollectionViewController {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        let numberOfCellInRow : Int = 4
-        let padding : Int = 0
-        let collectionCellWidth : CGFloat = (self.view.frame.size.width/CGFloat(numberOfCellInRow)) - CGFloat(padding)
-        
-        print (CGSize(width: collectionCellWidth , height: collectionCellWidth))
+        let numberOfCellInRow : Int = 2
+        let padding : Int = 10
+        let collectionCellWidth : CGFloat = (self.view.frame.size.width / CGFloat(numberOfCellInRow)) - CGFloat(padding)
         
         return CGSize(width: collectionCellWidth , height: collectionCellWidth)
     }
@@ -51,6 +49,10 @@ class MemeCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: memeCellIdent, for: indexPath) as! MemeCollectionViewCell
         
         cell.memeImage.image = meme.imageOrigin!
+        cell.memeLabelTop.text = meme.textTop!
+        cell.memeLabelBottom.text = meme.textBottom!
+        
+        layoutCellLabels(labels: [cell.memeLabelTop, cell.memeLabelBottom])
         
         return cell
     }
