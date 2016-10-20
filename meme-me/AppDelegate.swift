@@ -20,12 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let memeSampleImgRendered = UIImage(named: "sample-meme-1-r")
         let memeFixtureData = [
             // 0: textTop, 1: textBottom, 2: imageOrigin, 3: image
-            ("Top 1", "Bottom 1", memeSampleImgOrigin, memeSampleImgRendered),
-            ("Top 2", "Bottom 2", memeSampleImgOrigin, memeSampleImgRendered),
-            ("Top 3", "Bottom 3", memeSampleImgOrigin, memeSampleImgRendered),
-            ("Top 4", "Bottom 4", memeSampleImgOrigin, memeSampleImgRendered),
-            ("Top 5", "Bottom 5", memeSampleImgOrigin, memeSampleImgRendered),
-            ("Top 6", "Bottom 6", memeSampleImgOrigin, memeSampleImgRendered),
+            ("I'm on a strict diet", "Whiskey and rare steak", memeSampleImgOrigin, memeSampleImgRendered),
+            ("Feelings?", "Never heard of them", memeSampleImgOrigin, memeSampleImgRendered),
+            ("Salad?", "Thats what my food eats!", memeSampleImgOrigin, memeSampleImgRendered),
+            ("How would you like your steak?", "Breathing!", memeSampleImgOrigin, memeSampleImgRendered),
+            ("My morning steak", "The most important steak of the day", memeSampleImgOrigin, memeSampleImgRendered),
+            ("Mustache?", "You mean this thing i was born with?", memeSampleImgOrigin, memeSampleImgRendered),
         ]
         
         var meme: Meme
@@ -42,7 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
         loadFixtures()
         
