@@ -15,7 +15,6 @@ extension MemeTableViewController {
     
         noDataImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
         noDataImageView.contentMode = .scaleAspectFit
-        
         noDataImageView.image = UIImage(imageLiteralResourceName: "WelcomeNoDataPortrait")
         if UIDevice.current.orientation.isLandscape {
             noDataImageView.image = UIImage(imageLiteralResourceName: "WelcomeNoDataLandscape")
