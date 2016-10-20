@@ -11,9 +11,12 @@ import UIKit
 
 class MemeTableViewController: UITableViewController {
     
-    var memes: [Meme] {
-        return (UIApplication.shared.delegate as! AppDelegate).memes
-    }
+    let memeCellHeight: CGFloat = 72.0
+    let memeCellIdent = "CustomMemeCell"
+    
+    var noDataImageView: UIImageView!
+    
+    var memes: [Meme] { return (UIApplication.shared.delegate as! AppDelegate).memes }
     
     //
     // MARK: TableViewController Overrides, LifeCycle Methods
@@ -22,26 +25,40 @@ class MemeTableViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        initTableView()
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         
+        if (isDataAvailable()) {
+            return
+        }
+        
+        noDataImageView.image = UIImage(imageLiteralResourceName: "WelcomeNoDataPortrait")
+        if (toInterfaceOrientation.isLandscape) {
+            noDataImageView.image = UIImage(imageLiteralResourceName: "WelcomeNoDataLandscape")
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         return memes.count
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        return 72.0;
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return memeCellHeight;
     }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let meme = memes[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomMemeCell") as! MemeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: memeCellIdent) as! MemeTableViewCell
         
         cell.memeImage.image = meme.imageOrigin!
         cell.memeLabelTop.text = meme.textTop!
-        cell.memeLabelTop.text = meme.textBottom!
+        cell.memeLabelBottom.text = meme.textBottom!
         
         return cell
     }
