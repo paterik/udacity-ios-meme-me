@@ -45,9 +45,9 @@ class MemeCollectionViewController: UICollectionViewController {
         var numberOfCellInRow : CGFloat = 2.0
         
         if UIApplication.shared.statusBarOrientation != UIInterfaceOrientation.portrait {
-            numberOfCellInRow = 4.0
+            numberOfCellInRow = 3.0
             collectionCellPadding = 8.0
-            collectionCellSpacing = 6.0
+            collectionCellSpacing = 4.0
         }
         
         collectionCellWidth = (self.view.frame.width / numberOfCellInRow) - collectionCellPadding
@@ -56,6 +56,9 @@ class MemeCollectionViewController: UICollectionViewController {
         flowLayout.itemSize = CGSize(width: collectionCellWidth, height: collectionCellHeight)
         flowLayout.minimumInteritemSpacing = collectionCellSpacing
         flowLayout.minimumLineSpacing = collectionCellSpacing
+        
+        print ("width: \(collectionCellWidth)")
+        print ("height: \(collectionCellHeight)")
 
         return CGSize(
             width: collectionCellWidth,

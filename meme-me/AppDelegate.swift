@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ("Feelings?", "Never heard of them", "sample-meme-2", "sample-meme-2"),
             ("Salad?", "Thats what my food eats!", "sample-meme-3", "sample-meme-3"),
             ("How would you like your steak?", "Breathing!", "sample-meme-4", "sample-meme-4"),
-            ("My morning steak", "The most important steak of the day", "sample-meme-5", "sample-meme-5"),
-            ("Mustache?", "You mean this thing i was born with?", "sample-meme-6", "sample-meme-6"),
+            ("Breaks?", "You mean the coward pedal", "sample-meme-5", "sample-meme-5"),
+            ("Therapist?", "You mean bartender", "sample-meme-6", "sample-meme-6"),
         ]
         
         var meme: Meme
