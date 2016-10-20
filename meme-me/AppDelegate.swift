@@ -16,25 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func loadFixtures() {
         
-        let memeSampleImgOrigin = UIImage(named: "sample-meme-1")
-        let memeSampleImgRendered = UIImage(named: "sample-meme-1-r")
         let memeFixtureData = [
             // 0: textTop, 1: textBottom, 2: imageOrigin, 3: image
-            ("I'm on a strict diet", "Whiskey and rare steak", memeSampleImgOrigin, memeSampleImgRendered),
-            ("Feelings?", "Never heard of them", memeSampleImgOrigin, memeSampleImgRendered),
-            ("Salad?", "Thats what my food eats!", memeSampleImgOrigin, memeSampleImgRendered),
-            ("How would you like your steak?", "Breathing!", memeSampleImgOrigin, memeSampleImgRendered),
-            ("My morning steak", "The most important steak of the day", memeSampleImgOrigin, memeSampleImgRendered),
-            ("Mustache?", "You mean this thing i was born with?", memeSampleImgOrigin, memeSampleImgRendered),
+            ("I'm on a strict diet", "Whiskey and rare steak", "sample-meme-1", "sample-meme-1"),
+            ("Feelings?", "Never heard of them", "sample-meme-2", "sample-meme-2"),
+            ("Salad?", "Thats what my food eats!", "sample-meme-3", "sample-meme-3"),
+            ("How would you like your steak?", "Breathing!", "sample-meme-4", "sample-meme-4"),
+            ("My morning steak", "The most important steak of the day", "sample-meme-5", "sample-meme-5"),
+            ("Mustache?", "You mean this thing i was born with?", "sample-meme-6", "sample-meme-6"),
         ]
         
         var meme: Meme
+        
         for (_textTop, _textBottom, _imageOrigin, _image) in memeFixtureData {
             meme = Meme(
                 textTop: _textTop,
                 textBottom: _textBottom,
-                imageOrigin: _imageOrigin,
-                image: _image
+                imageOrigin:  UIImage(named: _imageOrigin),
+                image:  UIImage(named: _image)
             )
             
             memes.append(meme)
