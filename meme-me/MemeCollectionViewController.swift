@@ -43,7 +43,7 @@ class MemeCollectionViewController: UICollectionViewController {
         var collectionCellPadding : CGFloat = 12.0
         var collectionCellSpacing : CGFloat = 8.0
         var numberOfCellInRow : CGFloat = 2.0
-        
+
         if UIApplication.shared.statusBarOrientation != UIInterfaceOrientation.portrait {
             numberOfCellInRow = 3.0
             collectionCellPadding = 8.0
