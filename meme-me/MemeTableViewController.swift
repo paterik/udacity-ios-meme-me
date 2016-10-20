@@ -11,7 +11,8 @@ import UIKit
 
 class MemeTableViewController: UITableViewController {
     
-    let memeCellHeight: CGFloat = 72.0
+    let memeCellHeight: CGFloat = 80.0
+    let memeCellImageCornerRadius: CGFloat = 5
     let memeCellIdent = "CustomMemeCell"
     
     var noDataImageView: UIImageView!
@@ -68,6 +69,7 @@ class MemeTableViewController: UITableViewController {
         cell.memeImage.image = meme.imageOrigin!
         cell.memeLabelTop.text = meme.textTop!
         cell.memeLabelBottom.text = meme.textBottom!
+        cell.memeImage.layer.cornerRadius = memeCellImageCornerRadius
         
         return cell
     }

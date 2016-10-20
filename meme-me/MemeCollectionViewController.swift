@@ -14,6 +14,7 @@ class MemeCollectionViewController: UICollectionViewController {
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     let memeCellIdent = "CustomMemeCell"
+    let memeCellImageCornerRadius: CGFloat = 4.0
 
     var noDataImageView: UIImageView!
     var memes: [Meme] { return (UIApplication.shared.delegate as! AppDelegate).memes }
@@ -82,6 +83,7 @@ class MemeCollectionViewController: UICollectionViewController {
         cell.memeImage.image = meme.imageOrigin!
         cell.memeLabelTop.text = meme.textTop!
         cell.memeLabelBottom.text = meme.textBottom!
+        cell.memeImage.layer.cornerRadius = memeCellImageCornerRadius
         
         layoutCellLabels(labels: [cell.memeLabelTop, cell.memeLabelBottom])
         
