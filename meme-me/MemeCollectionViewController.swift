@@ -30,20 +30,35 @@ class MemeCollectionViewController: UICollectionViewController {
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+
+        let collectionCellPadding : CGFloat = 20.0
+        var numberOfCellInRow : CGFloat = 2.0
+        var collectionCellWidth : CGFloat = 128.0
         
-        let numberOfCellInRow : Int = 2
-        let padding : Int = 10
-        let collectionCellWidth : CGFloat = (self.view.frame.size.width / CGFloat(numberOfCellInRow)) - CGFloat(padding)
+        if UIApplication.shared.statusBarOrientation != UIInterfaceOrientation.portrait {
+            numberOfCellInRow = 3.0
+        }
         
-        return CGSize(width: collectionCellWidth , height: collectionCellWidth)
+        collectionCellWidth = self.view.frame.width / numberOfCellInRow - collectionCellPadding
+
+        return CGSize(
+            width: collectionCellWidth,
+            height: collectionCellWidth
+        );
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int)
+        -> Int {
         
         return memes.count
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath)
+        -> UICollectionViewCell {
         
         let meme = memes[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: memeCellIdent, for: indexPath) as! MemeCollectionViewCell

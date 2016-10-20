@@ -15,7 +15,6 @@ class MemeTableViewController: UITableViewController {
     let memeCellIdent = "CustomMemeCell"
     
     var noDataImageView: UIImageView!
-    
     var memes: [Meme] { return (UIApplication.shared.delegate as! AppDelegate).memes }
     
     //
