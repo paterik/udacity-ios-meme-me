@@ -38,10 +38,10 @@ class MemeCollectionViewController: UICollectionViewController {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 
+        var collectionCellWidth : CGFloat!
+        var collectionCellHeight : CGFloat!
         var collectionCellPadding : CGFloat = 12.0
         var collectionCellSpacing : CGFloat = 8.0
-        var collectionCellWidth : CGFloat = 128.0
-        var collectionCellHeight : CGFloat = 128.0
         var numberOfCellInRow : CGFloat = 2.0
         
         if UIApplication.shared.statusBarOrientation != UIInterfaceOrientation.portrait {

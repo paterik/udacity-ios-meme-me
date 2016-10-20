@@ -27,7 +27,6 @@ extension MemeCollectionViewController {
                 ] as [String : Any]
             
             label.attributedText = NSMutableAttributedString(string: label.text! as String, attributes:memeTextAttributes)
-    
             label.adjustsFontSizeToFitWidth = true
             label.textAlignment = .center
             
