@@ -39,6 +39,7 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     
     var imagePickerSuccess: Bool = false
     var usedMemeFontName: String = ""
+    var createMode: Bool = true
     
     //
     // MARK: ViewController Overrides, LifeCycle Methods
