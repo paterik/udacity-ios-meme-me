@@ -15,6 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="LFd-6h-fIW" kind="relationship" relationship="viewControllers" id="MBn-Oz-12j"/>
@@ -29,7 +31,7 @@
         <scene sceneID="Q1j-6O-HIo">
             <objects>
                 <collectionViewController id="sub-Sl-JhB" userLabel="CollectionViewController" customClass="MemeCollectionViewController" customModule="meme_me" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Sim-TA-TMN">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="Sim-TA-TMN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -244,7 +246,7 @@
         <scene sceneID="jWx-dq-Sl1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LFd-6h-fIW" userLabel="NavigationViewControllerTable" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="cJp-nN-dZ3"/>
+                    <tabBarItem key="tabBarItem" title="" image="TableView" selectedImage="TableView" id="cJp-nN-dZ3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hxK-el-lmb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -263,7 +265,7 @@
         <scene sceneID="mU5-cn-R74">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="N4V-sq-g1i" userLabel="NavigationControllerCollection" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="qVl-mz-l7X"/>
+                    <tabBarItem key="tabBarItem" title="" image="CollectionView" selectedImage="CollectionView" id="qVl-mz-l7X"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yeK-6m-Onk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -281,7 +283,9 @@
     </scenes>
     <resources>
         <image name="Camera" width="25" height="25"/>
+        <image name="CollectionView" width="25" height="25"/>
         <image name="Library" width="25" height="25"/>
+        <image name="TableView" width="25" height="25"/>
         <image name="WelcomePortrait" width="414" height="736"/>
         <image name="sample-meme-1" width="512" height="650"/>
     </resources>
