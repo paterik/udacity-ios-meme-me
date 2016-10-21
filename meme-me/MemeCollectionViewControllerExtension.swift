@@ -11,10 +11,6 @@ import UIKit
 
 extension MemeCollectionViewController {
 
-    func initCollectionView() {
-        
-    }
-    
     func layoutCellLabels(labels: [UILabel]) {
         
         for label in labels {
@@ -30,5 +26,17 @@ extension MemeCollectionViewController {
             label.adjustsFontSizeToFitWidth = true
             label.textAlignment = .center
         }
+    }
+    
+    func refreshCollectionView() {
+        
+        if isDataAvailable() {
+            collectionView?.reloadData()
+        }
+    }
+    
+    func isDataAvailable() -> Bool {
+        
+        return memes.count > 0
     }
 }
