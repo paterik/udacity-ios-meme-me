@@ -15,7 +15,7 @@ class MemeTableViewController: UITableViewController {
     let memeCellImageCornerRadius: CGFloat = 5
     let memeCellIdent = "CustomMemeCell"
     
-    var noDataImageView: UIImageView!
+    var noDataImageView : UIImageView!
     var memes: [Meme] { return (UIApplication.shared.delegate as! AppDelegate).memes }
     var appDelegate: AppDelegate { return (UIApplication.shared.delegate as! AppDelegate) }
     
@@ -29,7 +29,15 @@ class MemeTableViewController: UITableViewController {
         refreshTableView()
     }
     
-    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+    }
+    
+    override func willRotate(
+        to toInterfaceOrientation: UIInterfaceOrientation,
+        duration: TimeInterval) {
         
         if (isDataAvailable()) {
             return
@@ -41,19 +49,26 @@ class MemeTableViewController: UITableViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(
+        _ tableView: UITableView,
+          numberOfRowsInSection section: Int) -> Int {
 
         refreshTableView()
         
         return appDelegate.memes.count
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(
+        _ tableView: UITableView,
+          heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return memeCellHeight;
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(
+        _ tableView: UITableView,
+          commit editingStyle: UITableViewCellEditingStyle,
+          forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
             appDelegate.memes.remove(at: indexPath.row)
@@ -61,7 +76,9 @@ class MemeTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(
+        _ tableView: UITableView,
+          cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let meme = memes[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: memeCellIdent) as! MemeTableViewCell
