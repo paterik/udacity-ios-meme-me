@@ -17,7 +17,7 @@ extension MemeEditViewController {
     
     func imagePickerController(
         _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [String : Any]) {
+          didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.contentMode = memeImageContentMode
@@ -112,6 +112,9 @@ extension MemeEditViewController {
         )
         
         (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
+        
+        // leave editView
+        self.dismiss(animated: true, completion: nil)
     }
     
     func saveImage(renderedImage: UIImage) {
@@ -133,18 +136,24 @@ extension MemeEditViewController {
             }
         }
         
+        // now show the activityController ...
         present(activityViewController, animated: true, completion: {})
     }
     
+    // better image quality, using scale factor of main screen now
     func renderMemedImage() -> UIImage {
+        
+        let hasAlpha = false
+        let scale: CGFloat = 0.0
         
         // Hide toolbar and navbar
         prepareToolBarControls(activate: false)
         
-        // Render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, !hasAlpha, scale)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        
         UIGraphicsEndImageContext()
         
         // Show toolbar and navbar
@@ -153,7 +162,10 @@ extension MemeEditViewController {
         return memedImage
     }
     
-    func handleImageStorage(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+    func handleImageStorage(
+        _ image: UIImage,
+          didFinishSavingWithError error: Error?,
+          contextInfo: UnsafeRawPointer) {
         
         if let ioError = error {
             displayAlert(alertTitle: "Meme not saved!", alertMessage: ioError.localizedDescription, alertButtonText: "OK")
@@ -162,6 +174,7 @@ extension MemeEditViewController {
         }
     }
     
+    // todo: #2 move this method to a global (callable) service stack in final version!
     func displayAlert(alertTitle: String, alertMessage: String, alertButtonText: String) {
     
         let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
@@ -186,6 +199,9 @@ extension MemeEditViewController {
         )
         
         prepareMemeControls(activate: true)
+        
+        // always disable tabBarControls in editView
+        tabBarController?.tabBar.isHidden = true
     }
     
     //
@@ -224,7 +240,7 @@ extension MemeEditViewController {
             textField.delegate = memeTextFieldDelegate
             textField.textAlignment = .center
             textField.text = defaultText
-            textField.contentDefault = defaultText
+            textField.contentDefault = textField.text!
             
             textField.isHidden = !activate
         }
