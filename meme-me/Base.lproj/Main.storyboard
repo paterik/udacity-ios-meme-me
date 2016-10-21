@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -124,16 +123,8 @@
                                     <frame key="frameInset" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-meme-1" translatesAutoresizingMaskIntoConstraints="NO" id="SWa-JH-R8X" userLabel="MemeImage">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="64" id="bj9-hX-af7"/>
-                                                <constraint firstAttribute="width" secondItem="SWa-JH-R8X" secondAttribute="height" multiplier="1:1" id="rxJ-gj-WtG"/>
-                                            </constraints>
-                                        </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-meme-1" translatesAutoresizingMaskIntoConstraints="NO" id="SWa-JH-R8X" userLabel="MemeImage"/>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TextTop" lineBreakMode="tailTruncation" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGF-6m-c8f" userLabel="MemeLabelTop">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="oOI-0n-s9r"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -143,24 +134,36 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="NewMeme" translatesAutoresizingMaskIntoConstraints="NO" id="Uyw-ZF-yS5" userLabel="MemeTag">
+                                            <frame key="frameInset" minX="11" minY="20" width="32" height="48"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="32" id="6um-Q1-YCF"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="J6v-6f-3ue" firstAttribute="bottom" secondItem="tKd-kZ-TNc" secondAttribute="bottomMargin" constant="-6.5" id="9o0-vU-8sa"/>
-                                        <constraint firstItem="yGF-6m-c8f" firstAttribute="top" secondItem="tKd-kZ-TNc" secondAttribute="topMargin" constant="11" id="CwG-Ff-SE1"/>
-                                        <constraint firstItem="SWa-JH-R8X" firstAttribute="top" secondItem="tKd-kZ-TNc" secondAttribute="topMargin" id="DJ1-Tf-KXT"/>
-                                        <constraint firstItem="yGF-6m-c8f" firstAttribute="leading" secondItem="SWa-JH-R8X" secondAttribute="trailing" constant="16" id="UGX-VF-ghD"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="yGF-6m-c8f" secondAttribute="trailing" constant="41" id="cGr-bI-P2q"/>
-                                        <constraint firstItem="yGF-6m-c8f" firstAttribute="trailing" secondItem="J6v-6f-3ue" secondAttribute="trailing" id="dgD-PF-SRm"/>
-                                        <constraint firstItem="SWa-JH-R8X" firstAttribute="leading" secondItem="tKd-kZ-TNc" secondAttribute="leadingMargin" id="kTC-qZ-jXT"/>
-                                        <constraint firstItem="SWa-JH-R8X" firstAttribute="centerY" secondItem="tKd-kZ-TNc" secondAttribute="centerY" id="rOv-IL-SDY"/>
-                                        <constraint firstItem="yGF-6m-c8f" firstAttribute="leading" secondItem="J6v-6f-3ue" secondAttribute="leading" id="vhc-YT-5Gi"/>
-                                        <constraint firstItem="J6v-6f-3ue" firstAttribute="top" secondItem="yGF-6m-c8f" secondAttribute="bottom" constant="-5" id="wis-2v-STG"/>
+                                        <constraint firstItem="SWa-JH-R8X" firstAttribute="bottom" secondItem="tKd-kZ-TNc" secondAttribute="bottomMargin" constant="-1" id="2fl-Zj-r0n"/>
+                                        <constraint firstItem="yGF-6m-c8f" firstAttribute="leading" secondItem="SWa-JH-R8X" secondAttribute="trailing" constant="14" id="4As-kx-dWO"/>
+                                        <constraint firstItem="yGF-6m-c8f" firstAttribute="leading" secondItem="J6v-6f-3ue" secondAttribute="leading" id="59v-Zr-vgh"/>
+                                        <constraint firstItem="yGF-6m-c8f" firstAttribute="trailing" secondItem="J6v-6f-3ue" secondAttribute="trailing" id="5HR-Wb-HVB"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="J6v-6f-3ue" secondAttribute="bottom" constant="8" id="IPq-PY-5I2"/>
+                                        <constraint firstItem="J6v-6f-3ue" firstAttribute="top" secondItem="tKd-kZ-TNc" secondAttribute="topMargin" constant="26" id="JaU-H5-fLg"/>
+                                        <constraint firstItem="J6v-6f-3ue" firstAttribute="leading" secondItem="Uyw-ZF-yS5" secondAttribute="trailing" constant="51" id="OlF-zO-SA7"/>
+                                        <constraint firstItem="Uyw-ZF-yS5" firstAttribute="leading" secondItem="tKd-kZ-TNc" secondAttribute="leadingMargin" constant="3" id="S4G-VH-F1T"/>
+                                        <constraint firstItem="yGF-6m-c8f" firstAttribute="top" secondItem="tKd-kZ-TNc" secondAttribute="topMargin" constant="12" id="faC-E3-2KI"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Uyw-ZF-yS5" secondAttribute="bottom" constant="3" id="hlz-5D-3KO"/>
+                                        <constraint firstItem="Uyw-ZF-yS5" firstAttribute="top" secondItem="tKd-kZ-TNc" secondAttribute="topMargin" constant="13" id="iip-xk-E41"/>
+                                        <constraint firstItem="SWa-JH-R8X" firstAttribute="top" secondItem="tKd-kZ-TNc" secondAttribute="topMargin" id="jhE-13-x7C"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="yGF-6m-c8f" secondAttribute="trailing" constant="-4" id="nKw-qQ-cPS"/>
+                                        <constraint firstItem="SWa-JH-R8X" firstAttribute="leading" secondItem="tKd-kZ-TNc" secondAttribute="leadingMargin" constant="9" id="uUA-LR-VLZ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="yGF-6m-c8f" secondAttribute="bottom" constant="31" id="zd5-uZ-pQP"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="memeImage" destination="SWa-JH-R8X" id="IXj-d4-EgY"/>
                                     <outlet property="memeLabelBottom" destination="J6v-6f-3ue" id="uZQ-05-Lad"/>
                                     <outlet property="memeLabelTop" destination="yGF-6m-c8f" id="p7w-13-DNT"/>
+                                    <outlet property="memeTagImage" destination="Uyw-ZF-yS5" id="NJY-Aj-8Tt"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -324,6 +327,7 @@
         <image name="Camera" width="25" height="25"/>
         <image name="CollectionView" width="25" height="25"/>
         <image name="Library" width="25" height="25"/>
+        <image name="NewMeme" width="180" height="266"/>
         <image name="TableView" width="25" height="25"/>
         <image name="WelcomeMemeCreatePortrait" width="414" height="736"/>
         <image name="sample-meme-1" width="512" height="650"/>

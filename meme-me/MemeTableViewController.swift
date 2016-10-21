@@ -71,7 +71,7 @@ class MemeTableViewController: UITableViewController {
           forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            appDelegate.memes.remove(at: indexPath.row)
+            appDelegate.removeMeme(index: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -87,6 +87,11 @@ class MemeTableViewController: UITableViewController {
         cell.memeLabelTop.text = meme.textTop!
         cell.memeLabelBottom.text = meme.textBottom!
         cell.memeImage.layer.cornerRadius = memeCellImageCornerRadius
+        cell.memeTagImage?.image = nil
+        
+        if meme.fresh! == true {
+            cell.memeTagImage?.image = UIImage(named:"NewMeme")!
+        }
         
         return cell
     }
