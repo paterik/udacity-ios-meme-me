@@ -23,59 +23,29 @@ class MemeCollectionViewController: UICollectionViewController {
     // MARK: TableViewController Overrides, LifeCycle Methods
     //
     
-    override func viewDidLoad() {
+    override func viewDidAppear(_ animated: Bool) {
         
-        super.viewDidLoad()
-        initCollectionView()
+        super.viewDidAppear(animated)
+        refreshCollectionView()
     }
     
-    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+    override func willRotate(
+        to toInterfaceOrientation: UIInterfaceOrientation,
+        duration: TimeInterval) {
         
         collectionView!.collectionViewLayout.invalidateLayout()
     }
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-
-        var collectionCellWidth : CGFloat!
-        var collectionCellHeight : CGFloat!
-        var collectionCellPadding : CGFloat = 12.0
-        var collectionCellSpacing : CGFloat = 8.0
-        var numberOfCellInRow : CGFloat = 2.0
-
-        if UIApplication.shared.statusBarOrientation != UIInterfaceOrientation.portrait {
-            numberOfCellInRow = 3.0
-            collectionCellPadding = 8.0
-            collectionCellSpacing = 4.0
-        }
-        
-        collectionCellWidth = (self.view.frame.width / numberOfCellInRow) - collectionCellPadding
-        collectionCellHeight = collectionCellWidth
-        
-        flowLayout.itemSize = CGSize(width: collectionCellWidth, height: collectionCellHeight)
-        flowLayout.minimumInteritemSpacing = collectionCellSpacing
-        flowLayout.minimumLineSpacing = collectionCellSpacing
-
-        return CGSize(
-            width: collectionCellWidth,
-            height: collectionCellHeight
-        );
-    }
-    
     override func collectionView(
         _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int)
-        -> Int {
+          numberOfItemsInSection section: Int) -> Int {
         
         return memes.count
     }
     
     override func collectionView(
         _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath)
-        -> UICollectionViewCell {
+          cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let meme = memes[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: memeCellIdent, for: indexPath) as! MemeCollectionViewCell
@@ -88,5 +58,35 @@ class MemeCollectionViewController: UICollectionViewController {
         layoutCellLabels(labels: [cell.memeLabelTop, cell.memeLabelBottom])
         
         return cell
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+          layout collectionViewLayout: UICollectionViewLayout,
+          sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        var collectionCellWidth: CGFloat!
+        var collectionCellHeight: CGFloat!
+        var collectionCellPadding: CGFloat = 12.0
+        var collectionCellSpacing: CGFloat = 8.0
+        var numberOfCellInRow: CGFloat = 2.0
+        
+        if UIApplication.shared.statusBarOrientation != UIInterfaceOrientation.portrait {
+            numberOfCellInRow = 3.0
+            collectionCellPadding = 8.0
+            collectionCellSpacing = 4.0
+        }
+        
+        collectionCellWidth = (self.view.frame.width / numberOfCellInRow) - collectionCellPadding
+        collectionCellHeight = collectionCellWidth
+        
+        flowLayout.itemSize = CGSize(width: collectionCellWidth, height: collectionCellHeight)
+        flowLayout.minimumInteritemSpacing = collectionCellSpacing
+        flowLayout.minimumLineSpacing = collectionCellSpacing
+        
+        return CGSize(
+            width: collectionCellWidth,
+            height: collectionCellHeight
+        );
     }
 }
