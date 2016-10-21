@@ -14,29 +14,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var memes: [Meme] = []
     
+    // append meme to current struct array and sort my array to comply tableView latest-item-first rendering
+    func addMeme(meme: Meme) {
+        unfreshMemes()
+        memes.append(meme)
+        sortMemesAsc()
+    }
+    
+    // remove meme from current struct array and (re) sort corresponding array
+    func removeMeme(index: Int) {
+        memes.remove(at: index)
+        sortMemesAsc()
+    }
+    
+    func sortMemesAsc() {
+        memes.sort { $0.created! > $1.created! }
+    }
+    
+    func sortMemesDesc() {
+        memes.sort { $0.created! < $1.created! }
+    }
+    
+    func unfreshMemes() {
+        for index in 0..<memes.count {
+            memes[index].fresh = false
+        }
+    }
+    
     func loadFixtures() {
         
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.locale = Locale(identifier: NSLocale.current.languageCode!)
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        
         let memeFixtureData = [
-            // 0: textTop, 1: textBottom, 2: imageOrigin, 3: image
-            ("I'm on a strict diet", "Whiskey and rare steak", "sample-meme-1", "sample-meme-1"),
-            ("Feelings?", "Never heard of them", "sample-meme-2", "sample-meme-2"),
-            ("Salad?", "Thats what my food eats!", "sample-meme-3", "sample-meme-3"),
-            ("How would you like your steak?", "Breathing!", "sample-meme-4", "sample-meme-4"),
-            ("Breaks?", "You mean the coward pedal", "sample-meme-5", "sample-meme-5"),
-            ("Therapist?", "You mean bartender", "sample-meme-6", "sample-meme-6"),
+            // 0: textTop, 1: textBottom, 2: imageOrigin, 3: image, 4: created
+            ("I'm on a strict diet", "Whiskey and rare steak", "sample-meme-1", "sample-meme-1", "2016-10-21 06:00:00"),
+            ("Feelings?", "Never heard of them", "sample-meme-2", "sample-meme-2", "2016-10-21 07:00:00"),
+            ("Salad?", "Thats what my food eats!", "sample-meme-3", "sample-meme-3", "2016-10-21 08:00:00"),
+            ("How would you like your steak?", "Breathing!", "sample-meme-4", "sample-meme-4", "2016-10-21 09:00:00"),
+            ("Breaks?", "You mean the coward pedal", "sample-meme-5", "sample-meme-5", "2016-10-21 10:00:00"),
+            ("Therapist?", "You mean bartender", "sample-meme-6", "sample-meme-6", "2016-10-21 11:00:00"),
         ]
         
         var meme: Meme
         
-        for (_textTop, _textBottom, _imageOrigin, _image) in memeFixtureData {
+        for (_textTop, _textBottom, _imageOrigin, _image, _created) in memeFixtureData {
+
             meme = Meme(
                 textTop: _textTop,
                 textBottom: _textBottom,
                 imageOrigin:  UIImage(named: _imageOrigin),
-                image:  UIImage(named: _image)
+                image:  UIImage(named: _image),
+                created: dateFormatter.date(from: _created)!,
+                fresh: false
             )
             
-            memes.append(meme)
+            addMeme(meme: meme)
         }
     }
 
