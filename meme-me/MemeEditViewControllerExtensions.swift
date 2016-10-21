@@ -108,11 +108,12 @@ extension MemeEditViewController {
             textTop: inputFieldTop.text!,
             textBottom: inputFieldBottom.text!,
             imageOrigin: imagePickerView.image!,
-            image: memedImage
+            image: memedImage,
+            created: Date(),
+            fresh: true
         )
         
-        (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
-        
+        (UIApplication.shared.delegate as! AppDelegate).addMeme(meme: meme)
         // leave editView
         self.dismiss(animated: true, completion: nil)
     }
