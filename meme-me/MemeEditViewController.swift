@@ -34,11 +34,11 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     let memeTextFieldTopDefault = "TOP"
     let memeTextFieldBottomDefault = "BOTTOM"
     let memeTextFieldDelegate = MemeTextFieldDelegate()
-    let memeImageContentMode: UIViewContentMode = .scaleAspectFit // .scaleAspectFill will looks even better
+    let memeImageContentMode: UIViewContentMode = .scaleAspectFit
     let imagePickerController = UIImagePickerController()
     
     var imagePickerSuccess: Bool = false
-    var usedMemeFontName: String = ""
+    var usedMemeFontName: String!
     var createMode: Bool = true
     
     //
@@ -70,10 +70,10 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         }
         
         imagePickerView.contentMode = .scaleAspectFit
-        imagePickerView.image = UIImage(imageLiteralResourceName: "WelcomePortrait")
+        imagePickerView.image = UIImage(named: "WelcomeMemeCreatePortrait")
         
         if (toInterfaceOrientation.isLandscape) {
-            imagePickerView.image = UIImage(imageLiteralResourceName: "WelcomeLandscape")
+            imagePickerView.image = UIImage(named: "WelcomeMemeCreateLandscape")
         }
     }
     
