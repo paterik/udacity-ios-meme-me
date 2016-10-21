@@ -94,7 +94,7 @@
                     <navigationItem key="navigationItem" title="Sent Memes" id="mL7-Gd-0tD">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="PfR-z6-NPs">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="Zm4-Dq-mjX"/>
+                                <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="Zm4-Dq-mjX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -121,7 +121,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EuL-VU-5vm" id="tKd-kZ-TNc">
-                                    <frame key="frameInset" width="375" height="79"/>
+                                    <frame key="frameInset" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-meme-1" translatesAutoresizingMaskIntoConstraints="NO" id="SWa-JH-R8X" userLabel="MemeImage">
@@ -172,7 +172,7 @@
                     <navigationItem key="navigationItem" title="Sent Memes" id="jB3-L0-ONl">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fon-Nc-Ltt">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="afM-f8-Vsy"/>
+                                <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="afM-f8-Vsy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -193,24 +193,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="WelcomePortrait" translatesAutoresizingMaskIntoConstraints="NO" id="gz7-dP-QJ4" userLabel="ImagePickerView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="WelcomeMemeCreatePortrait" translatesAutoresizingMaskIntoConstraints="NO" id="gz7-dP-QJ4" userLabel="ImagePickerView">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="NKX-3f-Sxm" userLabel="InputFieldTop" customClass="UIMemeTextField" customModule="meme_me" customModuleProvider="target">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Tqq-dD-3sf"/>
+                                    <constraint firstAttribute="height" constant="40" id="VE1-ei-YAO"/>
                                 </constraints>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="32"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="lJC-Ug-zXx" userLabel="InputFieldBottom" customClass="UIMemeTextField" customModule="meme_me" customModuleProvider="target">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="B5a-CB-KRz"/>
+                                    <constraint firstAttribute="height" constant="40" id="9tF-mq-Bpg"/>
                                 </constraints>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="32"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfg-L4-8z5" userLabel="ToolbarTop">
@@ -248,22 +248,22 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfg-L4-8z5" firstAttribute="trailing" secondItem="gz7-dP-QJ4" secondAttribute="trailing" id="AUZ-b2-KIt"/>
-                            <constraint firstItem="wfg-L4-8z5" firstAttribute="leading" secondItem="gz7-dP-QJ4" secondAttribute="leading" id="Cu9-2b-0WF"/>
-                            <constraint firstItem="wfg-L4-8z5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="DPE-ap-3QE"/>
-                            <constraint firstItem="wfg-L4-8z5" firstAttribute="centerX" secondItem="NKX-3f-Sxm" secondAttribute="centerX" id="HtE-y2-Cdc"/>
-                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="leading" secondItem="lJC-Ug-zXx" secondAttribute="leading" id="QEF-Mk-E89"/>
-                            <constraint firstAttribute="trailing" secondItem="wfg-L4-8z5" secondAttribute="trailing" id="Wbe-qW-iop"/>
-                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="XFJ-7X-HPH"/>
-                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="top" secondItem="wfg-L4-8z5" secondAttribute="bottom" id="YDa-ed-cf9"/>
-                            <constraint firstItem="wfg-L4-8z5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aJ1-mH-Hch"/>
-                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="trailing" secondItem="lJC-Ug-zXx" secondAttribute="trailing" id="gPF-el-8mO"/>
-                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="trailing" secondItem="AjT-mK-wSK" secondAttribute="trailing" id="kNy-j2-lKr"/>
-                            <constraint firstItem="AjT-mK-wSK" firstAttribute="top" secondItem="gz7-dP-QJ4" secondAttribute="bottom" id="mUV-qu-1wG"/>
-                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="leading" secondItem="AjT-mK-wSK" secondAttribute="leading" id="o5S-mB-izW"/>
-                            <constraint firstItem="AjT-mK-wSK" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="q90-ua-WIG"/>
-                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="top" secondItem="wfg-L4-8z5" secondAttribute="bottom" constant="30" id="sO2-Q0-ViL"/>
-                            <constraint firstItem="AjT-mK-wSK" firstAttribute="top" secondItem="lJC-Ug-zXx" secondAttribute="bottom" constant="57" id="skW-pn-QiX"/>
+                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="trailing" secondItem="AjT-mK-wSK" secondAttribute="trailing" id="2N4-wF-Eql"/>
+                            <constraint firstItem="AjT-mK-wSK" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="2mz-Ns-4TS"/>
+                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="trailing" secondItem="lJC-Ug-zXx" secondAttribute="trailing" id="60G-83-oSf"/>
+                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8Ra-pk-L7F"/>
+                            <constraint firstItem="wfg-L4-8z5" firstAttribute="centerX" secondItem="NKX-3f-Sxm" secondAttribute="centerX" id="CTk-hJ-aMO"/>
+                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="leading" secondItem="AjT-mK-wSK" secondAttribute="leading" id="EGI-Hr-vhN"/>
+                            <constraint firstItem="wfg-L4-8z5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GQA-76-xDf"/>
+                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="top" secondItem="wfg-L4-8z5" secondAttribute="bottom" constant="30" id="OIV-iR-ek2"/>
+                            <constraint firstItem="wfg-L4-8z5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="PnZ-AY-J0u"/>
+                            <constraint firstItem="AjT-mK-wSK" firstAttribute="top" secondItem="gz7-dP-QJ4" secondAttribute="bottom" id="RFZ-Tm-Uid"/>
+                            <constraint firstAttribute="trailing" secondItem="wfg-L4-8z5" secondAttribute="trailing" id="TpZ-dp-PwS"/>
+                            <constraint firstItem="wfg-L4-8z5" firstAttribute="leading" secondItem="gz7-dP-QJ4" secondAttribute="leading" id="bqe-Rb-UWw"/>
+                            <constraint firstItem="NKX-3f-Sxm" firstAttribute="leading" secondItem="lJC-Ug-zXx" secondAttribute="leading" id="caI-ME-9jt"/>
+                            <constraint firstItem="gz7-dP-QJ4" firstAttribute="top" secondItem="wfg-L4-8z5" secondAttribute="bottom" id="coK-MI-1lo"/>
+                            <constraint firstItem="wfg-L4-8z5" firstAttribute="trailing" secondItem="gz7-dP-QJ4" secondAttribute="trailing" id="h0Q-r3-e7l"/>
+                            <constraint firstItem="AjT-mK-wSK" firstAttribute="top" secondItem="lJC-Ug-zXx" secondAttribute="bottom" constant="49" id="oG6-68-RlR"/>
                         </constraints>
                     </view>
                     <connections>
@@ -325,10 +325,10 @@
         <image name="CollectionView" width="25" height="25"/>
         <image name="Library" width="25" height="25"/>
         <image name="TableView" width="25" height="25"/>
-        <image name="WelcomePortrait" width="414" height="736"/>
+        <image name="WelcomeMemeCreatePortrait" width="414" height="736"/>
         <image name="sample-meme-1" width="512" height="650"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Zm4-Dq-mjX"/>
+        <segue reference="afM-f8-Vsy"/>
     </inferredMetricsTieBreakers>
 </document>

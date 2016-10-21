@@ -94,6 +94,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B1011F0F1DB97F1200560745 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				B1011F121DB97F5B00560745 /* editView */,
+				B1011F101DB97F4400560745 /* tableView */,
+				B1011F111DB97F5100560745 /* collectionView */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		B1011F101DB97F4400560745 /* tableView */ = {
+			isa = PBXGroup;
+			children = (
+				B1011F141DB97FC200560745 /* extension */,
+				B1D8B5FF1DB64A2800F7FCEC /* MemeTableViewController.swift */,
+			);
+			name = tableView;
+			sourceTree = "<group>";
+		};
+		B1011F111DB97F5100560745 /* collectionView */ = {
+			isa = PBXGroup;
+			children = (
+				B1011F151DB97FD000560745 /* extension */,
+				B1D8B6011DB64A7800F7FCEC /* MemeCollectionViewController.swift */,
+			);
+			name = collectionView;
+			sourceTree = "<group>";
+		};
+		B1011F121DB97F5B00560745 /* editView */ = {
+			isa = PBXGroup;
+			children = (
+				B1011F131DB97FA000560745 /* extension */,
+				B12DCF4C1DAE739D00CD9FA0 /* MemeEditViewController.swift */,
+			);
+			name = editView;
+			sourceTree = "<group>";
+		};
+		B1011F131DB97FA000560745 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				B133ECEC1DAFAEDB00FF52F0 /* MemeEditViewControllerExtensions.swift */,
+			);
+			name = extension;
+			sourceTree = "<group>";
+		};
+		B1011F141DB97FC200560745 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				B1C359D81DB8B3C10068AC3A /* MemeTableViewControllerExtensions.swift */,
+			);
+			name = extension;
+			sourceTree = "<group>";
+		};
+		B1011F151DB97FD000560745 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				B1841A441DB8D803004FC000 /* MemeCollectionViewControllerExtension.swift */,
+			);
+			name = extension;
+			sourceTree = "<group>";
+		};
+		B1011F161DB9825600560745 /* storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B12DCF4E1DAE739D00CD9FA0 /* Main.storyboard */,
+				B12DCF531DAE739D00CD9FA0 /* LaunchScreen.storyboard */,
+			);
+			name = storyboards;
+			sourceTree = "<group>";
+		};
 		B12DCF3E1DAE739D00CD9FA0 = {
 			isa = PBXGroup;
 			children = (
@@ -117,23 +187,11 @@
 		B12DCF491DAE739D00CD9FA0 /* meme-me */ = {
 			isa = PBXGroup;
 			children = (
-				B1FC39F31DB236B30011A3A0 /* view */,
 				B1FC39F01DB219F60011A3A0 /* model */,
-				B133ECF31DAFDFAE00FF52F0 /* delegates */,
+				B1FC39F31DB236B30011A3A0 /* view */,
+				B1011F0F1DB97F1200560745 /* controller */,
 				B133ECEE1DAFB81B00FF52F0 /* resources */,
-				B12DCF561DAE739D00CD9FA0 /* Info.plist */,
-				B12DCF511DAE739D00CD9FA0 /* Assets.xcassets */,
-				B12DCF4E1DAE739D00CD9FA0 /* Main.storyboard */,
-				B12DCF531DAE739D00CD9FA0 /* LaunchScreen.storyboard */,
 				B12DCF4A1DAE739D00CD9FA0 /* AppDelegate.swift */,
-				B12DCF4C1DAE739D00CD9FA0 /* MemeEditViewController.swift */,
-				B133ECEC1DAFAEDB00FF52F0 /* MemeEditViewControllerExtensions.swift */,
-				B1841A461DB8D8C4004FC000 /* MemeCollectionViewCell.swift */,
-				B1D8B6011DB64A7800F7FCEC /* MemeCollectionViewController.swift */,
-				B1841A441DB8D803004FC000 /* MemeCollectionViewControllerExtension.swift */,
-				B1D8B6031DB657C700F7FCEC /* MemeTableViewCell.swift */,
-				B1D8B5FF1DB64A2800F7FCEC /* MemeTableViewController.swift */,
-				B1C359D81DB8B3C10068AC3A /* MemeTableViewControllerExtensions.swift */,
 			);
 			path = "meme-me";
 			sourceTree = "<group>";
@@ -159,6 +217,8 @@
 		B133ECEE1DAFB81B00FF52F0 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				B12DCF511DAE739D00CD9FA0 /* Assets.xcassets */,
+				B12DCF561DAE739D00CD9FA0 /* Info.plist */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -174,6 +234,7 @@
 		B1FC39F01DB219F60011A3A0 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				B133ECF31DAFDFAE00FF52F0 /* delegates */,
 				B1FC39F11DB21A080011A3A0 /* MemeModel.swift */,
 			);
 			name = model;
@@ -182,6 +243,9 @@
 		B1FC39F31DB236B30011A3A0 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				B1011F161DB9825600560745 /* storyboards */,
+				B1841A461DB8D8C4004FC000 /* MemeCollectionViewCell.swift */,
+				B1D8B6031DB657C700F7FCEC /* MemeTableViewCell.swift */,
 				B133ECF11DAFB9F800FF52F0 /* UIMemeTextField.swift */,
 			);
 			name = view;
