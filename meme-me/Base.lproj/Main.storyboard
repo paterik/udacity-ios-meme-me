@@ -134,8 +134,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="NewMeme" translatesAutoresizingMaskIntoConstraints="NO" id="Uyw-ZF-yS5" userLabel="MemeTag">
-                                            <frame key="frameInset" minX="11" minY="20" width="32" height="48"/>
+                                        <imageView userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NewMeme" translatesAutoresizingMaskIntoConstraints="NO" id="Uyw-ZF-yS5" userLabel="MemeTag">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="32" id="6um-Q1-YCF"/>
                                             </constraints>
@@ -151,8 +150,8 @@
                                         <constraint firstItem="J6v-6f-3ue" firstAttribute="leading" secondItem="Uyw-ZF-yS5" secondAttribute="trailing" constant="51" id="OlF-zO-SA7"/>
                                         <constraint firstItem="Uyw-ZF-yS5" firstAttribute="leading" secondItem="tKd-kZ-TNc" secondAttribute="leadingMargin" constant="3" id="S4G-VH-F1T"/>
                                         <constraint firstItem="yGF-6m-c8f" firstAttribute="top" secondItem="tKd-kZ-TNc" secondAttribute="topMargin" constant="12" id="faC-E3-2KI"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Uyw-ZF-yS5" secondAttribute="bottom" constant="3" id="hlz-5D-3KO"/>
-                                        <constraint firstItem="Uyw-ZF-yS5" firstAttribute="top" secondItem="tKd-kZ-TNc" secondAttribute="topMargin" constant="13" id="iip-xk-E41"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Uyw-ZF-yS5" secondAttribute="bottom" constant="4" id="hlz-5D-3KO"/>
+                                        <constraint firstItem="Uyw-ZF-yS5" firstAttribute="top" secondItem="tKd-kZ-TNc" secondAttribute="topMargin" constant="12" id="iip-xk-E41"/>
                                         <constraint firstItem="SWa-JH-R8X" firstAttribute="top" secondItem="tKd-kZ-TNc" secondAttribute="topMargin" id="jhE-13-x7C"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="yGF-6m-c8f" secondAttribute="trailing" constant="-4" id="nKw-qQ-cPS"/>
                                         <constraint firstItem="SWa-JH-R8X" firstAttribute="leading" secondItem="tKd-kZ-TNc" secondAttribute="leadingMargin" constant="9" id="uUA-LR-VLZ"/>
