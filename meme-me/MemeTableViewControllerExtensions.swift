@@ -16,6 +16,7 @@ extension MemeTableViewController {
         noDataImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
         noDataImageView.contentMode = .scaleAspectFit
         noDataImageView.image = UIImage(imageLiteralResourceName: "WelcomeNoDataPortrait")
+        
         if UIDevice.current.orientation.isLandscape {
             noDataImageView.image = UIImage(imageLiteralResourceName: "WelcomeNoDataLandscape")
         }
@@ -25,20 +26,20 @@ extension MemeTableViewController {
     
     func refreshTableView() {
     
+        // todo: check constraints for singleLine !!!
+        tableView.separatorStyle = .none
+        tabBarController?.tabBar.isHidden = false
+        tableView.backgroundView = nil
+        
         if !isDataAvailable() {
             tabBarController?.tabBar.isHidden = true
             tableView.backgroundView = getNoDataImageView()
             tableView.separatorStyle = .none
-            
-        } else {
-            tabBarController?.tabBar.isHidden = false
-            tableView.separatorStyle = .singleLine
-            tableView.backgroundView = nil
         }
     }
     
     func isDataAvailable() -> Bool {
         
-        return memes.count > 0
+        return appDelegate.memes.count > 0
     }
 }
