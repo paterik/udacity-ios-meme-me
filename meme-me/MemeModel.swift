@@ -19,4 +19,6 @@ struct Meme {
     var textBottom: String?
     var imageOrigin: UIImage?
     var image: UIImage?
+    var created: Date?
+    var fresh: Bool?
 }
