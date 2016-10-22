@@ -12,27 +12,44 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    // some pseudo storage definition for our memes
     var memes: [Meme] = []
+    enum memeOrder {
+        case asc
+        case desc
+        case rand
+    }
     
     // append meme to current struct array and sort my array to comply tableView latest-item-first rendering
     func addMeme(meme: Meme) {
         unfreshMemes()
         memes.append(meme)
-        sortMemesAsc()
+        sortMemes(direction: memeOrder.asc)
+    }
+    
+    // replace the icoming image on corresponding position, execute sortMemes(ASC) to show this item on top of tableView
+    func replaceMeme(meme: Meme, index: Int) {
+        memes[index] = meme
+        sortMemes(direction: memeOrder.asc)
     }
     
     // remove meme from current struct array and (re) sort corresponding array
     func removeMeme(index: Int) {
         memes.remove(at: index)
-        sortMemesAsc()
+        sortMemes(direction: memeOrder.asc)
     }
     
-    func sortMemesAsc() {
-        memes.sort { $0.created! > $1.created! }
-    }
-    
-    func sortMemesDesc() {
-        memes.sort { $0.created! < $1.created! }
+    func sortMemes(direction: memeOrder) {
+        
+        switch direction {
+        case .asc:
+            memes.sort { $0.created! > $1.created! }
+        case .desc:
+            memes.sort { $0.created! < $1.created! }
+        case .rand:
+            memes.shuffle()
+        }
     }
     
     func unfreshMemes() {
