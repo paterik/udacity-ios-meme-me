@@ -20,8 +20,10 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var photoLibButton: UIBarButtonItem!
     @IBOutlet weak var exportButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var inputFieldTop: UIMemeTextField!
     @IBOutlet weak var inputFieldBottom: UIMemeTextField!
+
     
     //
     // MARK: Internal Variables
@@ -80,6 +82,12 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     //
     // MARK: Actions
     //
+    
+
+    @IBAction func cancelEditMeme(_ sender: AnyObject) {
+        
+        dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func exportImage(_ sender: AnyObject) {
         

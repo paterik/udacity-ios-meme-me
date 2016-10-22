@@ -217,6 +217,12 @@
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfg-L4-8z5" userLabel="ToolbarTop">
                                 <items>
+                                    <barButtonItem systemItem="stop" id="am8-NV-wOW" userLabel="Cancel">
+                                        <color key="tintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="cancelEditMeme:" destination="BYZ-38-t0r" id="rZH-ME-ypl"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="SsV-Yr-faT"/>
                                     <barButtonItem systemItem="action" id="kke-lY-F1N">
                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -270,6 +276,7 @@
                     </view>
                     <connections>
                         <outlet property="cameraButton" destination="PSh-9K-q30" id="vhE-aU-VSP"/>
+                        <outlet property="cancelButton" destination="am8-NV-wOW" id="W8W-Ck-2h0"/>
                         <outlet property="exportButton" destination="kke-lY-F1N" id="c3C-ec-dny"/>
                         <outlet property="imagePickerView" destination="gz7-dP-QJ4" id="mZX-Lr-aru"/>
                         <outlet property="inputFieldBottom" destination="lJC-Ug-zXx" id="atm-je-u9q"/>
