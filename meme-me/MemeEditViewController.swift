@@ -29,7 +29,7 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     // MARK: Internal Variables
     //
     
-    let memeFontNames = ["Futura-CondensedExtraBold", "HelveticaNeue-CondensedBlack"]
+    let memeFontNames = ["Impact", "Futura-CondensedExtraBold", "HelveticaNeue-CondensedBlack"]
     let memeFontNameFailback = "Arial"
     let memeFontSize: CGFloat = 32.0
     let memeFontSizeMinimum: CGFloat = 10.0
