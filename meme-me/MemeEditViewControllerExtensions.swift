@@ -198,7 +198,6 @@ extension MemeEditViewController {
         imagePickerSuccess = false
         imagePickerController.delegate = self
         exportButton.isEnabled = false
-        saveButton.isEnabled = false
         
         prepareMemeControls(activate: true)
         prepareEditControls(textFields: [
@@ -217,7 +216,11 @@ extension MemeEditViewController {
         // deactivate any navigation/toolbar control in presentation mode!
         if presentationMode {
             prepareMemeControls(activate: false)
-            imagePickerView.image = currentMeme!.imageOrigin!
+            preparePresentationControls()
+        }
+        
+        if !presentationMode && !editMode {
+            prepareCreationModeControls()
         }
         
         // always disable tabBarControls in editView
@@ -236,6 +239,34 @@ extension MemeEditViewController {
         }
         
         return memeFontNameFailback
+    }
+    
+    //
+    // additional ui improvements of current view handling app create meme mode
+    //
+    func prepareCreationModeControls() {
+        
+        saveButton.isEnabled = false
+        saveButton.style = UIBarButtonItemStyle.plain
+        saveButton.image = nil;
+    }
+    
+    //
+    // additional ui improvements of current view handling app presentation mode of current meme
+    //
+    func preparePresentationControls() {
+        
+        imagePickerView.image = currentMeme!.imageOrigin!
+        imagePickerView.contentMode = .scaleAspectFill
+        toolBarBottom.isHidden = true
+        
+        saveButton.isEnabled = false
+        saveButton.style = UIBarButtonItemStyle.plain
+        saveButton.image = nil;
+        
+        exportButton.isEnabled = false;
+        exportButton.style = UIBarButtonItemStyle.plain
+        exportButton.tintColor = UIColor.clear
     }
     
     //
@@ -271,9 +302,9 @@ extension MemeEditViewController {
 
     func prepareMemeControls(activate: Bool) {
     
-        cameraButton.isEnabled = activate && isCameraAvailable() && presentationMode
-        photoLibButton.isEnabled = activate && isLocalImageStockAvailable() && presentationMode
-        exportButton.isEnabled = activate && isImageExportable() && presentationMode
+        cameraButton.isEnabled = activate && isCameraAvailable()
+        photoLibButton.isEnabled = activate && isLocalImageStockAvailable()
+        exportButton.isEnabled = activate && isImageExportable()
     }
     
     func prepareToolBarControls(activate: Bool) {
