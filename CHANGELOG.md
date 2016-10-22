@@ -4,8 +4,24 @@ All notable changes of MemeMe release series are documented in this file using t
 
 _This MemeMe changelog documentation start with version 1.0.0 (2016-10-14)_
 
-## [2.0.0], 2016-10-22:
+## [2.0.1], 2016-10-12:
 _current_
+
+### Added
+
+* presentation view mode for existing memes
+
+### Changes
+
+* detailView for meme is available now by touching the corresponding row/cell
+* input fields for top and bottom meme-text are now capitalized
+
+### Fix
+
+* minor review releated issues
+
+
+## [2.0.0], 2016-10-22:
 
 ### Added
 
