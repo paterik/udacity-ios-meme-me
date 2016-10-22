@@ -21,6 +21,7 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var photoLibButton: UIBarButtonItem!
     @IBOutlet weak var exportButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var inputFieldTop: UIMemeTextField!
     @IBOutlet weak var inputFieldBottom: UIMemeTextField!
 
@@ -42,6 +43,7 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     var usedMemeFontName: String!
     var editMode: Bool = false
     var currentMeme: Meme?
+    var currentMemeRowIndex: Int?
     
     //
     // MARK: ViewController Overrides, LifeCycle Methods
@@ -83,7 +85,12 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     // MARK: Actions
     //
     
+    @IBAction func saveMeme(_ sender: AnyObject) {
+        
+        dismiss(animated: true, completion: nil)
+    }
 
+    
     @IBAction func cancelEditMeme(_ sender: AnyObject) {
         
         dismiss(animated: true, completion: nil)
