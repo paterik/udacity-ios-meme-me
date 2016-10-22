@@ -11,7 +11,15 @@ import UIKit
 
 class MemeCollectionViewController: UICollectionViewController {
 
+    //
+    // MARK: CollectionViewController IBOutlets
+    //
+    
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
+    //
+    // MARK: CollectionViewController variables and constants
+    //
     
     let memeCellIdent = "CustomMemeCell"
     let memeCellImageCornerRadius: CGFloat = 4.0
@@ -20,7 +28,7 @@ class MemeCollectionViewController: UICollectionViewController {
     var memes: [Meme] { return (UIApplication.shared.delegate as! AppDelegate).memes }
     
     //
-    // MARK: TableViewController Overrides, LifeCycle Methods
+    // MARK: CollectionViewController Overrides, LifeCycle Methods
     //
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,6 +49,17 @@ class MemeCollectionViewController: UICollectionViewController {
           numberOfItemsInSection section: Int) -> Int {
         
         return memes.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let editViewController = storyboard!.instantiateViewController(withIdentifier: "MemeEditViewController") as! MemeEditViewController
+        editViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+        editViewController.presentationMode = true
+        editViewController.currentMeme = memes[indexPath.row]
+        editViewController.currentMemeRowIndex = indexPath.row
+        
+        present(editViewController, animated: true, completion: nil)
     }
     
     override func collectionView(
@@ -77,7 +96,7 @@ class MemeCollectionViewController: UICollectionViewController {
             collectionCellSpacing = 4.0
         }
         
-        collectionCellWidth = (self.view.frame.width / numberOfCellInRow) - collectionCellPadding
+        collectionCellWidth = (view.frame.width / numberOfCellInRow) - collectionCellPadding
         collectionCellHeight = collectionCellWidth
         
         flowLayout.itemSize = CGSize(width: collectionCellWidth, height: collectionCellHeight)
