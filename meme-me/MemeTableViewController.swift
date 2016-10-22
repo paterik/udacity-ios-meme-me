@@ -91,6 +91,7 @@ class MemeTableViewController: UITableViewController {
                 editViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
                 editViewController.editMode = true
                 editViewController.currentMeme = self.memes[indexPath.row]
+                editViewController.currentMemeRowIndex = indexPath.row
                 self.present(editViewController, animated: true, completion: nil)
         }
         
