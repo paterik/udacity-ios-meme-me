@@ -113,6 +113,7 @@ class MemeCollectionViewController: UICollectionViewController {
         transition.type = kCATransitionPush
         transition.subtype = kCATransitionFromRight
         view.window!.layer.add(transition, forKey: kCATransition)
+        
         present(detailViewController, animated: false, completion: nil)
     }
 }
