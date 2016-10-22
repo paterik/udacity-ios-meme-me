@@ -22,7 +22,7 @@ extension MemeEditViewController {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.contentMode = memeImageContentMode
             imagePickerView.image = pickedImage
-            switchEditModeControls(activate: true)
+            switchEditControls(activate: true)
 
             imagePickerSuccess = true
         }
@@ -34,7 +34,7 @@ extension MemeEditViewController {
         _ picker: UIImagePickerController) {
         
         imagePickerSuccess = false
-        switchEditModeControls(activate: false)
+        switchEditControls(activate: false)
         
         dismiss(animated: true, completion: nil)
     }
@@ -193,11 +193,16 @@ extension MemeEditViewController {
         imagePickerController.delegate = self
         exportButton.isEnabled = false
         
-        prepareEditModeControls(textFields: [
-            inputFieldTop: memeTextFieldTopDefault,
-            inputFieldBottom: memeTextFieldBottomDefault
-            ], activate: false
+        prepareEditControls(textFields: [
+            inputFieldTop: editMode == false ? memeTextFieldTopDefault : currentMeme!.textTop!,
+            inputFieldBottom: editMode == false ? memeTextFieldBottomDefault : currentMeme!.textBottom!
+            ], activate: editMode
         )
+        
+        if editMode {
+            imagePickerSuccess = true
+            imagePickerView.image = currentMeme!.imageOrigin!
+        }
         
         prepareMemeControls(activate: true)
         
@@ -222,7 +227,7 @@ extension MemeEditViewController {
     //
     // prepare our meme input controls using dictionary of inputfields
     //
-    func prepareEditModeControls(textFields: [UIMemeTextField: String], activate: Bool) {
+    func prepareEditControls(textFields: [UIMemeTextField: String], activate: Bool) {
     
         usedMemeFontName = getAvailableMemeFontName(fontNamesAvailable: memeFontNames)
         
@@ -260,11 +265,11 @@ extension MemeEditViewController {
         toolBarBottom.isHidden = !activate
     }
     
-    func switchEditModeControls(activate: Bool) {
+    func switchEditControls(activate: Bool) {
         
-        prepareEditModeControls(textFields: [
-            inputFieldTop: memeTextFieldTopDefault,
-            inputFieldBottom: memeTextFieldBottomDefault
+        prepareEditControls(textFields: [
+            inputFieldTop: editMode == false ? memeTextFieldTopDefault : currentMeme!.textTop!,
+            inputFieldBottom: editMode == false ? memeTextFieldBottomDefault : currentMeme!.textBottom!
             ], activate: activate
         )
     }

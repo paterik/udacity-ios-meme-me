@@ -24,7 +24,6 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var inputFieldTop: UIMemeTextField!
     @IBOutlet weak var inputFieldBottom: UIMemeTextField!
 
-    
     //
     // MARK: Internal Variables
     //
@@ -41,7 +40,8 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     
     var imagePickerSuccess: Bool = false
     var usedMemeFontName: String!
-    var createMode: Bool = true
+    var editMode: Bool = false
+    var currentMeme: Meme?
     
     //
     // MARK: ViewController Overrides, LifeCycle Methods

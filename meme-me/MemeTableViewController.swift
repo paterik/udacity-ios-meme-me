@@ -13,6 +13,7 @@ import BGTableViewRowActionWithImage
 class MemeTableViewController: UITableViewController {
     
     let memeCellHeight: CGFloat = 80.0
+    let memeCellHeightSwipeActions: UInt = 98
     let memeCellImageCornerRadius: CGFloat = 5
     let memeCellIdent = "CustomMemeCell"
     
@@ -84,9 +85,13 @@ class MemeTableViewController: UITableViewController {
             
             backgroundColor: UIColor(netHex: 0x174881),
             image: UIImage(named: "Edit_v2"),
-            forCellHeight: 98) { action, index in
+            forCellHeight: memeCellHeightSwipeActions) { action, index in
                 
-                print("edit button tapped")
+                let editViewController = self.storyboard!.instantiateViewController(withIdentifier: "MemeEditViewController") as! MemeEditViewController
+                editViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+                editViewController.editMode = true
+                editViewController.currentMeme = self.memes[indexPath.row]
+                self.present(editViewController, animated: true, completion: nil)
         }
         
         // definition for my deleteButton also using 3rd party lib BGTableViewRowActionWithImage
@@ -96,9 +101,8 @@ class MemeTableViewController: UITableViewController {
             
             backgroundColor: UIColor(netHex: 0xD30038),
             image: UIImage(named: "Delete_v2"),
-            forCellHeight: 98) { action, index in
+            forCellHeight: memeCellHeightSwipeActions) { action, index in
                 
-                print("delete button tapped")
                 self.appDelegate.removeMeme(index: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
         }
