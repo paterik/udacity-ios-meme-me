@@ -121,7 +121,7 @@ extension MemeEditViewController {
         }
         
         // leave editView
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     func saveImage(renderedImage: UIImage) {
@@ -157,8 +157,8 @@ extension MemeEditViewController {
         // Hide toolbar and navbar
         prepareToolBarControls(activate: false)
         
-        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, !hasAlpha, scale)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContextWithOptions(view.frame.size, !hasAlpha, scale)
+        view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
         
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         
@@ -200,19 +200,25 @@ extension MemeEditViewController {
         exportButton.isEnabled = false
         saveButton.isEnabled = false
         
+        prepareMemeControls(activate: true)
         prepareEditControls(textFields: [
-            inputFieldTop: editMode == false ? memeTextFieldTopDefault : currentMeme!.textTop!,
-            inputFieldBottom: editMode == false ? memeTextFieldBottomDefault : currentMeme!.textBottom!
-            ], activate: editMode
+            inputFieldTop: editMode || presentationMode ? currentMeme!.textTop! : memeTextFieldTopDefault,
+            inputFieldBottom: editMode || presentationMode ? currentMeme!.textBottom! : memeTextFieldBottomDefault
+            ], activate: editMode || presentationMode
         )
         
+        // prepare my controller to handly editMode conventions
         if editMode {
             saveButton.isEnabled = true
             imagePickerSuccess = true
             imagePickerView.image = currentMeme!.imageOrigin!
         }
         
-        prepareMemeControls(activate: true)
+        // deactivate any navigation/toolbar control in presentation mode!
+        if presentationMode {
+            prepareMemeControls(activate: false)
+            imagePickerView.image = currentMeme!.imageOrigin!
+        }
         
         // always disable tabBarControls in editView
         tabBarController?.tabBar.isHidden = true
@@ -256,14 +262,18 @@ extension MemeEditViewController {
             textField.textAlignment = .center
             textField.text = defaultText
             textField.isHidden = !activate
+            
+            if presentationMode {
+               textField.isEnabled = false
+            }
         }
     }
 
     func prepareMemeControls(activate: Bool) {
     
-        cameraButton.isEnabled = activate && isCameraAvailable()
-        photoLibButton.isEnabled = activate && isLocalImageStockAvailable()
-        exportButton.isEnabled = activate && isImageExportable()
+        cameraButton.isEnabled = activate && isCameraAvailable() && presentationMode
+        photoLibButton.isEnabled = activate && isLocalImageStockAvailable() && presentationMode
+        exportButton.isEnabled = activate && isImageExportable() && presentationMode
     }
     
     func prepareToolBarControls(activate: Bool) {
@@ -275,8 +285,8 @@ extension MemeEditViewController {
     func switchEditControls(activate: Bool) {
         
         prepareEditControls(textFields: [
-            inputFieldTop: editMode == false ? memeTextFieldTopDefault : currentMeme!.textTop!,
-            inputFieldBottom: editMode == false ? memeTextFieldBottomDefault : currentMeme!.textBottom!
+            inputFieldTop: editMode || presentationMode ? currentMeme!.textTop! : memeTextFieldTopDefault,
+            inputFieldBottom: editMode || presentationMode ? currentMeme!.textBottom! : memeTextFieldBottomDefault
             ], activate: activate
         )
     }

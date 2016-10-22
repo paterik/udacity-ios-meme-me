@@ -42,6 +42,7 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     var imagePickerSuccess: Bool = false
     var usedMemeFontName: String!
     var editMode: Bool = false
+    var presentationMode: Bool = false
     var currentMeme: Meme?
     var currentMemeRowIndex: Int?
     
@@ -70,7 +71,7 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         
-        if (imagePickerSuccess) {
+        if (imagePickerSuccess || editMode || presentationMode) {
             return
         }
         
