@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import BGTableViewRowActionWithImage
 
 class MemeTableViewController: UITableViewController {
     
@@ -65,16 +66,41 @@ class MemeTableViewController: UITableViewController {
         return memeCellHeight;
     }
     
-    override func tableView(
-        _ tableView: UITableView,
-          commit editingStyle: UITableViewCellEditingStyle,
-          forRowAt indexPath: IndexPath) {
-        
-        if editingStyle == .delete {
-            appDelegate.removeMeme(index: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        // definition for my editButton using 3rd party lib BGTableViewRowActionWithImage
+        let edit = BGTableViewRowActionWithImage.rowAction(
+            with: UITableViewRowActionStyle.default,
+            title: " Edit ",
+            
+            backgroundColor: UIColor(netHex: 0x174881),
+            image: UIImage(named: "Edit_v2"),
+            forCellHeight: 98) { action, index in
+                
+                print("edit button tapped")
+        }
+        
+        // definition for my deleteButton also using 3rd party lib BGTableViewRowActionWithImage
+        let delete = BGTableViewRowActionWithImage.rowAction(
+            with: UITableViewRowActionStyle.destructive,
+            title: "Delete",
+            
+            backgroundColor: UIColor(netHex: 0xD30038),
+            image: UIImage(named: "Delete_v2"),
+            forCellHeight: 98) { action, index in
+                
+                print("delete button tapped")
+                self.appDelegate.removeMeme(index: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        
+        return [delete!, edit!]
+    }
+
     
     override func tableView(
         _ tableView: UITableView,
