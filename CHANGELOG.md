@@ -4,8 +4,27 @@ All notable changes of MemeMe release series are documented in this file using t
 
 _This MemeMe changelog documentation start with version 1.0.0 (2016-10-14)_
 
-## [11.0.3], 2016-10-16:
+## [2.0.0], 2016-10-22:
 _current_
+
+### Added
+
+* list of current memes in table and collectionView
+* edit existing meme swipe function
+* delete exisiting meme swipe function
+* pod file definition
+
+### Changes
+
+* improve image export/share quality
+* minor code quality improvments
+
+### Fixes
+
+* export image rendiring bug
+
+
+## [1.0.3], 2016-10-16:
 
 ### Changes
 
