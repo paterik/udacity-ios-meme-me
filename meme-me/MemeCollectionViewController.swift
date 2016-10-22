@@ -57,13 +57,11 @@ class MemeCollectionViewController: UICollectionViewController {
         _ collectionView: UICollectionView,
           didSelectItemAt indexPath: IndexPath) {
         
-        let editViewController = storyboard!.instantiateViewController(withIdentifier: "MemeEditViewController") as! MemeEditViewController
-        editViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-        editViewController.presentationMode = true
-        editViewController.currentMeme = memes[indexPath.row]
-        editViewController.currentMemeRowIndex = indexPath.row
+        let detailViewController = storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        detailViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+        detailViewController.currentMeme = memes[indexPath.row]
         
-        present(editViewController, animated: true, completion: nil)
+        present(detailViewController, animated: true, completion: nil)
     }
     
     override func collectionView(

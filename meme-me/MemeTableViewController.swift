@@ -140,10 +140,10 @@ class MemeTableViewController: UITableViewController {
         _ tableView: UITableView,
           didSelectRowAt indexPath: IndexPath) {
         
-        let editViewController = storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
-        editViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-        editViewController.currentMeme = memes[indexPath.row]
+        let detailViewController = storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        detailViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+        detailViewController.currentMeme = memes[indexPath.row]
         
-        present(editViewController, animated: true, completion: nil)
+        present(detailViewController, animated: true, completion: nil)
     }
 }
