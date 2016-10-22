@@ -297,6 +297,49 @@
             </objects>
             <point key="canvasLocation" x="1044" y="134"/>
         </scene>
+        <!--DetailviewController-->
+        <scene sceneID="teN-d1-eGu">
+            <objects>
+                <viewController storyboardIdentifier="MemeDetailViewController" title="DetailviewController" id="Lwd-Pj-XA0" customClass="MemeDetailViewController" customModule="meme_me" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qu6-3T-yYy"/>
+                        <viewControllerLayoutGuide type="bottom" id="lTx-tk-Mo7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BaV-fa-AfR" userLabel="DetailView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KJo-3k-bRC">
+                                <items>
+                                    <barButtonItem systemItem="stop" id="fea-4i-OiF" userLabel="Cancel Button">
+                                        <color key="tintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="exitMemeDetailView:" destination="Lwd-Pj-XA0" id="Oqe-za-xp5"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZKk-XA-dP6"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZKk-XA-dP6" firstAttribute="top" secondItem="KJo-3k-bRC" secondAttribute="bottom" id="0VA-sH-ri4"/>
+                            <constraint firstItem="KJo-3k-bRC" firstAttribute="leading" secondItem="BaV-fa-AfR" secondAttribute="leading" id="4cP-h2-hez"/>
+                            <constraint firstItem="KJo-3k-bRC" firstAttribute="leading" secondItem="ZKk-XA-dP6" secondAttribute="leading" id="GBW-0o-ANQ"/>
+                            <constraint firstAttribute="trailing" secondItem="KJo-3k-bRC" secondAttribute="trailing" id="LLe-li-LXB"/>
+                            <constraint firstItem="KJo-3k-bRC" firstAttribute="trailing" secondItem="ZKk-XA-dP6" secondAttribute="trailing" id="c31-Jz-eYu"/>
+                            <constraint firstItem="KJo-3k-bRC" firstAttribute="top" secondItem="qu6-3T-yYy" secondAttribute="bottom" id="gOd-BU-552"/>
+                            <constraint firstItem="ZKk-XA-dP6" firstAttribute="bottom" secondItem="lTx-tk-Mo7" secondAttribute="top" id="iqm-kr-8oj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="memeDetailView" destination="ZKk-XA-dP6" id="Txa-7U-5d0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fL5-mR-cbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1712.8" y="133.5832083958021"/>
+        </scene>
         <!--NavigationViewControllerTable-->
         <scene sceneID="jWx-dq-Sl1">
             <objects>
