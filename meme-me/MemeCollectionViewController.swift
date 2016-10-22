@@ -55,17 +55,6 @@ class MemeCollectionViewController: UICollectionViewController {
     
     override func collectionView(
         _ collectionView: UICollectionView,
-          didSelectItemAt indexPath: IndexPath) {
-        
-        let detailViewController = storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
-        detailViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-        detailViewController.currentMeme = memes[indexPath.row]
-        
-        present(detailViewController, animated: true, completion: nil)
-    }
-    
-    override func collectionView(
-        _ collectionView: UICollectionView,
           cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let meme = memes[indexPath.row]
@@ -109,5 +98,21 @@ class MemeCollectionViewController: UICollectionViewController {
             width: collectionCellWidth,
             height: collectionCellHeight
         );
+    }
+    
+    override func collectionView(
+        _ collectionView: UICollectionView,
+          didSelectItemAt indexPath: IndexPath) {
+        
+        let detailViewController = storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        let transition = CATransition()
+        
+        detailViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+        detailViewController.currentMeme = memes[indexPath.row]
+        
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromRight
+        view.window!.layer.add(transition, forKey: kCATransition)
+        present(detailViewController, animated: false, completion: nil)
     }
 }
