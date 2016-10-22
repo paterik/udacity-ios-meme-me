@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "NewMeme.png",
+      "filename" : "Edit_50.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Edit_75.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Edit_100.png",
       "scale" : "3x"
     }
   ],
