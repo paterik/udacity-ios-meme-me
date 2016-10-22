@@ -92,6 +92,7 @@ class MemeTableViewController: UITableViewController {
                 editViewController.editMode = true
                 editViewController.currentMeme = self.memes[indexPath.row]
                 editViewController.currentMemeRowIndex = indexPath.row
+                
                 self.present(editViewController, animated: true, completion: nil)
         }
         
@@ -116,7 +117,7 @@ class MemeTableViewController: UITableViewController {
           cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let meme = memes[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: memeCellIdent) as! MemeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: memeCellIdent, for: indexPath) as! MemeTableViewCell
         
         cell.memeImage.image = meme.imageOrigin!
         cell.memeLabelTop.text = meme.textTop!
@@ -125,9 +126,22 @@ class MemeTableViewController: UITableViewController {
         cell.memeTagImage?.image = nil
         
         if meme.fresh! == true {
-            cell.memeTagImage?.image = UIImage(named:"NewMeme")!
+            cell.memeTagImage?.image = UIImage(named: "NewMeme")!
         }
         
         return cell
+    }
+    
+    override func tableView(
+        _ tableView: UITableView,
+          didSelectRowAt indexPath: IndexPath) {
+        
+        let editViewController = storyboard!.instantiateViewController(withIdentifier: "MemeEditViewController") as! MemeEditViewController
+        editViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+        editViewController.presentationMode = true
+        editViewController.currentMeme = memes[indexPath.row]
+        editViewController.currentMemeRowIndex = indexPath.row
+        
+        present(editViewController, animated: true, completion: nil)
     }
 }
