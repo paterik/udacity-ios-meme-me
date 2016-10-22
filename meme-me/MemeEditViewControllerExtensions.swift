@@ -192,6 +192,7 @@ extension MemeEditViewController {
         imagePickerSuccess = false
         imagePickerController.delegate = self
         exportButton.isEnabled = false
+        saveButton.isEnabled = false
         
         prepareEditControls(textFields: [
             inputFieldTop: editMode == false ? memeTextFieldTopDefault : currentMeme!.textTop!,
@@ -200,6 +201,7 @@ extension MemeEditViewController {
         )
         
         if editMode {
+            saveButton.isEnabled = true
             imagePickerSuccess = true
             imagePickerView.image = currentMeme!.imageOrigin!
         }
