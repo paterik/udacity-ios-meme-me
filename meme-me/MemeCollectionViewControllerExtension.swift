@@ -11,6 +11,10 @@ import UIKit
 
 extension MemeCollectionViewController {
 
+    //
+    // MARK: controller extension helper functions
+    //
+    
     func layoutCellLabels(labels: [UILabel]) {
         
         for label in labels {

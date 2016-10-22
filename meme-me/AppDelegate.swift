@@ -13,13 +13,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    // some pseudo storage definition for our memes
+    //
+    // MARK: repository/model related variables
+    //
+    
     var memes: [Meme] = []
     enum memeOrder {
         case asc
         case desc
         case rand
     }
+    
+    //
+    // MARK: repository/model related functions
+    //
     
     // append meme to current struct array and sort my array to comply tableView latest-item-first rendering
     func addMeme(meme: Meme) {
@@ -58,6 +65,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    //
+    // MARK: repository/model fixture load related functions
+    //
+    
+    // loading fixtures for testing tableView/editView/collectionView without creating memes manually
     func loadFixtures() {
         
         let dateFormatter = DateFormatter()
@@ -92,6 +104,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    //
+    // MARK: application entryPoint functions
+    //
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         loadFixtures()

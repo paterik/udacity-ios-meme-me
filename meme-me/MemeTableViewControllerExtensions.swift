@@ -11,6 +11,10 @@ import UIKit
 
 extension MemeTableViewController {
     
+    //
+    // MARK: controller extension helper functions
+    //
+    
     func getNoDataImageView() -> UIImageView {
     
         noDataImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
