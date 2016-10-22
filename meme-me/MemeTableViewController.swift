@@ -12,11 +12,13 @@ import BGTableViewRowActionWithImage
 
 class MemeTableViewController: UITableViewController {
     
+    // constants
     let memeCellHeight: CGFloat = 80.0
     let memeCellHeightSwipeActions: UInt = 98
     let memeCellImageCornerRadius: CGFloat = 5
     let memeCellIdent = "CustomMemeCell"
     
+    // variables
     var noDataImageView : UIImageView!
     var memes: [Meme] { return (UIApplication.shared.delegate as! AppDelegate).memes }
     var appDelegate: AppDelegate { return (UIApplication.shared.delegate as! AppDelegate) }
@@ -28,12 +30,14 @@ class MemeTableViewController: UITableViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         refreshTableView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
+        
         tableView.reloadData()
     }
     
@@ -136,11 +140,9 @@ class MemeTableViewController: UITableViewController {
         _ tableView: UITableView,
           didSelectRowAt indexPath: IndexPath) {
         
-        let editViewController = storyboard!.instantiateViewController(withIdentifier: "MemeEditViewController") as! MemeEditViewController
+        let editViewController = storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         editViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-        editViewController.presentationMode = true
         editViewController.currentMeme = memes[indexPath.row]
-        editViewController.currentMemeRowIndex = indexPath.row
         
         present(editViewController, animated: true, completion: nil)
     }

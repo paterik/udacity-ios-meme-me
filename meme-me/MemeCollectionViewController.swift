@@ -21,9 +21,11 @@ class MemeCollectionViewController: UICollectionViewController {
     // MARK: CollectionViewController variables and constants
     //
     
+    // constants
     let memeCellIdent = "CustomMemeCell"
     let memeCellImageCornerRadius: CGFloat = 4.0
 
+    // variables
     var noDataImageView: UIImageView!
     var memes: [Meme] { return (UIApplication.shared.delegate as! AppDelegate).memes }
     
@@ -51,7 +53,9 @@ class MemeCollectionViewController: UICollectionViewController {
         return memes.count
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    override func collectionView(
+        _ collectionView: UICollectionView,
+          didSelectItemAt indexPath: IndexPath) {
         
         let editViewController = storyboard!.instantiateViewController(withIdentifier: "MemeEditViewController") as! MemeEditViewController
         editViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical

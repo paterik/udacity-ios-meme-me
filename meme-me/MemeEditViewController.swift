@@ -29,16 +29,18 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     // MARK: Internal Variables
     //
     
+    // constants
     let memeFontNames = ["Impact", "Futura-CondensedExtraBold", "HelveticaNeue-CondensedBlack"]
     let memeFontNameFailback = "Arial"
-    let memeFontSize: CGFloat = 32.0
-    let memeFontSizeMinimum: CGFloat = 10.0
     let memeTextFieldTopDefault = "TOP"
     let memeTextFieldBottomDefault = "BOTTOM"
+    let memeFontSize: CGFloat = 32.0
+    let memeFontSizeMinimum: CGFloat = 10.0
     let memeTextFieldDelegate = MemeTextFieldDelegate()
     let memeImageContentMode: UIViewContentMode = .scaleAspectFit
     let imagePickerController = UIImagePickerController()
     
+    // variables
     var imagePickerSuccess: Bool = false
     var usedMemeFontName: String!
     var editMode: Bool = false
@@ -90,6 +92,7 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBAction func saveMeme(_ sender: AnyObject) {
         
         saveImageModel(memedImage: imagePickerView.image!)
+        
         dismiss(animated: true, completion: nil)
     }
 
@@ -177,4 +180,3 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         present(alertController, animated: true, completion: nil)
     }
 }
-

@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // replace the icoming image on corresponding position, execute sortMemes(ASC) to show this item on top of tableView
     func replaceMeme(meme: Meme, index: Int) {
+        unfreshMemes()
         memes[index] = meme
         sortMemes(direction: memeOrder.asc)
     }
@@ -73,10 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func loadFixtures() {
         
         let dateFormatter = DateFormatter()
-        
-        dateFormatter.locale = Locale(identifier: NSLocale.current.languageCode!)
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        
         let memeFixtureData = [
             // 0: textTop, 1: textBottom, 2: imageOrigin, 3: image, 4: created
             ("I'm on a strict diet", "Whiskey and rare steak", "sample-meme-1", "sample-meme-1", "2016-10-21 06:00:00"),
@@ -88,6 +85,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ]
         
         var meme: Meme
+        
+        dateFormatter.locale = Locale(identifier: NSLocale.current.languageCode!)
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
         
         for (_textTop, _textBottom, _imageOrigin, _image, _created) in memeFixtureData {
 
@@ -140,4 +140,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 }
-

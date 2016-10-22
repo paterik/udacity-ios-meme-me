@@ -110,7 +110,7 @@ extension MemeEditViewController {
             imageOrigin: imagePickerView.image!,
             image: editMode == false ? memedImage : renderMemedImage(),
             created: Date(),
-            fresh: !editMode
+            fresh: true
         )
         
         // decide to append or replace meme based on current edit mode state flag

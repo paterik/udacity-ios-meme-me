@@ -18,4 +18,3 @@ class UIMemeTextField: UITextField {
         return self.text != contentDefault
     }
 }
-
