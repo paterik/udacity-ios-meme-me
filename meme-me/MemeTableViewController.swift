@@ -66,11 +66,16 @@ class MemeTableViewController: UITableViewController {
         return memeCellHeight;
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    override func tableView(
+        _ tableView: UITableView,
+          canEditRowAt indexPath: IndexPath) -> Bool {
+        
         return true
     }
     
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    override func tableView(
+        _ tableView: UITableView,
+          editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         // definition for my editButton using 3rd party lib BGTableViewRowActionWithImage
         let edit = BGTableViewRowActionWithImage.rowAction(
@@ -100,7 +105,6 @@ class MemeTableViewController: UITableViewController {
         
         return [delete!, edit!]
     }
-
     
     override func tableView(
         _ tableView: UITableView,
