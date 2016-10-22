@@ -52,6 +52,7 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewDidLoad() {
         
         super.viewDidLoad()
+
         prepareControls()
     }
     
@@ -87,6 +88,7 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func saveMeme(_ sender: AnyObject) {
         
+        saveImageModel(memedImage: imagePickerView.image!)
         dismiss(animated: true, completion: nil)
     }
 
