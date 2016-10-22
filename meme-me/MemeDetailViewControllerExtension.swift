@@ -11,6 +11,10 @@ import UIKit
 
 extension MemeDetailViewController {
 
+    //
+    // MARK: UI/Control Methods
+    //
+    
     func prepareDetailView() {
     
         memeDetailView.image = currentMeme!.image

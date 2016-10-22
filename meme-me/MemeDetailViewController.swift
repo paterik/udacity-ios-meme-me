@@ -11,17 +11,28 @@ import UIKit
 
 class MemeDetailViewController: UIViewController {
    
+    //
+    // MARK: CollectionViewController IBOutlets
+    //
     
     @IBOutlet weak var memeDetailView: UIImageView!
     
     var currentMeme: Meme?
 
+    //
+    // MARK: TableViewController Overrides, LifeCycle Methods
+    //
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         prepareDetailView()
     }
+    
+    //
+    // MARK: CollectionViewController @IBActions
+    //
     
     @IBAction func exitMemeDetailView(_ sender: AnyObject) {
         
