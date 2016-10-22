@@ -1,0 +1,6 @@
+framework module Pods_meme_me {
+  umbrella header "Pods-meme-me-umbrella.h"
+
+  export *
+  module * { export * }
+}
