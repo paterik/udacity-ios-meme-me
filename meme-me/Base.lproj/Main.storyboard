@@ -217,7 +217,7 @@
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfg-L4-8z5" userLabel="ToolbarTop">
                                 <items>
-                                    <barButtonItem systemItem="stop" id="am8-NV-wOW" userLabel="Cancel">
+                                    <barButtonItem systemItem="stop" id="am8-NV-wOW" userLabel="Cancel Button">
                                         <color key="tintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="cancelEditMeme:" destination="BYZ-38-t0r" id="rZH-ME-ypl"/>
@@ -231,6 +231,12 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="kUr-4O-nTW"/>
+                                    <barButtonItem image="Save" id="NzU-bY-6WW" userLabel="Save Button">
+                                        <color key="tintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="saveMeme:" destination="BYZ-38-t0r" id="nd7-66-gfg"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
@@ -282,6 +288,7 @@
                         <outlet property="inputFieldBottom" destination="lJC-Ug-zXx" id="atm-je-u9q"/>
                         <outlet property="inputFieldTop" destination="NKX-3f-Sxm" id="BxV-LW-mDU"/>
                         <outlet property="photoLibButton" destination="Top-lX-MRz" id="hn0-87-mmX"/>
+                        <outlet property="saveButton" destination="NzU-bY-6WW" id="ayv-1e-vqD"/>
                         <outlet property="toolBarBottom" destination="AjT-mK-wSK" id="Xsl-vy-I8w"/>
                         <outlet property="toolBarTop" destination="wfg-L4-8z5" id="mua-DC-Ui0"/>
                     </connections>
@@ -334,6 +341,7 @@
         <image name="CollectionView" width="25" height="25"/>
         <image name="Library" width="25" height="25"/>
         <image name="NewMeme" width="180" height="266"/>
+        <image name="Save" width="25" height="25"/>
         <image name="TableView" width="25" height="25"/>
         <image name="WelcomeMemeCreatePortrait" width="414" height="736"/>
         <image name="sample-meme-1" width="512" height="650"/>
