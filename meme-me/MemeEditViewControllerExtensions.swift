@@ -108,12 +108,18 @@ extension MemeEditViewController {
             textTop: inputFieldTop.text!,
             textBottom: inputFieldBottom.text!,
             imageOrigin: imagePickerView.image!,
-            image: memedImage,
+            image: editMode == false ? memedImage : renderMemedImage(),
             created: Date(),
-            fresh: true
+            fresh: !editMode
         )
         
-        (UIApplication.shared.delegate as! AppDelegate).addMeme(meme: meme)
+        // decide to append or replace meme based on current edit mode state flag
+        if editMode == false {
+            (UIApplication.shared.delegate as! AppDelegate).addMeme(meme: meme)
+        } else {
+            (UIApplication.shared.delegate as! AppDelegate).replaceMeme(meme: meme, index: currentMemeRowIndex!)
+        }
+        
         // leave editView
         self.dismiss(animated: true, completion: nil)
     }
@@ -132,6 +138,7 @@ extension MemeEditViewController {
         let activityViewController = UIActivityViewController(activityItems: [renderedImage as UIImage], applicationActivities: nil)
         // let save the meme as model only if share was completed successfully
         activityViewController.completionWithItemsHandler = {(activity, completed, items, error) in
+            
             if (completed) {
                 self.saveImageModel(memedImage: renderedImage)
             }
@@ -169,14 +176,13 @@ extension MemeEditViewController {
           contextInfo: UnsafeRawPointer) {
         
         if let ioError = error {
-            displayAlert(alertTitle: "Meme not saved!", alertMessage: ioError.localizedDescription, alertButtonText: "OK")
+            displayEditViewAlert(alertTitle: "Meme not saved!", alertMessage: ioError.localizedDescription, alertButtonText: "OK")
         } else {
-            displayAlert(alertTitle: "Meme saved!", alertMessage: "Your memed image has been saved to your photos", alertButtonText: "OK")
+            displayEditViewAlert(alertTitle: "Meme saved!", alertMessage: "Your memed image has been saved to your photos", alertButtonText: "OK")
         }
     }
     
-    // todo: #2 move this method to a global (callable) service stack in final version!
-    func displayAlert(alertTitle: String, alertMessage: String, alertButtonText: String) {
+    func displayEditViewAlert(alertTitle: String, alertMessage: String, alertButtonText: String) {
     
         let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: alertButtonText, style: .default))
@@ -242,14 +248,13 @@ extension MemeEditViewController {
                 NSStrokeWidthAttributeName : -3
                 ] as [String : Any]
             
+            textField.contentDefault = textField.text!
             textField.defaultTextAttributes = memeTextAttributes
             textField.adjustsFontSizeToFitWidth = true
             textField.minimumFontSize = memeFontSizeMinimum
             textField.delegate = memeTextFieldDelegate
             textField.textAlignment = .center
             textField.text = defaultText
-            textField.contentDefault = textField.text!
-            
             textField.isHidden = !activate
         }
     }
