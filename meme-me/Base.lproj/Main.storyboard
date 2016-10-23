@@ -310,6 +310,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KJo-3k-bRC">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="fmS-CV-P1c"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem systemItem="stop" id="fea-4i-OiF" userLabel="Cancel Button">
                                         <color key="tintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
