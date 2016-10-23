@@ -4,8 +4,17 @@ All notable changes of MemeMe release series are documented in this file using t
 
 _This MemeMe changelog documentation start with version 1.0.0 (2016-10-14)_
 
+## [2.0.3], 2016-10-23:
+_current_
+
+### Changes
+
+* fix review related issues
+* fix detailView image positioning problem
+* minor code quality improvements
+
+
 ## [2.0.2], 2016-10-23:
-_current
 
 ### Added
 
