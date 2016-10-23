@@ -21,7 +21,7 @@ class MemeTextFieldDelegate : NSObject, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         let memeTextField = textField as! UIMemeTextField
-        if (!memeTextField.differsFromDefault()) {
+        if (!memeTextField.hasDefaultText()) {
             memeTextField.text = ""
         }
     }

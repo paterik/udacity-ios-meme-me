@@ -80,10 +80,7 @@ extension MemeEditViewController {
     func keyboardWillDisappear(notification: NSNotification) {
         
         prepareMemeControls(activate: true)
-        
-        if view.frame.origin.y != 0 {
-            view.frame.origin.y = 0
-        }
+        view.frame.origin.y = 0
     }
     
     func keyboardWillAppear(notification: NSNotification) {
@@ -91,7 +88,7 @@ extension MemeEditViewController {
         prepareMemeControls(activate: false)
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.height {
-            if view.frame.origin.y == 0 && inputFieldBottom.isFirstResponder {
+            if inputFieldBottom.isFirstResponder {
                 self.view.frame.origin.y =  keyboardSize * -1
             }
         }
@@ -109,12 +106,12 @@ extension MemeEditViewController {
             textBottom: inputFieldBottom.text!,
             imageOrigin: imagePickerView.image!,
             image: editMode == false ? memedImage : renderMemedImage(),
-            created: Date(),
-            fresh: true
+            fresh: true,
+            created: Date()
         )
         
         // decide to append or replace meme based on current edit mode state flag
-        if editMode == false {
+        if !editMode {
             (UIApplication.shared.delegate as! AppDelegate).addMeme(meme: meme)
         } else {
             (UIApplication.shared.delegate as! AppDelegate).replaceMeme(meme: meme, index: currentMemeRowIndex!)

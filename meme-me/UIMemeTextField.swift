@@ -13,7 +13,7 @@ class UIMemeTextField: UITextField {
     
     var contentDefault: String = ""
     
-    func differsFromDefault() -> Bool {
+    func hasDefaultText() -> Bool {
 
         return self.text != contentDefault
     }
