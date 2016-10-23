@@ -9,9 +9,13 @@ _current_
 
 ### Changes
 
+* minor code quality improvements
+* model change for created field, using const now
+
+### Fix
+
 * fix review related issues
 * fix detailView image positioning problem
-* minor code quality improvements
 
 
 ## [2.0.2], 2016-10-23:
