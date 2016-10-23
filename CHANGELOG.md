@@ -16,7 +16,7 @@ _current_
 
 * fix review related issues
 * fix detailView image positioning problem
-
+* auto uppercase bug on physically devices
 
 ## [2.0.2], 2016-10-23:
 
