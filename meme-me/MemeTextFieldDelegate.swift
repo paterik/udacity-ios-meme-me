@@ -11,14 +11,18 @@ import UIKit
 
 class MemeTextFieldDelegate : NSObject, UITextFieldDelegate {
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(
+        _ textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
 
         return true
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textField(
+        _ textField: UITextField,
+          shouldChangeCharactersIn range: NSRange,
+          replacementString string: String) -> Bool {
         
         if let text = textField.text {
             textField.text = (text as NSString).replacingCharacters(in: range, with: string.uppercased())
@@ -27,7 +31,8 @@ class MemeTextFieldDelegate : NSObject, UITextFieldDelegate {
         return false
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    func textFieldDidBeginEditing(
+        _ textField: UITextField) {
         
         let memeTextField = textField as! UIMemeTextField
         if (!memeTextField.hasDefaultText()) {
