@@ -96,8 +96,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 textBottom: _textBottom,
                 imageOrigin:  UIImage(named: _imageOrigin),
                 image:  UIImage(named: _image),
-                created: dateFormatter.date(from: _created)!,
-                fresh: false
+                fresh: false,
+                created: dateFormatter.date(from: _created)!
             )
             
             addMeme(meme: meme)
