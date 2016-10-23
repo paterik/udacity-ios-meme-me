@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension Array
-{
+extension Array {
+    
     // randomizing order of array elements
     mutating func shuffle()
     {
