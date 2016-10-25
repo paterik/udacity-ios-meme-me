@@ -30,6 +30,7 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     //
     
     // constants
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let memeFontNames = ["Impact", "Futura-CondensedExtraBold", "HelveticaNeue-CondensedBlack"]
     let memeFontNameFailback = "Arial"
     let memeTextFieldTopDefault = "TOP"
