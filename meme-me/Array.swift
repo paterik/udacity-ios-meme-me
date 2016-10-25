@@ -10,9 +10,8 @@ import Foundation
 
 extension Array {
     
-    // randomizing order of array elements
-    mutating func shuffle()
-    {
+    mutating func shuffle() {
+        
         let shuffleIterations = 10
         for _ in 0..<shuffleIterations
         {

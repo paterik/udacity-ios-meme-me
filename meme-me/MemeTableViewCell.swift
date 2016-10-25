@@ -15,5 +15,4 @@ class MemeTableViewCell: UITableViewCell {
     @IBOutlet weak var memeLabelTop: UILabel!
     @IBOutlet weak var memeLabelBottom: UILabel!
     @IBOutlet weak var memeTagImage: UIImageView?
-    
 }

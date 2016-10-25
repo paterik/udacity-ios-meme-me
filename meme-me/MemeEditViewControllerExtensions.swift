@@ -112,9 +112,9 @@ extension MemeEditViewController {
         
         // decide to append or replace meme based on current edit mode state flag
         if !editMode {
-            (UIApplication.shared.delegate as! AppDelegate).addMeme(meme: meme)
+            appDelegate.addMeme(meme: meme)
         } else {
-            (UIApplication.shared.delegate as! AppDelegate).replaceMeme(meme: meme, index: currentMemeRowIndex!)
+            appDelegate.replaceMeme(meme: meme, index: currentMemeRowIndex!)
         }
         
         // leave editView
@@ -225,7 +225,7 @@ extension MemeEditViewController {
     }
     
     //
-    // check for predefined fontrange availability, switch to alternate one if given one not exist
+    // check for predefined font-range availability, switch to alternate one if given one not exist
     //
     func getAvailableMemeFontName(fontNamesAvailable: [String]) -> String {
         

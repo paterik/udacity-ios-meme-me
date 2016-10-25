@@ -20,5 +20,6 @@ struct Meme {
     var imageOrigin: UIImage?
     var image: UIImage?
     var fresh: Bool?
+    
     let created: Date?
 }
