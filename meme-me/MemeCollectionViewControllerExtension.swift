@@ -22,11 +22,11 @@ extension MemeCollectionViewController {
             let memeTextAttributes = [
                 NSStrokeColorAttributeName : UIColor.black,
                 NSForegroundColorAttributeName : UIColor.white,
-                NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 14.0)!,
+                NSFontAttributeName : UIFont(name: memeCellFontName, size: memeCellFontSize)!,
                 NSStrokeWidthAttributeName : -2
                 ] as [String : Any]
             
-            label.attributedText = NSMutableAttributedString(string: label.text! as String, attributes:memeTextAttributes)
+            label.attributedText = NSMutableAttributedString(string: label.text! as String, attributes: memeTextAttributes)
             label.adjustsFontSizeToFitWidth = true
             label.textAlignment = .center
         }

@@ -24,10 +24,13 @@ class MemeCollectionViewController: UICollectionViewController {
     // constants
     let memeCellIdent = "CustomMemeCell"
     let memeCellImageCornerRadius: CGFloat = 4.0
+    let memeCellFontSize: CGFloat = 14.0
+    let memeCellFontName = "HelveticaNeue-CondensedBlack"
 
     // variables
     var noDataImageView: UIImageView!
     var memes: [Meme] { return (UIApplication.shared.delegate as! AppDelegate).memes }
+    var appDelegate: AppDelegate { return (UIApplication.shared.delegate as! AppDelegate) }
     
     //
     // MARK: CollectionViewController Overrides, LifeCycle Methods
@@ -36,6 +39,7 @@ class MemeCollectionViewController: UICollectionViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
+        
         refreshCollectionView()
     }
     
@@ -50,14 +54,14 @@ class MemeCollectionViewController: UICollectionViewController {
         _ collectionView: UICollectionView,
           numberOfItemsInSection section: Int) -> Int {
         
-        return memes.count
+        return appDelegate.memes.count
     }
     
     override func collectionView(
         _ collectionView: UICollectionView,
           cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let meme = memes[indexPath.row]
+        let meme = appDelegate.memes[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: memeCellIdent, for: indexPath) as! MemeCollectionViewCell
         
         cell.memeImage.image = meme.imageOrigin!
@@ -69,6 +73,27 @@ class MemeCollectionViewController: UICollectionViewController {
         
         return cell
     }
+    
+    override func collectionView(
+        _ collectionView: UICollectionView,
+          didSelectItemAt indexPath: IndexPath) {
+        
+        let detailViewController = storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        let transition = CATransition()
+        
+        detailViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+        detailViewController.currentMeme = appDelegate.memes[indexPath.row]
+        
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromRight
+        view.window!.layer.add(transition, forKey: kCATransition)
+        
+        present(detailViewController, animated: false, completion: nil)
+    }
+    
+    //
+    // MARK: CollectionViewController Optional (Overrides)
+    //
     
     func collectionView(
         _ collectionView: UICollectionView,
@@ -98,22 +123,5 @@ class MemeCollectionViewController: UICollectionViewController {
             width: collectionCellWidth,
             height: collectionCellHeight
         );
-    }
-    
-    override func collectionView(
-        _ collectionView: UICollectionView,
-          didSelectItemAt indexPath: IndexPath) {
-        
-        let detailViewController = storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
-        let transition = CATransition()
-        
-        detailViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-        detailViewController.currentMeme = memes[indexPath.row]
-        
-        transition.type = kCATransitionPush
-        transition.subtype = kCATransitionFromRight
-        view.window!.layer.add(transition, forKey: kCATransition)
-        
-        present(detailViewController, animated: false, completion: nil)
     }
 }
