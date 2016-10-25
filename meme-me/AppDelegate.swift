@@ -66,6 +66,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func getAppVersionString() -> String? {
+    
+        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") {
+            if let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") {
+                return ("\(version).\(build)")
+            }
+            
+            return version as? String
+        }
+        
+        return nil
+    }
+    
     //
     // MARK: repository/model fixture load related functions
     //
