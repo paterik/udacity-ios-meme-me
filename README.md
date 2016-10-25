@@ -2,7 +2,7 @@
 ## udacity.com student submission
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
-[![System Version](https://img.shields.io/badge/version-2.0.3-blue.svg)](VERSION)
+[![System Version](https://img.shields.io/badge/version-2.0.4-blue.svg)](VERSION)
 
 This repository will hold my project submission for udacity.com project works on app "MemeMe" during my iOS developer certification program
 
