@@ -4,8 +4,21 @@ All notable changes of MemeMe release series are documented in this file using t
 
 _This MemeMe changelog documentation start with version 1.0.0 (2016-10-14)_
 
+## [2.0.5], 2016-10-27:
+_current (dev)_
+
+### Changes
+
+* switch from textField to textView elements as meme text input controls
+* multiline support and memeText effect improvements
+* minor code refactoring and stability improvements
+
+### Fix
+
+* orientation switch bug on iPhone5 landscape mode
+
+
 ## [2.0.4], 2016-10-25:
-_current_
 
 ### Changes
 
