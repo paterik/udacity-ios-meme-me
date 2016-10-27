@@ -1,20 +1,19 @@
 //
-//  UIMemeTextField.swift
+//  MemeTextView.swift
 //  meme-me
 //
-//  Created by Patrick Paechnatz on 15.10.16.
+//  Created by Patrick Paechnatz on 27.10.16.
 //  Copyright © 2016 Patrick Paechnatz. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class UIMemeTextField: UITextField {
+class MemeTextView: UITextView {
     
     var contentDefault: String = ""
     
     func hasDefaultText() -> Bool {
-
+        
         return self.text != contentDefault
     }
 }
