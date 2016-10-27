@@ -197,9 +197,9 @@ extension MemeEditViewController {
         exportButton.isEnabled = false
         
         prepareMemeControls(activate: true)
-        prepareEditControls(textFields: [
-            inputFieldTop: editMode || presentationMode ? currentMeme!.textTop! : memeTextFieldTopDefault,
-            inputFieldBottom: editMode || presentationMode ? currentMeme!.textBottom! : memeTextFieldBottomDefault
+        prepareEditControls(textViews: [
+            inputFieldTop: editMode || presentationMode ? currentMeme!.textTop! : memeTextViewTopDefault,
+            inputFieldBottom: editMode || presentationMode ? currentMeme!.textBottom! : memeTextViewBottomDefault
             ], activate: editMode || presentationMode
         )
         
@@ -269,30 +269,28 @@ extension MemeEditViewController {
     //
     // prepare our meme input controls using dictionary of inputfields
     //
-    func prepareEditControls(textFields: [UIMemeTextField: String], activate: Bool) {
+    func prepareEditControls(textViews: [MemeTextView: String], activate: Bool) {
     
         usedMemeFontName = getAvailableMemeFontName(fontNamesAvailable: memeFontNames)
         
-        for (textField, defaultText) in textFields {
+        for (textView, defaultText) in textViews {
             
-            let memeTextAttributes = [
+            _ = [
                 NSStrokeColorAttributeName : UIColor.black,
                 NSForegroundColorAttributeName : UIColor.white,
                 NSFontAttributeName : UIFont(name: usedMemeFontName, size: memeFontSize)!,
                 NSStrokeWidthAttributeName : -3
                 ] as [String : Any]
             
-            textField.contentDefault = textField.text!
-            textField.defaultTextAttributes = memeTextAttributes
-            textField.adjustsFontSizeToFitWidth = true
-            textField.minimumFontSize = memeFontSizeMinimum
-            textField.delegate = memeTextFieldDelegate
-            textField.textAlignment = .center
-            textField.text = defaultText
-            textField.isHidden = !activate
+            textView.contentDefault = textView.text!
+            //textView.text.defaultTextAttributes = memeTextAttributes
+            textView.delegate = memeTextViewDelegate
+            textView.textAlignment = .center
+            textView.text = defaultText
+            textView.isHidden = !activate
             
             if presentationMode {
-               textField.isEnabled = false
+               textView.isEditable = false
             }
         }
     }
@@ -312,9 +310,9 @@ extension MemeEditViewController {
     
     func switchEditControls(activate: Bool) {
         
-        prepareEditControls(textFields: [
-            inputFieldTop: editMode || presentationMode ? currentMeme!.textTop! : memeTextFieldTopDefault,
-            inputFieldBottom: editMode || presentationMode ? currentMeme!.textBottom! : memeTextFieldBottomDefault
+        prepareEditControls(textViews: [
+            inputFieldTop: editMode || presentationMode ? currentMeme!.textTop! : memeTextViewTopDefault,
+            inputFieldBottom: editMode || presentationMode ? currentMeme!.textBottom! : memeTextViewBottomDefault
             ], activate: activate
         )
     }

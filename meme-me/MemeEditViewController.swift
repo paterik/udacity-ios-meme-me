@@ -22,8 +22,9 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var exportButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    @IBOutlet weak var inputFieldTop: UIMemeTextField!
-    @IBOutlet weak var inputFieldBottom: UIMemeTextField!
+    
+    @IBOutlet weak var inputFieldTop: MemeTextView!
+    @IBOutlet weak var inputFieldBottom: MemeTextView!
 
     //
     // MARK: Internal Variables
@@ -33,11 +34,11 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let memeFontNames = ["Impact", "Futura-CondensedExtraBold", "HelveticaNeue-CondensedBlack"]
     let memeFontNameFailback = "Arial"
-    let memeTextFieldTopDefault = "TOP"
-    let memeTextFieldBottomDefault = "BOTTOM"
+    let memeTextViewTopDefault = "TOP"
+    let memeTextViewBottomDefault = "BOTTOM"
     let memeFontSize: CGFloat = 32.0
     let memeFontSizeMinimum: CGFloat = 10.0
-    let memeTextFieldDelegate = MemeTextFieldDelegate()
+    let memeTextViewDelegate = MemeTextViewDelegate()
     let memeImageContentMode: UIViewContentMode = .scaleAspectFit
     let imagePickerController = UIImagePickerController()
     
