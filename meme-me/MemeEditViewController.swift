@@ -22,7 +22,6 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var exportButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
     @IBOutlet weak var inputFieldTop: MemeTextView!
     @IBOutlet weak var inputFieldBottom: MemeTextView!
 
@@ -46,7 +45,6 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     var imagePickerSuccess: Bool = false
     var usedMemeFontName: String!
     var editMode: Bool = false
-    var presentationMode: Bool = false
     var currentMeme: Meme?
     var currentMemeRowIndex: Int?
     
@@ -66,17 +64,12 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         super.viewWillAppear(animated)
         
         subscribeToKeyboardNotifications()
-        
-        /*if #available(iOS 9.0, *) {
-            inputFieldBottom.isScrollEnabled = false
-        }
-        
-        self.inputFieldBottom.scrollRangeToVisible(NSMakeRange(0, 0))**/
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         
         super.viewWillDisappear(animated)
+        
         unSubscribeToKeyboardNotifications()
     }
     
@@ -84,22 +77,13 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         
         super.viewDidLayoutSubviews()
         
-        renderBottomTextFieldContent(textView: inputFieldBottom)
-    }
-    
-    func renderBottomTextFieldContent(textView: MemeTextView) {
-    
-        var topCorrect = (textView.bounds.size.height - (textView.contentSize.height * textView.zoomScale)) / 2
-        
-        topCorrect = topCorrect < 0.0 ? 0.0 : topCorrect
-        
-        // textView.contentInset.top = -topCorrect
-        textView.setContentOffset(CGPoint(x: 0, y: -topCorrect), animated: false)
+        inputFieldTop.verticalAlign(position: "top")
+        inputFieldBottom.verticalAlign(position: "bottom")
     }
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         
-        if (imagePickerSuccess || editMode || presentationMode) {
+        if (imagePickerSuccess || editMode) {
             return
         }
         
