@@ -126,7 +126,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //
         // uncomment the lines below to load predefined memes into the app list of models
         //
-        // loadFixtures()
+        
+        loadFixtures()
         
         return true
     }
