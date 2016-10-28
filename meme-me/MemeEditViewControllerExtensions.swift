@@ -186,6 +186,26 @@ extension MemeEditViewController {
         present(alertController, animated: true)
     }
     
+    func getPreConfiguredMemeTextViews() -> [MemeTextViewModel] {
+        
+        return [
+            MemeTextViewModel(
+                isTopText: true,
+                isBottomText: false,
+                defaultText: editMode ? currentMeme!.textTop! : memeTextViewTopDefault,
+                verticalAlign: "top",
+                textView: inputFieldTop!
+            ),
+            MemeTextViewModel(
+                isTopText: false,
+                isBottomText: true,
+                defaultText: editMode ? currentMeme!.textBottom! : memeTextViewBottomDefault,
+                verticalAlign: "bottom",
+                textView: inputFieldBottom!
+            ),
+        ]
+    }
+    
     //
     // MARK: UI/Control Methods
     //
@@ -197,11 +217,7 @@ extension MemeEditViewController {
         exportButton.isEnabled = false
         
         prepareMemeControls(activate: true)
-        prepareEditControls(textViews: [
-            inputFieldTop: editMode || presentationMode ? currentMeme!.textTop! : memeTextViewTopDefault,
-            inputFieldBottom: editMode || presentationMode ? currentMeme!.textBottom! : memeTextViewBottomDefault
-            ], activate: editMode || presentationMode
-        )
+        prepareEditControls(textViews: getPreConfiguredMemeTextViews(), activate: editMode)
         
         // prepare my controller to handly editMode conventions
         if editMode {
@@ -210,13 +226,7 @@ extension MemeEditViewController {
             imagePickerView.image = currentMeme!.imageOrigin!
         }
         
-        // deactivate any navigation/toolbar control in presentation mode!
-        if presentationMode {
-            prepareMemeControls(activate: false)
-            preparePresentationControls()
-        }
-        
-        if !presentationMode && !editMode {
+        if !editMode {
             prepareCreationModeControls()
         }
         
@@ -249,49 +259,36 @@ extension MemeEditViewController {
     }
     
     //
-    // additional ui improvements of current view handling app presentation mode of current meme
-    //
-    func preparePresentationControls() {
-        
-        imagePickerView.image = currentMeme!.imageOrigin!
-        imagePickerView.contentMode = .scaleAspectFill
-        toolBarBottom.isHidden = true
-        
-        saveButton.isEnabled = false
-        saveButton.style = UIBarButtonItemStyle.plain
-        saveButton.image = nil;
-        
-        exportButton.isEnabled = false;
-        exportButton.style = UIBarButtonItemStyle.plain
-        exportButton.tintColor = UIColor.clear
-    }
-    
-    //
     // prepare our meme input controls using dictionary of inputfields
     //
-    func prepareEditControls(textViews: [MemeTextView: String], activate: Bool) {
-    
-        usedMemeFontName = getAvailableMemeFontName(fontNamesAvailable: memeFontNames)
+    func prepareEditControls(textViews: [MemeTextViewModel], activate: Bool) {
         
-        for (textView, defaultText) in textViews {
+        //    NSStrokeColorAttributeName : UIColor.black,
+        //    NSForegroundColorAttributeName : UIColor.white,
+        //    NSFontAttributeName : UIFont(name: usedMemeFontName, size: memeFontSize)!
+        
+        usedMemeFontName = getAvailableMemeFontName(fontNamesAvailable: memeFontNames)
+        for config in textViews {
             
-            _ = [
-                NSStrokeColorAttributeName : UIColor.black,
-                NSForegroundColorAttributeName : UIColor.white,
-                NSFontAttributeName : UIFont(name: usedMemeFontName, size: memeFontSize)!,
-                NSStrokeWidthAttributeName : -3
-                ] as [String : Any]
+            /*var myMutableString = NSMutableAttributedString()
             
-            textView.contentDefault = textView.text!
-            //textView.text.defaultTextAttributes = memeTextAttributes
-            textView.delegate = memeTextViewDelegate
-            textView.textAlignment = .center
-            textView.text = defaultText
-            textView.isHidden = !activate
+            myMutableString.addAttribute(
+                NSBackgroundColorAttributeName,
+                value: UIColor.green,
+                range: NSRange(
+                    location: 0,
+                    length: (config.defaultText?.lengthOfBytes(using: String.Encoding.utf8))!)
+            )*/
             
-            if presentationMode {
-               textView.isEditable = false
-            }
+            config.textView?.delegate = memeTextViewDelegate
+            config.textView?.textAlignment = .center
+            config.textView?.text = config.defaultText
+            config.textView?.isHidden = !activate 
+            config.textView?.contentDefault = (config.textView?.text)!
+            config.textView?.verticalAlignment = config.verticalAlign!
+            config.textView?.isTopText = config.isTopText!
+            config.textView?.isBottomText = config.isBottomText!
+            config.textView?.backgroundColor = UIColor.clear
         }
     }
 
@@ -310,11 +307,7 @@ extension MemeEditViewController {
     
     func switchEditControls(activate: Bool) {
         
-        prepareEditControls(textViews: [
-            inputFieldTop: editMode || presentationMode ? currentMeme!.textTop! : memeTextViewTopDefault,
-            inputFieldBottom: editMode || presentationMode ? currentMeme!.textBottom! : memeTextViewBottomDefault
-            ], activate: activate
-        )
+        prepareEditControls(textViews: getPreConfiguredMemeTextViews(), activate: activate)
     }
     
     //
