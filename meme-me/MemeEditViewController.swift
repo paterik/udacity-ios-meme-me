@@ -64,13 +64,37 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        
         subscribeToKeyboardNotifications()
+        
+        /*if #available(iOS 9.0, *) {
+            inputFieldBottom.isScrollEnabled = false
+        }
+        
+        self.inputFieldBottom.scrollRangeToVisible(NSMakeRange(0, 0))**/
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         
         super.viewWillDisappear(animated)
         unSubscribeToKeyboardNotifications()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        
+        super.viewDidLayoutSubviews()
+        
+        renderBottomTextFieldContent(textView: inputFieldBottom)
+    }
+    
+    func renderBottomTextFieldContent(textView: MemeTextView) {
+    
+        var topCorrect = (textView.bounds.size.height - (textView.contentSize.height * textView.zoomScale)) / 2
+        
+        topCorrect = topCorrect < 0.0 ? 0.0 : topCorrect
+        
+        // textView.contentInset.top = -topCorrect
+        textView.setContentOffset(CGPoint(x: 0, y: -topCorrect), animated: false)
     }
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {

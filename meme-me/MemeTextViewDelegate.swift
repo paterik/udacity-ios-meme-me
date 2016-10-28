@@ -25,6 +25,12 @@ class MemeTextViewDelegate : NSObject, UITextViewDelegate {
           replacementString string: String) -> Bool {
         
         if let text = textView.text {
+            
+            var topCorrect = (textView.bounds.size.height - (textView.contentSize.height * textView.zoomScale)) / 2
+            topCorrect = topCorrect < 0.0 ? 0.0 : topCorrect
+            // textView.contentInset.top = -topCorrect
+            textView.setContentOffset(CGPoint(x: 0, y: -topCorrect), animated: false)
+            
             textView.text = (text as NSString).replacingCharacters(in: range, with: string.uppercased())
         }
         
