@@ -13,9 +13,13 @@ _current (dev)_
 * multiline support and memeText effect improvements
 * minor code refactoring and stability improvements
 
-### Fix
+### Fixed
 
 * orientation switch bug on iPhone5 landscape mode
+
+### Removed
+
+* obsolete presentation mode in editView
 
 
 ## [2.0.4], 2016-10-25:
@@ -35,11 +39,12 @@ _current (dev)_
 * minor code quality improvements
 * model change for created field, using const now
 
-### Fix
+### Fixed
 
 * fix review related issues
 * fix detailView image positioning problem
 * auto uppercase bug on physically devices
+
 
 ## [2.0.2], 2016-10-23:
 
@@ -65,7 +70,7 @@ _current (dev)_
 * detailView for meme is available now by touching the corresponding row/cell
 * input fields for top and bottom meme-text are now capitalized
 
-### Fix
+### Fixed
 
 * minor review releated issues
 
@@ -84,7 +89,7 @@ _current (dev)_
 * improve image export/share quality
 * minor code quality improvments
 
-### Fixes
+### Fixed
 
 * export image rendiring bug
 
@@ -100,7 +105,7 @@ _current (dev)_
 
 ## [1.0.2], 2016-10-15:
 
-### Fixes
+### Fixed
 
 * font resource problem
 
@@ -111,7 +116,7 @@ _current (dev)_
 
 ## [1.0.1], 2016-10-15:
 
-### Fixes
+### Fixed
 
 * font initialization issue
 * bug in oriantation switch during input
