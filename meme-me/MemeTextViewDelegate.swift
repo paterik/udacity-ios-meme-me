@@ -26,12 +26,8 @@ class MemeTextViewDelegate : NSObject, UITextViewDelegate {
         
         if let text = textView.text {
             
-            var topCorrect = (textView.bounds.size.height - (textView.contentSize.height * textView.zoomScale)) / 2
-            topCorrect = topCorrect < 0.0 ? 0.0 : topCorrect
-            // textView.contentInset.top = -topCorrect
-            textView.setContentOffset(CGPoint(x: 0, y: -topCorrect), animated: false)
-            
             textView.text = (text as NSString).replacingCharacters(in: range, with: string.uppercased())
+            
         }
         
         return false
@@ -41,8 +37,10 @@ class MemeTextViewDelegate : NSObject, UITextViewDelegate {
         _ textView: UITextView) {
         
         let memeTextView = textView as! MemeTextView
-        if (!memeTextView.hasDefaultText()) {
+        if (memeTextView.hasDefaultText()) {
             memeTextView.text = ""
         }
+        
+        textView.verticalAlign(position: memeTextView.verticalAlignment)
     }
 }
