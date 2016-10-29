@@ -44,6 +44,10 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     // variables
     var imagePickerSuccess: Bool = false
     var usedMemeFontName: String!
+    var memeTextViewAttributedText: NSMutableAttributedString!
+    var memeParagraphStyle: NSMutableParagraphStyle!
+    var memeTextViewAttributes: [String : Any]!
+    var memeTextViewCurrent: MemeTextView!
     var editMode: Bool = false
     var currentMeme: Meme?
     var currentMemeRowIndex: Int?
