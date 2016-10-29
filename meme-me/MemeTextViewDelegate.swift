@@ -12,7 +12,11 @@ import UIKit
 class MemeTextViewDelegate : NSObject, UITextViewDelegate {
     
     //
-    // force vertical alignment recalculation on any text change made
+    // MARK : Delegate TextView Controls
+    //
+    
+    //
+    // force vertical alignment (re)calculation on any text change made
     //
     func textViewDidChange(
         _ textView: UITextView) {
