@@ -10,14 +10,15 @@ import UIKit
 
 extension UITextView {
     
+    // weazL
     func verticalAlign(position: String = "top") {
-        
-        // textView.contentInset.top = -topCorrect
         
         let textView = self
         let height = textView.bounds.size.height
         let contentHeight:CGFloat = contentSize.height
+        
         var topCorrect: CGFloat = 0.0
+        
         switch(position) {
             case "top":
                 textView.contentOffset = CGPoint.zero
@@ -39,5 +40,8 @@ extension UITextView {
             topCorrect = topCorrect < 0 ? 0 : topCorrect //contentHeight - height of textView
             textView.contentOffset = CGPoint(x: 0, y: topCorrect)
         }
+    
+        // textView.isScrollEnabled = false
+        // textView.sizeToFit()
     }
 }
