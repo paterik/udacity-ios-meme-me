@@ -86,8 +86,6 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         
-        updateInputControls()
-        
         if (imagePickerSuccess || editMode) {
             return
         }
@@ -100,10 +98,20 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     
-    func navigationControllerSupportedInterfaceOrientations(
-        _ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
+    //
+    // set orientation to portrati (fix) in editView
+    //
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         
         return UIInterfaceOrientationMask.portrait
+    }
+    
+    //
+    // disable orientation switch in editView
+    //
+    override var shouldAutorotate: Bool {
+        
+        return false
     }
     
     //
