@@ -24,7 +24,7 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var inputFieldTop: MemeTextView!
     @IBOutlet weak var inputFieldBottom: MemeTextView!
-
+    
     //
     // MARK: Internal Variables
     //
@@ -80,12 +80,13 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewDidLayoutSubviews() {
         
         super.viewDidLayoutSubviews()
-        
-        inputFieldTop.verticalAlign(position: "top")
-        inputFieldBottom.verticalAlign(position: "bottom")
+
+        updateInputControls()
     }
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        
+        updateInputControls()
         
         if (imagePickerSuccess || editMode) {
             return
@@ -97,6 +98,12 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         if (toInterfaceOrientation.isLandscape) {
             imagePickerView.image = UIImage(named: "WelcomeMemeCreateLandscape")
         }
+    }
+    
+    func navigationControllerSupportedInterfaceOrientations(
+        _ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
+        
+        return UIInterfaceOrientationMask.portrait
     }
     
     //
