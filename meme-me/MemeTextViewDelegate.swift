@@ -11,26 +11,12 @@ import UIKit
 
 class MemeTextViewDelegate : NSObject, UITextViewDelegate {
     
-    func textViewShouldReturn(
-        _ textView: UITextView) -> Bool {
+    func textViewDidChange(
+        _ textView: UITextView) {
         
-        textView.resignFirstResponder()
-
-        return true
-    }
-    
-    func textView(
-        _ textView: UITextView,
-          shouldChangeCharactersIn range: NSRange,
-          replacementString string: String) -> Bool {
+        let memeTextView = textView as! MemeTextView
         
-        if let text = textView.text {
-            
-            textView.text = (text as NSString).replacingCharacters(in: range, with: string.uppercased())
-            
-        }
-        
-        return false
+        memeTextView.verticalAlign(position: memeTextView.verticalAlignment)
     }
     
     @objc(textViewDidBeginEditing:) func textViewDidBeginEditing(
