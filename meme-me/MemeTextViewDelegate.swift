@@ -11,6 +11,9 @@ import UIKit
 
 class MemeTextViewDelegate : NSObject, UITextViewDelegate {
     
+    //
+    // force vertical alignment recalculation on any text change made
+    //
     func textViewDidChange(
         _ textView: UITextView) {
         
@@ -19,6 +22,29 @@ class MemeTextViewDelegate : NSObject, UITextViewDelegate {
         memeTextView.verticalAlign(position: memeTextView.verticalAlignment)
     }
     
+    //
+    // dismiss keyboard on pressing "done" or "return" so far
+    //
+    func textView(
+        _ textView: UITextView,
+        shouldChangeTextIn range: NSRange,
+        replacementText text: String) -> Bool {
+        
+        let memeTextView = textView as! MemeTextView
+        
+        if text == "\n" {
+            
+            memeTextView.resignFirstResponder()
+            
+            return false
+        }
+        
+        return true
+    }
+    
+    //
+    // clear textView on clicking default text placeholder, leave text as is on existing (not default) content
+    //
     @objc(textViewDidBeginEditing:) func textViewDidBeginEditing(
         _ textView: UITextView) {
         
