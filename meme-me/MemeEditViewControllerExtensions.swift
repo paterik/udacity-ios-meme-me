@@ -20,11 +20,11 @@ extension MemeEditViewController {
           didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
             imagePickerView.contentMode = memeImageContentMode
             imagePickerView.image = pickedImage
-            switchEditControls(activate: true)
-
             imagePickerSuccess = true
+            switchEditControls(activate: true)
         }
         
         dismiss(animated: true, completion: nil)
@@ -133,7 +133,7 @@ extension MemeEditViewController {
         
         // open activitiy controller to share the incoming image
         let activityViewController = UIActivityViewController(activityItems: [renderedImage as UIImage], applicationActivities: nil)
-        // let save the meme as model only if share was completed successfully
+        // let save the meme as model (only if call to share completed successfully!)
         activityViewController.completionWithItemsHandler = {(activity, completed, items, error) in
             
             if (completed) {
@@ -255,8 +255,8 @@ extension MemeEditViewController {
     //
     func prepareCreationModeControls() {
         
-        saveButton.isEnabled = false
         saveButton.style = UIBarButtonItemStyle.plain
+        saveButton.isEnabled = false
         saveButton.image = nil;
     }
     
@@ -281,7 +281,7 @@ extension MemeEditViewController {
         
         for config in textViews {
             
-            // try to unwrap config given textView and set attributed content
+            // safefully unwrap config given textView and set attributed content
             if let memeTextViewCurrent = config.textView {
             
                 memeTextViewCurrent.delegate = memeTextViewDelegate
