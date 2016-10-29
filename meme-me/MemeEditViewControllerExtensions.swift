@@ -235,7 +235,7 @@ extension MemeEditViewController {
         
         if !editMode {
             prepareCreationModeControls()
-        }
+        } 
     }
     
     //
@@ -293,7 +293,9 @@ extension MemeEditViewController {
                 memeTextViewCurrent.isTopText = config.isTopText!
                 memeTextViewCurrent.isBottomText = config.isBottomText!
                 memeTextViewCurrent.backgroundColor = UIColor.clear
-                
+                //
+                // @todo: check textView.contentInset for padding issue(s)
+                //
                 memeTextViewAttributedText = NSMutableAttributedString(string: config.defaultText!)
                 memeTextViewAttributedText.addAttributes(
                     memeTextViewAttributes,
@@ -326,6 +328,13 @@ extension MemeEditViewController {
     func switchEditControls(activate: Bool) {
         
         prepareEditControls(textViews: getPreConfiguredMemeTextViews(), activate: activate)
+    }
+    
+    // weazL
+    func updateInputControls() {
+        
+        inputFieldTop.verticalAlign(position: "top")
+        inputFieldBottom.verticalAlign(position: "bottom")
     }
     
     //
