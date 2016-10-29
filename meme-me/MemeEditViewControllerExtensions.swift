@@ -186,6 +186,9 @@ extension MemeEditViewController {
         present(alertController, animated: true)
     }
     
+    //
+    // get predefined meme textViews with characteristic configuration schema
+    //
     func getPreConfiguredMemeTextViews() -> [MemeTextViewModel] {
         
         return [
@@ -259,7 +262,7 @@ extension MemeEditViewController {
     }
     
     //
-    // prepare our meme input controls using dictionary of inputfields
+    // prepare our meme textView controls using dictionary of MemeTextViewModels
     //
     func prepareEditControls(textViews: [MemeTextViewModel], activate: Bool) {
         
@@ -282,13 +285,14 @@ extension MemeEditViewController {
             
             config.textView?.delegate = memeTextViewDelegate
             config.textView?.textAlignment = .center
-            config.textView?.text = config.defaultText
-            config.textView?.isHidden = !activate 
+            config.textView?.isHidden = !activate
             config.textView?.contentDefault = (config.textView?.text)!
             config.textView?.verticalAlignment = config.verticalAlign!
             config.textView?.isTopText = config.isTopText!
             config.textView?.isBottomText = config.isBottomText!
             config.textView?.backgroundColor = UIColor.clear
+            config.textView?.text = config.defaultText
+            
         }
     }
 
