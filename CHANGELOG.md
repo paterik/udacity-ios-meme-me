@@ -11,6 +11,7 @@ _current_
 
 * new icon for updated memes
 * new icon for sample memes
+* affinity designer template for app icons
 
 ### Changes
 
@@ -19,6 +20,7 @@ _current_
 * minor code refactoring and stability improvements
 * enforce porttrait orientation on detailView and editView
 * improve new meme icon
+* generalize template naming (sketch/ad)
 
 ### Removed
 
