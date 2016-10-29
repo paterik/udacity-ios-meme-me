@@ -11,6 +11,11 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    //
+    // MARK: global variables and constants
+    //
+    
+    let screenSize: CGRect = UIScreen.main.bounds
     var window: UIWindow?
     
     //
@@ -67,19 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func getAppVersionString() -> String? {
-    
-        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") {
-            if let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") {
-                return ("\(version).\(build)")
-            }
-            
-            return version as? String
-        }
-        
-        return nil
-    }
-    
     //
     // MARK: repository/model fixture load related functions
     //
@@ -118,6 +110,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             addMeme(meme: meme)
         }
+    }
+    
+    //
+    // MARK: global application functions
+    //
+    
+    func getAppVersionString() -> String? {
+        
+        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") {
+            if let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") {
+                return ("\(version).\(build)")
+            }
+            
+            return version as? String
+        }
+        
+        return nil
     }
 
     //
