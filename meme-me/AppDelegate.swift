@@ -63,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func unfreshMemes() {
         for index in 0..<memes.count {
             memes[index].fresh = false
+            memes[index].updated = false
         }
     }
     
@@ -110,6 +111,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 imageOrigin:  UIImage(named: _imageOrigin),
                 image:  UIImage(named: _image),
                 fresh: false,
+                updated: false,
+                sample: true,
                 created: dateFormatter.date(from: _created)!
             )
             

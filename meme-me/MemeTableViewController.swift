@@ -17,6 +17,8 @@ class MemeTableViewController: UITableViewController {
     let memeCellHeightSwipeActions: UInt = 98
     let memeCellImageCornerRadius: CGFloat = 5
     let memeCellIdent = "CustomMemeCell"
+    let memeIconNew = "IconNew"
+    let memeIconUdpdated = "IconUpdated"
     
     // variables
     var noDataImageView : UIImageView!
@@ -129,8 +131,14 @@ class MemeTableViewController: UITableViewController {
         cell.memeImage.layer.cornerRadius = memeCellImageCornerRadius
         cell.memeTagImage?.image = nil
         
+        // tag meme if newly generated
         if meme.fresh! == true {
-            cell.memeTagImage?.image = UIImage(named: "NewMeme")!
+            cell.memeTagImage?.image = UIImage(named: memeIconNew)!
+        }
+        
+        // tag meme if updated recently
+        if meme.updated! == true {
+            cell.memeTagImage?.image = UIImage(named: memeIconUdpdated)!
         }
         
         return cell

@@ -105,8 +105,10 @@ extension MemeEditViewController {
             textTop: inputFieldTop.text!,
             textBottom: inputFieldBottom.text!,
             imageOrigin: imagePickerView.image!,
-            image: editMode == false ? memedImage : renderMemedImage(),
-            fresh: true,
+            image: !editMode ? memedImage : renderMemedImage(),
+            fresh: !editMode,
+            updated: editMode,
+            sample: false,
             created: Date()
         )
         
