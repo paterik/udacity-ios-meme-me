@@ -202,10 +202,10 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="BOTTOM TEXT WILL BE BOTTOM TEXT" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="P89-a6-GM4" userLabel="InputFieldBottom" customClass="MemeTextView" customModule="meme_me" customModuleProvider="target">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="BOTTOM" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="P89-a6-GM4" userLabel="InputFieldBottom" customClass="MemeTextView" customModule="meme_me" customModuleProvider="target">
                                 <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="225" id="4c3-7d-g1R"/>
+                                    <constraint firstAttribute="height" constant="225" id="GgJ-Vi-WSl"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="32"/>
@@ -255,10 +255,10 @@
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="TOP TEXT WILL BE TOP TEXT" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="epd-6d-Ik6" userLabel="InputFieldTop" customClass="MemeTextView" customModule="meme_me" customModuleProvider="target">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="TOP" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="epd-6d-Ik6" userLabel="InputFieldTop" customClass="MemeTextView" customModule="meme_me" customModuleProvider="target">
                                 <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="225" id="hVV-xS-Ywk"/>
+                                    <constraint firstAttribute="height" constant="225" id="yIc-8V-5Nl"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="32"/>
@@ -269,8 +269,8 @@
                         <constraints>
                             <constraint firstItem="gz7-dP-QJ4" firstAttribute="trailing" secondItem="AjT-mK-wSK" secondAttribute="trailing" id="2N4-wF-Eql"/>
                             <constraint firstItem="AjT-mK-wSK" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="2mz-Ns-4TS"/>
-                            <constraint firstItem="P89-a6-GM4" firstAttribute="top" secondItem="gz7-dP-QJ4" secondAttribute="top" constant="334" id="3hg-aF-FJT"/>
-                            <constraint firstItem="P89-a6-GM4" firstAttribute="centerX" secondItem="wfg-L4-8z5" secondAttribute="centerX" id="Bxv-wN-ZyQ"/>
+                            <constraint firstItem="P89-a6-GM4" firstAttribute="trailing" secondItem="epd-6d-Ik6" secondAttribute="trailing" id="6Ql-4a-dQo"/>
+                            <constraint firstItem="epd-6d-Ik6" firstAttribute="top" secondItem="wfg-L4-8z5" secondAttribute="bottom" constant="21" id="BcV-b4-jiI"/>
                             <constraint firstItem="gz7-dP-QJ4" firstAttribute="leading" secondItem="AjT-mK-wSK" secondAttribute="leading" id="EGI-Hr-vhN"/>
                             <constraint firstItem="wfg-L4-8z5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GQA-76-xDf"/>
                             <constraint firstItem="wfg-L4-8z5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="PnZ-AY-J0u"/>
@@ -282,7 +282,7 @@
                             <constraint firstItem="wfg-L4-8z5" firstAttribute="trailing" secondItem="gz7-dP-QJ4" secondAttribute="trailing" id="h0Q-r3-e7l"/>
                             <constraint firstItem="epd-6d-Ik6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="icY-ua-dQP"/>
                             <constraint firstItem="P89-a6-GM4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="oc3-Zj-6jv"/>
-                            <constraint firstItem="epd-6d-Ik6" firstAttribute="top" secondItem="wfg-L4-8z5" secondAttribute="bottom" id="zvE-3n-nX6"/>
+                            <constraint firstItem="P89-a6-GM4" firstAttribute="bottom" secondItem="gz7-dP-QJ4" secondAttribute="bottom" constant="-21" id="vid-2J-5N3"/>
                         </constraints>
                     </view>
                     <connections>
