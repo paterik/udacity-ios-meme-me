@@ -219,8 +219,10 @@ extension MemeEditViewController {
         imagePickerController.delegate = self
         exportButton.isEnabled = false
         
+        // prepare all controls/views/layers
         prepareMemeControls(activate: true)
         prepareEditControls(textViews: getPreConfiguredMemeTextViews(), activate: editMode)
+        prepareTabControls()
         
         // prepare my controller to handly editMode conventions
         if editMode {
@@ -232,9 +234,6 @@ extension MemeEditViewController {
         if !editMode {
             prepareCreationModeControls()
         }
-        
-        // always disable tabBarControls in editView
-        tabBarController?.tabBar.isHidden = true
     }
     
     //
@@ -266,34 +265,47 @@ extension MemeEditViewController {
     //
     func prepareEditControls(textViews: [MemeTextViewModel], activate: Bool) {
         
-        //    NSStrokeColorAttributeName : UIColor.black,
-        //    NSForegroundColorAttributeName : UIColor.white,
-        //    NSFontAttributeName : UIFont(name: usedMemeFontName, size: memeFontSize)!
+        memeParagraphStyle = NSMutableParagraphStyle()
+        memeParagraphStyle.lineBreakMode = .byWordWrapping;
+        memeParagraphStyle.alignment = .center;
         
         usedMemeFontName = getAvailableMemeFontName(fontNamesAvailable: memeFontNames)
+        
+        memeTextViewAttributes = [
+            NSStrokeColorAttributeName : UIColor.black,
+            NSForegroundColorAttributeName : UIColor.white,
+            NSParagraphStyleAttributeName: memeParagraphStyle,
+            NSFontAttributeName : UIFont(name: usedMemeFontName, size: memeFontSize)!,
+            NSStrokeWidthAttributeName : -3
+            ] as [String : Any]
+        
         for config in textViews {
             
-            /*var myMutableString = NSMutableAttributedString()
+            // try to unwrap config given textView and set attributed content
+            if let memeTextViewCurrent = config.textView {
             
-            myMutableString.addAttribute(
-                NSBackgroundColorAttributeName,
-                value: UIColor.green,
-                range: NSRange(
-                    location: 0,
-                    length: (config.defaultText?.lengthOfBytes(using: String.Encoding.utf8))!)
-            )*/
-            
-            config.textView?.delegate = memeTextViewDelegate
-            config.textView?.textAlignment = .center
-            config.textView?.isHidden = !activate
-            config.textView?.contentDefault = (config.textView?.text)!
-            config.textView?.verticalAlignment = config.verticalAlign!
-            config.textView?.isTopText = config.isTopText!
-            config.textView?.isBottomText = config.isBottomText!
-            config.textView?.backgroundColor = UIColor.clear
-            config.textView?.text = config.defaultText
-            
+                memeTextViewCurrent.delegate = memeTextViewDelegate
+                memeTextViewCurrent.isHidden = !activate
+                memeTextViewCurrent.contentDefault = (memeTextViewCurrent.text)!
+                memeTextViewCurrent.verticalAlignment = config.verticalAlign!
+                memeTextViewCurrent.isTopText = config.isTopText!
+                memeTextViewCurrent.isBottomText = config.isBottomText!
+                memeTextViewCurrent.backgroundColor = UIColor.clear
+                
+                memeTextViewAttributedText = NSMutableAttributedString(string: config.defaultText!)
+                memeTextViewAttributedText.addAttributes(
+                    memeTextViewAttributes,
+                    range: NSRange(location: 0, length: config.defaultText!.characters.count)
+                )
+                
+                memeTextViewCurrent.attributedText = memeTextViewAttributedText
+            }
         }
+    }
+    
+    func prepareTabControls() {
+        // always disable tabBarControls in editView
+        tabBarController?.tabBar.isHidden = true
     }
 
     func prepareMemeControls(activate: Bool) {
