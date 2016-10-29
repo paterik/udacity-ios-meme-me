@@ -12,7 +12,6 @@ extension UITextView {
     
     func verticalAlign(position: String = "top") {
         
-        print("_verticalAlign \(position)")
         // textView.contentInset.top = -topCorrect
         
         let textView = self
@@ -21,15 +20,12 @@ extension UITextView {
         var topCorrect: CGFloat = 0.0
         switch(position) {
             case "top":
-                print("1")
                 textView.contentOffset = CGPoint.zero
             case "middle":
-                print("2")
                 topCorrect = (height - contentHeight * textView.zoomScale)/2.0
                 topCorrect = topCorrect < 0 ? 0 : topCorrect
                 textView.contentOffset = CGPoint(x: 0, y: -topCorrect)
             case "bottom":
-                print("3")
                 topCorrect = textView.bounds.size.height - contentHeight
                 topCorrect = topCorrect < 0 ? 0 : topCorrect
                 textView.contentOffset = CGPoint(x: 0, y: -topCorrect)
