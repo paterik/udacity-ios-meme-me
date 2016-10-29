@@ -5,13 +5,14 @@ All notable changes of MemeMe release series are documented in this file using t
 _This MemeMe changelog documentation start with version 1.0.0 (2016-10-14)_
 
 ## [2.0.5], 2016-10-27:
-_current (dev)_
+_current_
 
 ### Changes
 
 * switch from textField to textView elements as meme text input controls
 * multiline support and memeText effect improvements
 * minor code refactoring and stability improvements
+
 
 ### Fixed
 
@@ -20,6 +21,8 @@ _current (dev)_
 ### Removed
 
 * obsolete presentation mode in editView
+* obsolete internal functions
+* debug output lines
 
 
 ## [2.0.4], 2016-10-25:
