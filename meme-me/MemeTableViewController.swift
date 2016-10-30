@@ -11,7 +11,10 @@ import BGTableViewRowActionWithImage
 
 class MemeTableViewController: UITableViewController {
     
-    // constants
+    //
+    // MARK: TableViewController Internal Variables And Constants
+    //
+    
     let memeCellHeight: CGFloat = 80.0
     let memeCellHeightSwipeActions: UInt = 98
     let memeCellImageCornerRadius: CGFloat = 5
@@ -19,7 +22,6 @@ class MemeTableViewController: UITableViewController {
     let memeIconNew = "IconNew"
     let memeIconUdpdated = "IconUpdated"
     
-    // variables
     var noDataImageView : UIImageView!
     var memes: [Meme] { return (UIApplication.shared.delegate as! AppDelegate).memes }
     var appDelegate: AppDelegate { return (UIApplication.shared.delegate as! AppDelegate) }

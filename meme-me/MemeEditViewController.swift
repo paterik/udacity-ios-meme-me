@@ -11,7 +11,7 @@ import UIKit
 class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //
-    // MARK: Outlets
+    // MARK: EditViewController Outlets
     //
     
     @IBOutlet weak var toolBarBottom: UIToolbar!
@@ -26,10 +26,9 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var inputFieldBottom: MemeTextView!
     
     //
-    // MARK: Internal Variables
+    // MARK: EditViewController Internal Variables And Constants
     //
     
-    // constants
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let memeFontNames = ["Impact", "Futura-CondensedExtraBold", "HelveticaNeue-CondensedBlack"]
     let memeFontNameFailback = "Arial"
@@ -41,7 +40,6 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     let memeImageContentMode: UIViewContentMode = .scaleAspectFit
     let imagePickerController = UIImagePickerController()
     
-    // variables
     var imagePickerSuccess: Bool = false
     var usedMemeFontName: String!
     var memeTextViewAttributedText: NSMutableAttributedString!
@@ -53,7 +51,7 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     var currentMemeRowIndex: Int?
     
     //
-    // MARK: ViewController Overrides, LifeCycle Methods
+    // MARK: EditViewController Overrides, LifeCycle Methods
     //
 
     override func viewDidLoad() {
@@ -166,7 +164,7 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         loadImagePickerSource()
     }
     
-    @IBAction func pickLocalStockImage(_ sender: AnyObject) {
+    @IBAction func pickLocalImageStock(_ sender: AnyObject) {
         
         // Create the subMenu controller (using alertViewController)
         let alertController = UIAlertController(

@@ -17,7 +17,7 @@ class MemeCollectionViewController: UICollectionViewController {
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     //
-    // MARK: CollectionViewController variables and constants
+    // MARK: Internal Variables And Constants
     //
     
     // constants
