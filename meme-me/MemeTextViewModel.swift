@@ -6,8 +6,6 @@
 //  Copyright © 2016 Patrick Paechnatz. All rights reserved.
 //
 
-import Foundation
-
 struct MemeTextViewModel {
     
     var isTopText: Bool?
