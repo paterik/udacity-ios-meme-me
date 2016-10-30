@@ -35,14 +35,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // append meme to current struct array and sort my array to comply tableView latest-item-first rendering
     func addMeme(meme: Meme) {
-        unfreshMemes()
+        untagMemes()
         memes.append(meme)
         sortMemes(direction: memeOrder.asc)
     }
     
     // replace the icoming image on corresponding position, execute sortMemes(ASC) to show this item on top of tableView
     func replaceMeme(meme: Meme, index: Int) {
-        unfreshMemes()
+        untagMemes()
         memes[index] = meme
         sortMemes(direction: memeOrder.asc)
     }
@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func unfreshMemes() {
+    func untagMemes() {
         for index in 0..<memes.count {
             memes[index].fresh = false
             memes[index].updated = false
