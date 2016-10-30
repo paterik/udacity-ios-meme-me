@@ -82,12 +82,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let dateFormatter = DateFormatter()
         let memeFixtureData = [
             // 0: textTop, 1: textBottom, 2: imageOrigin, 3: image, 4: created
-            ("I'm on a strict diet", "Whiskey and rare steak", "sample-meme-1", "sample-meme-1", "2016-10-21 06:00:00"),
-            ("Feelings?", "Never heard of them", "sample-meme-2", "sample-meme-2", "2016-10-21 07:00:00"),
-            ("Salad?", "Thats what my food eats!", "sample-meme-3", "sample-meme-3", "2016-10-21 08:00:00"),
-            ("How would you like your steak?", "Breathing!", "sample-meme-4", "sample-meme-4", "2016-10-21 09:00:00"),
-            ("Breaks?", "You mean the coward pedal", "sample-meme-5", "sample-meme-5", "2016-10-21 10:00:00"),
-            ("Therapist?", "You mean bartender", "sample-meme-6", "sample-meme-6", "2016-10-21 11:00:00"),
+            ("I'm on a strict diet", "Whiskey and rare steak", "sample-meme-1", "sample-meme-1-r", "2016-10-21 06:00:00"),
+            ("Feelings?", "Never heard of them", "sample-meme-2", "sample-meme-2-r", "2016-10-21 07:00:00"),
+            ("Salad?", "Thats what my food eats!", "sample-meme-3", "sample-meme-3-r", "2016-10-21 08:00:00"),
+            ("How would you like your steak?", "Breathing!", "sample-meme-4", "sample-meme-4-r", "2016-10-21 09:00:00"),
+            ("Breaks?", "You mean the coward pedal", "sample-meme-5", "sample-meme-5-r", "2016-10-21 10:00:00"),
+            ("Therapist?", "You mean bartender", "sample-meme-6", "sample-meme-6-r", "2016-10-21 11:00:00"),
         ]
         
         var _meme: Meme
