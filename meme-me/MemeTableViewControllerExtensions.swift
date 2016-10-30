@@ -27,6 +27,34 @@ extension MemeTableViewController {
         return noDataImageView
     }
     
+    // ask user for sample meme payload during initial start persist users choice, dont pest customer twice!
+    func askForSampleMemes() {
+        
+        if isDataAvailable() { return }
+        
+        // Create the subMenu controller (using alertViewController)
+        let alertController = UIAlertController(
+            title: "Load Sample Memes?",
+            message: "You've no memes currently set, do you want to load some sample memes now?",
+            preferredStyle: .alert)
+        
+        let loadFixturesAction = UIAlertAction(title: "Load Sample Memes", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            self.appDelegate.loadFixtures()
+            self.tableView.reloadData()
+        }
+        
+        // Add Basic actions
+        alertController.addAction(loadFixturesAction)
+        
+        // Add Cancel action
+        alertController.addAction(UIAlertAction(title: "No Thanks", style: UIAlertActionStyle.cancel) {
+            UIAlertAction in return
+        })
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
     func refreshTableView() {
     
         tableView.separatorStyle = .none

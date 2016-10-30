@@ -34,6 +34,7 @@ class MemeTableViewController: UITableViewController {
         
         super.viewDidLoad()
         
+        askForSampleMemes()
         refreshTableView()
     }
     

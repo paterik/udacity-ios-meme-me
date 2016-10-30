@@ -112,12 +112,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    // *** ask user for sample meme payload during initial start persist users choice, dont pest customer twice!
-    func askForSampleMemes() {
-        
-        // not implemented yet!
-    }
-    
     //
     // MARK: global application functions
     //
@@ -141,12 +135,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        //
-        // uncomment the lines below to load predefined memes into the app list of models
-        //
-        
-        loadFixtures()
         
         return true
     }
