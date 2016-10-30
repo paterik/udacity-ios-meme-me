@@ -28,6 +28,10 @@ _current_
 * obsolete internal functions
 * debug output lines
 
+### Fixes
+
+* image quality/positioning issue based on bad constraints
+
 
 ## [2.0.4], 2016-10-25:
 
