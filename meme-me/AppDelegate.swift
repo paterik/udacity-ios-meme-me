@@ -90,26 +90,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ("Therapist?", "You mean bartender", "sample-meme-6", "sample-meme-6", "2016-10-21 11:00:00"),
         ]
         
-        var meme: Meme
+        var _meme: Meme
         
         dateFormatter.locale = Locale(identifier: NSLocale.current.languageCode!)
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
         
         for (_textTop, _textBottom, _imageOrigin, _image, _created) in memeFixtureData {
 
-            meme = Meme(
-                textTop: _textTop,
-                textBottom: _textBottom,
-                imageOrigin:  UIImage(named: _imageOrigin),
-                image:  UIImage(named: _image),
+            _meme = Meme(
+                textTop: (_textTop as String!).uppercased(),
+                textBottom: (_textBottom as String!).uppercased(),
+                imageOrigin: UIImage(named: _imageOrigin),
+                image: UIImage(named: _image),
                 fresh: false,
                 updated: false,
                 sample: true,
                 created: dateFormatter.date(from: _created)!
             )
             
-            addMeme(meme: meme)
+            addMeme(meme: _meme)
         }
+    }
+    
+    // *** ask user for sample meme payload during initial start persist users choice, dont pest customer twice!
+    func askForSampleMemes() {
+        
+        // not implemented yet!
     }
     
     //
