@@ -187,9 +187,7 @@ extension MemeEditViewController {
         present(alertController, animated: true)
     }
     
-    //
     // get predefined meme textViews with characteristic configuration schema
-    //
     func getPreConfiguredMemeTextViews() -> [MemeTextViewModel] {
         
         return [
@@ -237,9 +235,7 @@ extension MemeEditViewController {
         } 
     }
     
-    //
     // check for predefined font-range availability, switch to alternate one if given one not exist
-    //
     func getAvailableMemeFontName(fontNamesAvailable: [String]) -> String {
         
         for fontName in fontNamesAvailable {
@@ -251,9 +247,7 @@ extension MemeEditViewController {
         return memeFontNameFailback
     }
     
-    //
     // additional ui improvements of current view handling app create meme mode
-    //
     func prepareCreationModeControls() {
         
         saveButton.style = UIBarButtonItemStyle.plain
@@ -261,9 +255,7 @@ extension MemeEditViewController {
         saveButton.image = nil;
     }
     
-    //
     // prepare our meme textView controls using dictionary of MemeTextViewModels
-    //
     func prepareEditControls(textViews: [MemeTextViewModel], activate: Bool) {
         
         memeParagraphStyle = NSMutableParagraphStyle()
@@ -306,8 +298,9 @@ extension MemeEditViewController {
         }
     }
     
+    // always disable tabBarControls in this view
     func prepareTabControls() {
-        // always disable tabBarControls in editView
+        
         tabBarController?.tabBar.isHidden = true
     }
 
@@ -329,7 +322,6 @@ extension MemeEditViewController {
         prepareEditControls(textViews: getPreConfiguredMemeTextViews(), activate: activate)
     }
     
-    // weazL
     func updateInputControls() {
         
         inputFieldTop.verticalAlign(position: "top")

@@ -38,17 +38,13 @@ class MemeDetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    //
-    // set orientation to portrati (fix) in detailView
-    //
+    // set orientation to portrait mode (fix) in detailView
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         
         return UIInterfaceOrientationMask.portrait
     }
     
-    //
     // disable orientation switch in detailView
-    //
     override var shouldAutorotate: Bool {
         
         return false

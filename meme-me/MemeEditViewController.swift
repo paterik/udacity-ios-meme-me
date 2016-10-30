@@ -98,17 +98,13 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     
-    //
     // set orientation to portrati (fix) in editView
-    //
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         
         return UIInterfaceOrientationMask.portrait
     }
     
-    //
     // disable orientation switch in editView
-    //
     override var shouldAutorotate: Bool {
         
         return false

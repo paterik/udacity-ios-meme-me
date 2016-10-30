@@ -29,7 +29,6 @@ extension MemeTableViewController {
     
     func refreshTableView() {
     
-        // todo: check constraints for singleLine !!!
         tableView.separatorStyle = .none
         tabBarController?.tabBar.isHidden = false
         tableView.backgroundView = nil
