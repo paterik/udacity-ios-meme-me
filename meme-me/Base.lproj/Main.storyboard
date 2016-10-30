@@ -138,7 +138,8 @@
                                                 <constraint firstAttribute="width" constant="32" id="1gp-mb-2hI"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TextBottom" lineBreakMode="tailTruncation" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6v-6f-3ue" userLabel="MemeLabelBottom">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TextBottom" lineBreakMode="tailTruncation" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6v-6f-3ue" userLabel="MemeLabelBottom">
+                                            <frame key="frameInset" minX="80" minY="39" width="287" height="20"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -152,12 +153,12 @@
                                         <constraint firstItem="SWa-JH-R8X" firstAttribute="bottom" secondItem="tKd-kZ-TNc" secondAttribute="bottomMargin" id="Bar-vh-UJQ"/>
                                         <constraint firstItem="SWa-JH-R8X" firstAttribute="leading" secondItem="tKd-kZ-TNc" secondAttribute="leadingMargin" constant="9" id="FHf-1g-hbw"/>
                                         <constraint firstItem="J6v-6f-3ue" firstAttribute="leading" secondItem="Uyw-ZF-yS5" secondAttribute="trailing" constant="37" id="ViN-MN-eOt"/>
-                                        <constraint firstItem="Uyw-ZF-yS5" firstAttribute="bottom" secondItem="J6v-6f-3ue" secondAttribute="bottom" id="W49-v6-POp"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="yGF-6m-c8f" secondAttribute="bottom" constant="31" id="Y9n-Oi-sKZ"/>
+                                        <constraint firstItem="Uyw-ZF-yS5" firstAttribute="bottom" secondItem="J6v-6f-3ue" secondAttribute="bottom" constant="8.5" id="W49-v6-POp"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="yGF-6m-c8f" secondAttribute="bottom" constant="32" id="Y9n-Oi-sKZ"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Uyw-ZF-yS5" secondAttribute="bottom" constant="3" id="Zgb-JU-uRi"/>
-                                        <constraint firstItem="J6v-6f-3ue" firstAttribute="top" secondItem="tKd-kZ-TNc" secondAttribute="topMargin" constant="31" id="cAx-t8-Ld4"/>
+                                        <constraint firstItem="J6v-6f-3ue" firstAttribute="top" secondItem="tKd-kZ-TNc" secondAttribute="topMargin" constant="32" id="cAx-t8-Ld4"/>
                                         <constraint firstItem="yGF-6m-c8f" firstAttribute="trailing" secondItem="tKd-kZ-TNc" secondAttribute="trailingMargin" id="h6g-Bi-boh"/>
-                                        <constraint firstItem="Uyw-ZF-yS5" firstAttribute="top" secondItem="yGF-6m-c8f" secondAttribute="top" id="wSw-uw-OdT"/>
+                                        <constraint firstItem="Uyw-ZF-yS5" firstAttribute="top" secondItem="yGF-6m-c8f" secondAttribute="top" constant="1" id="wSw-uw-OdT"/>
                                         <constraint firstItem="SWa-JH-R8X" firstAttribute="top" secondItem="tKd-kZ-TNc" secondAttribute="topMargin" id="zgu-qd-iEw"/>
                                     </constraints>
                                 </tableViewCellContentView>
