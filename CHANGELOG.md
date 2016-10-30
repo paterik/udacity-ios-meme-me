@@ -12,6 +12,7 @@ _current_
 * new icon for updated memes
 * new icon for sample memes
 * affinity designer template for app icons
+* sample meme import dialog on start up
 
 ### Changes
 
