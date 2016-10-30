@@ -10,7 +10,7 @@ import UIKit
 
 extension UITextView {
     
-    // weazL
+    // enable vertical alignment repositioning of textView content
     func verticalAlign(position: String = "top") {
         
         let textView = self
@@ -35,13 +35,12 @@ extension UITextView {
                 textView.contentOffset = CGPoint.zero
         }
         
-        if contentHeight >= height { //if the contentSize is greater than the height
-            topCorrect = contentHeight - height //set the contentOffset to be the
-            topCorrect = topCorrect < 0 ? 0 : topCorrect //contentHeight - height of textView
+        if contentHeight >= height {
+            topCorrect = contentHeight - height
+            topCorrect = topCorrect < 0 ? 0 : topCorrect
             textView.contentOffset = CGPoint(x: 0, y: topCorrect)
         }
     
-        // textView.isScrollEnabled = false
-        // textView.sizeToFit()
+        textView.isScrollEnabled = true
     }
 }
