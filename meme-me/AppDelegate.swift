@@ -116,17 +116,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: global application functions
     //
     
-    func getAppVersionString() -> String? {
+    func getAppVersionString(short: Bool) -> String? {
+        
+        var versionString: String? = nil
         
         if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") {
+            versionString = "\(version)"
             if let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") {
-                return ("\(version).\(build)")
+                versionString = "\(version).\(build)"
             }
-            
-            return version as? String
         }
         
-        return nil
+        return versionString
     }
 
     //
