@@ -6,7 +6,6 @@
 //  Copyright © 2016 Patrick Paechnatz. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class MemeTextViewDelegate : NSObject, UITextViewDelegate {
@@ -24,13 +23,14 @@ class MemeTextViewDelegate : NSObject, UITextViewDelegate {
         memeTextView.verticalAlign(position: memeTextView.verticalAlignment)
     }
     
-    // dismiss keyboard on pressing "done" or "return" so far
+    // dismiss keyboard on pressing "done" or "return" so far and forcefully uppercas any user input
     func textView(
         _ textView: UITextView,
         shouldChangeTextIn range: NSRange,
         replacementText text: String) -> Bool {
         
         let memeTextView = textView as! MemeTextView
+        let memeTextCurrent = memeTextView.text
         
         if text == "\n" {
             
@@ -39,7 +39,9 @@ class MemeTextViewDelegate : NSObject, UITextViewDelegate {
             return false
         }
         
-        return true
+        memeTextView.text = (memeTextCurrent! as NSString).replacingCharacters(in: range, with: text.uppercased())
+        
+        return false
     }
     
     // clear textView on clicking default text placeholder, leave text as is on existing (not default) content
