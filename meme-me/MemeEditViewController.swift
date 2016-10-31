@@ -88,7 +88,7 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
             return
         }
         
-        imagePickerView.contentMode = .scaleAspectFit
+        imagePickerView.contentMode = .scaleAspectFill
         imagePickerView.image = UIImage(named: "WelcomeMemeCreatePortrait")
         
         if (toInterfaceOrientation.isLandscape) {
@@ -99,11 +99,19 @@ class MemeEditViewController: UIViewController, UIImagePickerControllerDelegate,
     // set orientation to portrati (fix) in editView
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         
+        if (!imagePickerSuccess || !editMode) {
+            return UIInterfaceOrientationMask.all
+        }
+        
         return UIInterfaceOrientationMask.portrait
     }
     
     // disable orientation switch in editView
     override var shouldAutorotate: Bool {
+        
+        if (!imagePickerSuccess || !editMode) {
+            return true
+        }
         
         return false
     }
