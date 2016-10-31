@@ -95,7 +95,9 @@ class MemeTableViewController: UITableViewController {
             image: UIImage(named: "Edit_v2"),
             forCellHeight: memeCellHeightSwipeActions) { action, index in
                 
-                let editViewController = self.storyboard!.instantiateViewController(withIdentifier: "MemeEditViewController") as! MemeEditViewController
+                let editViewController = self.storyboard!.instantiateViewController(
+                    withIdentifier: "MemeEditViewController") as! MemeEditViewController
+                
                 editViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
                 editViewController.editMode = true
                 editViewController.currentMeme = self.memes[indexPath.row]
