@@ -18,13 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WelcomeLaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="Y6G-iL-v41"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WelcomeLaunchScreen_v2" translatesAutoresizingMaskIntoConstraints="NO" id="Y6G-iL-v41"/>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.0.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1G-Ld-fOw" userLabel="VersionLabel">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="T7p-Pg-7ac"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.2196078431372549" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -34,9 +34,8 @@
                             <constraint firstItem="Y6G-iL-v41" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="8" symbolic="YES" id="Cbj-cT-gGx"/>
                             <constraint firstItem="I1G-Ld-fOw" firstAttribute="trailing" secondItem="Y6G-iL-v41" secondAttribute="trailing" constant="-16" id="Cmd-fs-noc"/>
                             <constraint firstItem="Y6G-iL-v41" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="eAn-Pc-sa5"/>
-                            <constraint firstAttribute="bottom" secondItem="I1G-Ld-fOw" secondAttribute="bottom" constant="20" symbolic="YES" id="eNQ-nl-HDK"/>
                             <constraint firstAttribute="trailing" secondItem="Y6G-iL-v41" secondAttribute="trailing" id="fEy-b3-CZ5"/>
-                            <constraint firstItem="I1G-Ld-fOw" firstAttribute="centerX" secondItem="Y6G-iL-v41" secondAttribute="centerX" id="kMg-L0-VbC"/>
+                            <constraint firstItem="I1G-Ld-fOw" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="8" id="kHF-Fm-qSJ"/>
                             <constraint firstItem="I1G-Ld-fOw" firstAttribute="leading" secondItem="Y6G-iL-v41" secondAttribute="leading" constant="16" id="kgX-nS-PlQ"/>
                         </constraints>
                     </view>
@@ -47,6 +46,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="WelcomeLaunchScreen" width="414" height="736"/>
+        <image name="WelcomeLaunchScreen_v2" width="750" height="1334"/>
     </resources>
 </document>
