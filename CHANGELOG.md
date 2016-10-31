@@ -32,6 +32,7 @@ _current_
 ### Fixes
 
 * image quality/positioning issue based on bad constraints
+* uppercase bug during input on iPhone 6 devices
 
 
 ## [2.0.4], 2016-10-25:
