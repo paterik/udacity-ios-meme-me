@@ -342,6 +342,7 @@
 				B12DCF451DAE739D00CD9FA0 /* Resources */,
 				EED0DE8980FFE4CAE93F39F7 /* [CP] Embed Pods Frameworks */,
 				CEC03866A0E198120E342903 /* [CP] Copy Pods Resources */,
+				B1F316E81DC9BF850066A5B0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -465,6 +466,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		B1F316E81DC9BF850066A5B0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./xcode-build-bump.sh";
+		};
 		CEC03866A0E198120E342903 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
