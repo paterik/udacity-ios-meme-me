@@ -3,10 +3,16 @@
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
 [![System Version](https://img.shields.io/badge/version-2.0.6-blue.svg)](VERSION)
+[![Language](https://img.shields.io/badge/swift-3.0-orange.svg)](http://swift.org)
 
-This repository will hold my project submission for udacity.com project works on app "MemeMe" during my iOS developer certification program.
+This repository will hold my project submission for udacity.com project works on app "MemeMe" (v1/v2) during my iOS developer certification program.
 
 *documentation isn't fully done yet, updates will fly into within the next days*
+
+
+## Keywords
+swift, udacity, extension, uikit, foundation, app
+
 
 ## License-Term
 
