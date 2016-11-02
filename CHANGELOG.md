@@ -4,7 +4,7 @@ All notable changes of MemeMe release series are documented in this file using t
 
 _This MemeMe changelog documentation start with version 1.0.0 (2016-10-14)_
 
-## [2.0.6], 2016-11-01:
+## [2.0.6], 2016-11-02:
 _current_
 
 ### Added
@@ -13,6 +13,7 @@ _current_
 
 ### Changes
 
+* new app name/config
 * new app iconSet/logo
 * new app launchScreen
 * new zero-state images
