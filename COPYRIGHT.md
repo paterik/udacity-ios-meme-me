@@ -34,3 +34,14 @@ Published by The Minneapolis Tribune-photo from Warner Bros.
 > Ernest Hemingway, wikipedia.org,
 Portrait by Ermeni Studios
 [https://en.wikipedia.org/wiki/Ernest_Hemingway#/media/File:Ernest_Hemingway_in_Milan_1918_retouched_3.jpg](PC)
+
+*I'v been using vector image inspired by RAStudio and Blankstock. This images are licensed for this application once and can't provided/used in forked/copied versions of this repository. If you'll create your own app based on this repository use other image sources or create your own image panels for lauchScreen storyboard and applications zero-state user-info panels!*
+
+
+### 3rd Party Libs/Code
+
+- bash, xcode-version-bump.sh/xcode-build-bump.sh
+> Copyright (c) Jason Horwitz (sekati), https://gist.github.com/sekati/3172554
+
+- objectiv-c, BGTableViewRowActionWithImage
+> Copyright (c) 2015 Ben Guild (benguild), https://github.com/benguild/BGTableViewRowActionWithImage
