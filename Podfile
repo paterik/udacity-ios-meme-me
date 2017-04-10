@@ -7,6 +7,6 @@ def memeMeProdPods
     pod 'BGTableViewRowActionWithImage'
 end
 
-target 'meme-me' do
+target 'MemeMe' do
     memeMeProdPods
 end
