@@ -10,7 +10,7 @@
 
 ## App Description
 
-With MemeMe you can create multiple persistent memes using your fotos or take one from your camera directly. Meme enables a user to take a picture, and add text at the top and bottom to form a meme. The user will be able to share the photo on Facebook and Twitter and also by SMS or email. Memes will appear in a tab view with two tabs: a table view and a collection view.
+With MemeMe you can create multiple persistent memes using your fotos from your iPhone media library or take one from your camera directly. MemeMe allows you to take a picture, and add a meme text at the top and bottom to create your own a meme. The user will be able to share the photo on Facebook, Twitter and also by SMS (using the share link possibility of your phone). Memes will appear in a tab view using two views: a table view and a collection view.
 
 ## App Specifications
 
@@ -18,11 +18,11 @@ MemeMe master (currently 2.0.7) using the latest XCode 8.3 (8E162) version and w
 
 ## App Features
 
-MemeMe supports a base set of fixture load to bring you a subset of well known memes to play with.
+MemeMe supports a base set of fixture load to bring you a subset of well known memes to play with. New memes will be tagged using an iconify/image overlay.
 
 ## App Structure
 
-MemeMe is following the MVC pattern by structural and logical definition. The app is using dedicated view partials instead of base sub views of table cells and annotations.
+MemeMe is following the MVC pattern by structural and logical definition. The app is using dedicated view partials instead of base sub views of table cells and annotations. In this version MemeMe wont persist your memes in application views but hold your memes inside your device (or iCloud) as persisted image.
 
 ![xcode project structure](github/media/MM_structure_v1.png) 
 
@@ -59,7 +59,7 @@ MemeMe is currently available in [12 releases](https://github.com/paterik/udacit
 
 ## Changelog
 
-All notable changes of the MemeMe release series are documented in project [CHANGELOG.md](CHANGELOG.md) file using the [Keep a CHANGELOG](http://keepachangelog.com/) prtheinciples. The changelog documentation starts with version 1.0.0 (2016-10-14). The latest „exam“ version of MemeMe met the specifications to accomplish the course sub goal. 
+All notable changes of the MemeMe release series are documented in project [CHANGELOG.md](CHANGELOG.md) file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles. The changelog documentation starts with version 1.0.0 (2016-10-14). The latest „exam“ version of MemeMe met the specifications to accomplish the course sub goal. 
 
 ## License-Term
 
